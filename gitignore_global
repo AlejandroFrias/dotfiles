@@ -1,0 +1,24 @@
+# Mac
+.DS_Store
+
+# Sublime
+*.sublime-workspace
+*.sublime-project
+wheelhouse.tar
+
+# Python
+*.pyc
+
+# Python Packaging
+build/
+dist/
+MANIFEST
+*.egg-info
+
+# Vim
+*.swp
+*.swo
+
+# Virtual Env
+env/
+venv/
