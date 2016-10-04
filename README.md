@@ -7,7 +7,7 @@ A collection of my dotfiles.
 ```
 git clone https://github.com/AlejandroFrias/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-./install.sh
+sh install.sh
 ```
 
 ## Requirements
@@ -17,7 +17,7 @@ cd ~/.dotfiles
   * `git` - git is used to install vim/tmux plugins
   * `vim` - Using version 7.4
   * `tmux` - Using version 2.1
-  * `iterm2` (optional) - If you have iterm2 installed, you'll get my custom key mappings too!
+  * `iterm2` (optional) - If you have iterm2 installed, you'll get my custom profiles and key mappings!
 
 ## Sublime
 
