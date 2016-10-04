@@ -58,3 +58,4 @@ function maze() {
     python -c "from maze import *; m = Maze(40, 30); m.redraw()"
     cd $LAST_DIR
 }
+alias src=". ~/.bashrc"
