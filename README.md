@@ -17,6 +17,7 @@ cd ~/.dotfiles
   * `git` - git is used to install vim/tmux plugins
   * `vim` - Using version 7.4
   * `tmux` - Using version 2.1
+  * `iterm2` (optional) - If you have iterm2 installed, you'll get my custom key mappings too!
 
 ## Sublime
 
