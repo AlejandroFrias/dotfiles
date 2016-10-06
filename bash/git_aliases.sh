@@ -19,21 +19,21 @@ function _get_stash_name() {
     fi
 }
 function gstdrop() {
-    git stash list | awk '{++cnt; $1 = ""; print cnt ":"  $0}'
-    echo "Select stash number to apply:"
+    git stash list | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
+    echo "Select stash number to drop:"
     stash_name=$(_get_stash_name)
-    echo git stash apply $stash_name
+    echo git stash drop $stash_name
     git stash drop $stash_name
 }
 function gstapply() {
-    git stash list | awk '{++cnt; $1 = ""; print cnt ":"  $0}'
+    git stash list | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
     echo "Select stash number to apply:"
     stash_name=$(_get_stash_name)
     echo git stash apply $stash_name
     git stash apply $stash_name
 }
 function gstpop() {
-    git stash list | awk '{++cnt; $1 = ""; print cnt ":"  $0}'
+    git stash list | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
     echo "Select stash number to pop:"
     stash_name=$(_get_stash_name)
     echo git stash pop $stash_name
