@@ -13,32 +13,31 @@ alias gstunstaged='git stash --keep-index'
 alias gstuntracked='git stash --include-untracked'
 alias gstall='git stash --all'
 function _get_stash_name() {
-    read stash_number
-    if [[ ! -z $stash_number ]]; then
-        stash_name="stash@{"$stash_number"}"
+    if [[ ! -z $1 ]]; then
+        stash_name="stash@{"$1"}"
         echo $stash_name
     fi
 }
+function _gst() {
+    if [[ -z $2 ]]; then
+        git stash list | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
+        echo "Select stash number to "$1":"
+        read stash_number
+    else
+        stash_number=$2
+    fi
+    stash_name=$(_get_stash_name $stash_number)
+    echo git stash $1 $stash_name
+    git stash $1 $stash_name
+}
 function gstdrop() {
-    git stash list | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
-    echo "Select stash number to drop:"
-    stash_name=$(_get_stash_name)
-    echo git stash drop $stash_name
-    git stash drop $stash_name
+    _gst drop "$@"
 }
 function gstapply() {
-    git stash list | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
-    echo "Select stash number to apply:"
-    stash_name=$(_get_stash_name)
-    echo git stash apply $stash_name
-    git stash apply $stash_name
+    _gst apply "$@"
 }
 function gstpop() {
-    git stash list | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
-    echo "Select stash number to pop:"
-    stash_name=$(_get_stash_name)
-    echo git stash pop $stash_name
-    git stash pop $stash_name
+    _gst pop "$@"
 }
 function gcam() {
     SUCCESS=true
