@@ -9,18 +9,22 @@ alias gcommend='git commit --amend --no-edit'
 alias ginit='git init && git commit -m “root” --allow-empty'
 alias glog='git log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"'
 alias gst='git stash'
+alias gstsave='git stash save'
 alias gstunstaged='git stash --keep-index'
 alias gstuntracked='git stash --include-untracked'
 alias gstall='git stash --all'
+function gstlist() {
+    git stash list "$@" | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
+}
 function _get_stash_name() {
     if [[ ! -z $1 ]]; then
         stash_name="stash@{"$1"}"
         echo $stash_name
     fi
 }
-function _gst() {
+function _gst_action() {
     if [[ -z $2 ]]; then
-        git stash list | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
+        gstlist
         echo "Select stash number to "$1":"
         read stash_number
     else
@@ -31,13 +35,13 @@ function _gst() {
     git stash $1 $stash_name
 }
 function gstdrop() {
-    _gst drop "$@"
+    _gst_action drop "$@"
 }
 function gstapply() {
-    _gst apply "$@"
+    _gst_action apply "$@"
 }
 function gstpop() {
-    _gst pop "$@"
+    _gst_action pop "$@"
 }
 function gcam() {
     SUCCESS=true

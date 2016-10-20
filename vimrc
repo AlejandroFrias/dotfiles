@@ -22,6 +22,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -35,12 +41,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'terryma/vim-expand-region'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/gitignore'
@@ -405,42 +405,3 @@ nnoremap <silent> <leader>cf :call LoadQuickfixFileList("/tmp/quickfix.txt")<CR>
 """"""""""""""""""""
 
 set wildignore+=*/website/vendor/*
-
-function! CounsylPythonPath()
-    " Get current file path
-    let path = expand('%:p')
-    " Remove everything up to, but not including the first iteration of
-    " counsyl.
-    let path = substitute(path, ".*\\(counsyl\\)\\@=", "", "")
-    " Remove everything up to and includeing 'site-packages' for third party
-    " stuff.
-    let path = substitute(path, "^.*site-packages/", "", "")
-    " Remove python file extension
-    let path = substitute(path, "\.py$", "", "")
-    " Convert '/' to '.'
-    let path = substitute(path, "/", ".", "g")
-    return path
-endfunction
-function! CounsylImport(regname)
-    " Create import string for word under cursor
-    let import_string = "from ".CounsylPythonPath()." import ".expand("<cword>")
-    if strchars(import_string) > 79
-        let import_string = import_string."  # nopep8"
-    endif
-    let import_string = import_string."\n"
-    call setreg(a:regname, import_string)
-    echom import_string
-endfunction
-nnoremap <silent> <leader>ii :call CounsylImport(v:register)<CR>
-function! CounsylTestPath(regname)
-    " TODO: be smart and recognize being in a TestCase class
-    let test_path = CounsylPythonPath().":".expand("<cword>")."\n"
-    call setreg(a:regname, test_path)
-    echom test_path
-endfunction
-nnoremap <silent> <leader>it :call CounsylTestPath(v:register)<CR>
-
-"function! GrepForDefinition()
-"    let symbol = expand("<cword>")
-"endfunction
-"nnoremap <leader>gd :call GrepForDefinition()<CR>
