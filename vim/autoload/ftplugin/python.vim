@@ -12,6 +12,8 @@ endfunction
 function! ftplugin#python#CounsylPythonPath()
     " Get current file path
     let path = expand('%:p')
+    " Remove current working directory from path
+    let path = substitute(path, getcwd()."/", "", "")
     " Remove everything up to, but not including the first iteration of
     " counsyl.
     let path = substitute(path, ".*\\(counsyl\\)\\@=", "", "")
