@@ -195,7 +195,6 @@ let g:UltiSnipsJumpBackwardTrigger="<C-K>"
 """""""""""""""""""""
 nnoremap <leader>t :NERDTree<CR>
 nnoremap <leader>f :NERDTreeFind<CR>zz
-let NERDTreeShowHidden=0     " You can toggle with I
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', 'website/vendor[[dir]]', 'venv[[dir]]']
 
 let NERDTreeQuitOnOpen=1    " Closes NERDTree window after file open
