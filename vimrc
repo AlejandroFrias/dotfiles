@@ -10,8 +10,11 @@ let g:syntastic_coffeescript_checkers = ['coffeelint']
 let g:syntastic_json_checkers = ['jsonlint']
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:syntastic_python_checkers_args="--ignore=E731"
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_balloons = 0
+let g:syntastic_check_on_open = 1
 
-""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""y"
 " Plugins (Vundle Managed) "
 """"""""""""""""""""""""""""
 
@@ -184,8 +187,8 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " UltiSnips Settings "
 """"""""""""""""""""""
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsJumpForwardTrigger="<TAB>"
-let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
+let g:UltiSnipsJumpForwardTrigger="<C-J>"
+let g:UltiSnipsJumpBackwardTrigger="<C-K>"
 
 """""""""""""""""""""
 " NERDTree Settings "
@@ -265,6 +268,9 @@ inoremap <c-u> <c-g>u<c-u>
 
 " Quickfix shortcuts
 nnoremap <silent> <leader>co :copen<CR>
+nnoremap <silent> <leader>cq :cclose<CR>
+nnoremap <silent> <leader>cb :colder<CR>
+nnoremap <silent> <leader>cf :cnewer<CR>
 nnoremap <silent> <leader>cn :cnext<CR>
 nnoremap <silent> <leader>cp :cprevious<CR>
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
