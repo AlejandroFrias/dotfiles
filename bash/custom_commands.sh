@@ -54,7 +54,7 @@ function cdriver() {
 
 function maze() {
     LAST_DIR=$(pwd)
-    cd ~/Projects/MazeMaker
+    cd ~/.projects/MazeMaker
     python -c "from maze import *; m = Maze(40, 30); m.redraw()"
     cd $LAST_DIR
 }
