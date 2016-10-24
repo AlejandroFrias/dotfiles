@@ -171,11 +171,11 @@ map <leader>w <Plug>(easymotion-bd-W)
 """"""""""""""""""""""""""""""
 " IncrementalSearch Settings "
 """"""""""""""""""""""""""""""
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map z/ <Plug>(incsearch-fuzzy-/)
-map z? <Plug>(incsearch-fuzzy-?)
+" map / <Plug>(incsearch-forward)
+" map ? <Plug>(incsearch-backward)
+map z/ <Plug>(incsearch-stay)
+map / <Plug>(incsearch-fuzzy-/)
+map ? <Plug>(incsearch-fuzzy-?)
 
 """"""""""""""""""""""""""
 " Expand Region Settings "
