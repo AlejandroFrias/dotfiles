@@ -269,9 +269,13 @@ inoremap <c-u> <c-g>u<c-u>
 nnoremap <silent> <leader>co :copen<CR>
 nnoremap <silent> <leader>cq :cclose<CR>
 nnoremap <silent> <leader>cb :colder<CR>
+nnoremap <silent> <leader>ch :colder<CR>
 nnoremap <silent> <leader>cf :cnewer<CR>
+nnoremap <silent> <leader>cl :cnewer<CR>
 nnoremap <silent> <leader>cn :cnext<CR>
+nnoremap <silent> <leader>cj :cnext<CR>
 nnoremap <silent> <leader>cp :cprevious<CR>
+nnoremap <silent> <leader>ck :cprevious<CR>
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 
 " Marks
