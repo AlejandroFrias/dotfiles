@@ -13,12 +13,12 @@ let @p = "A  # nopep8"
 """"""""""""""""""""""""""""""""
 
 " next/prev def block
-nnoremap ]d /^\s*def <CR>^
-nnoremap [d 0?^\s*def <CR>^
+noremap ]d /^\s*def <CR>^
+noremap [d 0?^\s*def <CR>^
 
 " next/prev if/elif/else block
-nnoremap ]i /^\s*if \\|^\s*elif \\|^\s*else:<CR>^
-nnoremap [i 0?^\s*if \\|^\s*elif \\|^\s*else:<CR>^
+noremap ]i /^\s*if \\|^\s*elif \\|^\s*else:<CR>^
+noremap [i 0?^\s*if \\|^\s*elif \\|^\s*else:<CR>^
 
 " Grep for possible definition declarations of word under cursor
 nnoremap <silent> <leader>gd :call ftplugin#python#GoToDefinition()<CR>
