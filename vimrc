@@ -97,6 +97,13 @@ set backspace=2 " make backspace work like most other apps
 
 set confirm  " prompt a confirm message when switching from a modified buffer
 set nowrap
+
+""""""""""""""""""""""
+" Syntastic Mappings "
+""""""""""""""""""""""
+
+nnoremap <leader>sc :SyntasticCheck<CR>:Errors<CR>:lopen<CR>
+
 """"""""""""""""""""
 " SuperTab Settings "
 """""""""""""""""""""
@@ -265,18 +272,28 @@ nnoremap <leader>so :so ~/.vimrc<CR>
 inoremap <c-w> <c-g>u<c-w>
 inoremap <c-u> <c-g>u<c-u>
 
-" Quickfix shortcuts
+""""""""""""""""""""""""""""""""""""""""
+" Quickfix and Location List shortcuts "
+""""""""""""""""""""""""""""""""""""""""
+" Quickfix Shortcuts
 nnoremap <silent> <leader>co :copen<CR>
 nnoremap <silent> <leader>cq :cclose<CR>
-nnoremap <silent> <leader>cb :colder<CR>
-nnoremap <silent> <leader>ch :colder<CR>
-nnoremap <silent> <leader>cf :cnewer<CR>
-nnoremap <silent> <leader>cl :cnewer<CR>
+nnoremap <silent> <leader>cf :cfirst<CR>
+nnoremap <silent> <leader>cl :clast<CR>
 nnoremap <silent> <leader>cn :cnext<CR>
-nnoremap <silent> <leader>cj :cnext<CR>
 nnoremap <silent> <leader>cp :cprevious<CR>
-nnoremap <silent> <leader>ck :cprevious<CR>
-autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+
+" Location List shortcuts
+nnoremap <silent> <leader>lo :lopen<CR>
+nnoremap <silent> <leader>lq :lclose<CR>
+nnoremap <silent> <leader>lf :lfirst<CR>
+nnoremap <silent> <leader>ll :llast<CR>
+nnoremap <silent> <leader>ln :lnext<CR>
+nnoremap <silent> <leader>lp :lprevious<CR>
+
+" Close location list or quickfix when selecting file
+autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>
+
 
 " Marks
 nnoremap <leader>m :marks 'qwertyuiopasdfghjklzxcvbnm0123456789\"[]^.<CR>:normal `
