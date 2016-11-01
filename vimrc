@@ -425,8 +425,8 @@ endfunction
 
 nnoremap <silent> <leader>cgd :call GitDiffNameOnly("master")<CR>
 vnoremap <silent> <leader>cgd "ty:call GitDiffNameOnly(getreg("t"))<CR>
-nnoremap <silent> <leader>cw :call WriteBufferToQuickFixFileList("/tmp/quickfix.txt")<CR>
-nnoremap <silent> <leader>cf :call LoadQuickfixFileList("/tmp/quickfix.txt")<CR>
+nnoremap <silent> <leader>cwf :call WriteBufferToQuickFixFileList("/tmp/quickfix.txt")<CR>
+nnoremap <silent> <leader>clf :call LoadQuickfixFileList("/tmp/quickfix.txt")<CR>
 
 """"""""""""""""""""
 " Counsyl specific "
