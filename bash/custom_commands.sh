@@ -1,5 +1,5 @@
 #!/bin/bash
-alias lsa="ls -Fila"
+alias lsa="ls -Flah"
 
 function set_repo() {
     if [[ -z $1 ]]; then
