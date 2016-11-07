@@ -388,10 +388,10 @@ nnoremap <leader>q :q<CR>
 vnoremap <leader>q <ESC>:q<CR>
 
 " arrow keys for scrolling
-noremap <Down> <C-E>
-noremap <Up> <C-Y>
-noremap <Left> zh
-noremap <Right> zl
+noremap <Down> 3<C-E>
+noremap <Up> 3<C-Y>
+noremap <Left> 10zh
+noremap <Right> 10zl
 
 " Stop that stupid window from popping up
 map q: :q
