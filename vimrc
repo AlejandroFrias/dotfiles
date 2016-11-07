@@ -43,6 +43,7 @@ Plugin 'haya14busa/incsearch.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
+Plugin 'sjl/vitality.vim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -54,6 +55,13 @@ filetype plugin indent on    " required
 """"""""""""""""""""
 " General Settings "
 """"""""""""""""""""
+" Map key to toggle opt
+function! MapToggle(key, opt)
+  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
+  exec 'nnoremap '.a:key.' '.cmd
+endfunction
+command! -nargs=+ MapToggle call MapToggle(<f-args>)
+
 " my preferred settings for text files, should be overridden if vim picks up
 " the filetype
 set tabstop=4
@@ -98,6 +106,19 @@ set backspace=2 " make backspace work like most other apps
 set confirm  " prompt a confirm message when switching from a modified buffer
 set nowrap
 
+" relative line numbers are cool!
+set relativenumber
+set number
+" Toggle relative line numbers manualy
+MapToggle <leader>n relativenumber
+
+" don't need relative numbers when not in focus
+autocmd FocusLost * set norelativenumber
+autocmd FocusGained * set relativenumber
+
+" don't need realitve lines during insert mode
+autocmd InsertEnter * set norelativenumber
+autocmd InsertLeave * set relativenumber
 """"""""""""""""""""""
 " Syntastic Mappings "
 """"""""""""""""""""""
@@ -212,7 +233,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """"""""""""""""""
 " Theme Settings "
 """"""""""""""""""
-set number        " Show line numbers
 syntax enable     " Use syntax highlighting
 set background=dark
 let g:solarized_termcolors = 256
@@ -230,13 +250,6 @@ endif
 """""""""""""""""""""""
 " Custom Key Mappings "
 """""""""""""""""""""""
-" Map key to toggle opt
-function! MapToggle(key, opt)
-  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
-  exec 'nnoremap '.a:key.' '.cmd
-endfunction
-command! -nargs=+ MapToggle call MapToggle(<f-args>)
-
 " Toggle spell check
 MapToggle <leader>sp spell
 
