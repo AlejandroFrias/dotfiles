@@ -58,4 +58,18 @@ function maze() {
     python -c "from maze import *; m = Maze(40, 30); m.redraw()"
     cd $LAST_DIR
 }
+
+function repl() {
+    command="${*}"
+    printf "Initialized REPL for `%s`\n" "$command"
+    printf "%s> " "$command"
+    read -r input
+    while [ "$input" != "" ];
+    do
+        eval "$command $input"
+        printf "%s> " "$command"
+        read -r input
+    done
+}
+
 alias src=". ~/.bashrc"
