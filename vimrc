@@ -297,12 +297,12 @@ nnoremap <silent> <leader>cn :cnext<CR>
 nnoremap <silent> <leader>cp :cprevious<CR>
 
 " Location List shortcuts
-nnoremap <silent> <leader>lo :lopen<CR>
-nnoremap <silent> <leader>lq :lclose<CR>
-nnoremap <silent> <leader>lf :lfirst<CR>
-nnoremap <silent> <leader>ll :llast<CR>
-nnoremap <silent> <leader>ln :lnext<CR>
-nnoremap <silent> <leader>lp :lprevious<CR>
+nnoremap <silent> <leader>vo :lopen<CR>
+nnoremap <silent> <leader>vq :lclose<CR>
+nnoremap <silent> <leader>vf :lfirst<CR>
+nnoremap <silent> <leader>vl :llast<CR>
+nnoremap <silent> <leader>vn :lnext<CR>
+nnoremap <silent> <leader>vp :lprevious<CR>
 
 " Close location list or quickfix when selecting file
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>
