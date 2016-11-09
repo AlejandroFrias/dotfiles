@@ -3,6 +3,7 @@ setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
 setlocal textwidth=79
+setlocal softtabstop=4
 
 nnoremap <bar> 79<bar>
 
@@ -13,13 +14,9 @@ let @p = "A  # nopep8"
 " Better code block navigation "
 """"""""""""""""""""""""""""""""
 
-" next/prev def block
-noremap ]d /^\s*def <CR>^
-noremap [d 0?^\s*def <CR>^
-
 " next/prev if/elif/else block
-noremap ]i /^\s*if \\|^\s*elif \\|^\s*else:<CR>^
-noremap [i 0?^\s*if \\|^\s*elif \\|^\s*else:<CR>^
+noremap <silent> ]i /^\s*if \\|^\s*elif \\|^\s*else:<CR>^
+noremap <silent> [i 0?^\s*if \\|^\s*elif \\|^\s*else:<CR>^
 
 " next/prev vaiable definition
 noremap ]v /^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
