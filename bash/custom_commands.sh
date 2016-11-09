@@ -61,14 +61,13 @@ function maze() {
 
 function repl() {
     command="${*}"
-    printf "Initialized REPL for `%s`\n" "$command"
-    printf "%s> " "$command"
-    read -r input
+    echo "Initialized REPL for ${command}"
+    prompt="${command}> "
+    IFS= read -er -p "$prompt" input
     while [ "$input" != "" ];
     do
         eval "$command $input"
-        printf "%s> " "$command"
-        read -r input
+        IFS= read -er -p "$prompt" input
     done
 }
 
