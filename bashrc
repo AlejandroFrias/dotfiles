@@ -26,9 +26,6 @@ export GREEN="$(tput setaf 2)"
 export RED="$(tput setaf 1)"
 export RESET="$(tput sgr0)"
 
-# Docker env
-eval $(docker-machine env)
-
 # Vault for counsyl
 export VAULT_ADDR=https://vault.counsyl.com
 

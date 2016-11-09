@@ -110,7 +110,7 @@ set nowrap
 set relativenumber
 set number
 " Toggle relative line numbers manualy
-MapToggle <leader>n relativenumber
+MapToggle <leader>trn relativenumber
 
 " don't need relative numbers when not in focus
 autocmd FocusLost * set norelativenumber
@@ -251,7 +251,7 @@ endif
 " Custom Key Mappings "
 """""""""""""""""""""""
 " Toggle spell check
-MapToggle <leader>sp spell
+MapToggle <leader>tsp spell
 
 " Quick exit insert and undo
 inoremap <C-Z> <ESC>u
@@ -408,12 +408,6 @@ noremap <Right> 10zl
 
 " Stop that stupid window from popping up
 map q: :q
-
-" Line indent/dedent
-nnoremap > V>
-nnoremap < V<
-vnoremap > >gv
-vnoremap < <gv
 
 " macro for the ubiquitious n. pattern
 let @n = "n."
