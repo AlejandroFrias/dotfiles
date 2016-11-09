@@ -19,8 +19,8 @@ noremap <silent> ]i /^\s*if \\|^\s*elif \\|^\s*else:<CR>^
 noremap <silent> [i 0?^\s*if \\|^\s*elif \\|^\s*else:<CR>^
 
 " next/prev vaiable definition
-noremap ]v /^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
-noremap [v 0?^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
+noremap <silent> ]v /^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
+noremap <silent> [v 0?^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
 
 " Grep for possible definition declarations of word under cursor
 nnoremap <silent> <leader>gd :call ftplugin#python#GoToDefinition()<CR>
