@@ -221,9 +221,9 @@ let g:UltiSnipsJumpBackwardTrigger="<C-K>"
 """""""""""""""""""""
 " NERDTree Settings "
 """""""""""""""""""""
-nnoremap <leader>t :NERDTree<CR>
-nnoremap <leader>f :NERDTreeFind<CR>zz
-let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', 'website/vendor[[dir]]', 'venv[[dir]]']
+nnoremap <leader>tt :NERDTree<CR>
+nnoremap <leader>tf :NERDTreeFind<CR>zz
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', 'website/vendor[[dir]]', 'venv[[dir]]', '__pycache__[[dir]]', '\.egg-info[[dir]]']
 
 let NERDTreeQuitOnOpen=1    " Closes NERDTree window after file open
 
