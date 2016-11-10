@@ -72,3 +72,4 @@ function repl() {
 }
 
 alias src=". ~/.bashrc"
+alias h="repl hunt"

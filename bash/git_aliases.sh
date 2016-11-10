@@ -1,9 +1,6 @@
 alias ga='git add'
 alias gc='git commit'
 alias gcm='git commit -m'
-alias gch='git checkout'
-alias gchm='git checkout master'
-alias gchb='git checkout -b'
 alias gs='git status'
 alias gd='git diff'
 alias gb='git branch'
@@ -16,6 +13,61 @@ alias gstsave='git stash save'
 alias gstunstaged='git stash --keep-index'
 alias gstuntracked='git stash --include-untracked'
 alias gstall='git stash --all'
+function gbd () {
+    _hunt_finish "$1"
+    git branch -d "$1"
+}
+function gpom () {
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+    if [[ $current_branch != 'master' ]]; then
+        _hunt_workon_or_create "$current_branch"
+    fi
+}
+function gchb () {
+    _hunt_workon_or_create "$1"
+    git checkout -b "$1"
+}
+function gch () {
+    _hunt_workon_or_create "$1"
+    git checkout "$1"
+}
+function gchm () {
+    _hunt_stop
+    git checkout master
+}
+function _hunt_finish () {
+    if hash hunt 2>/dev/null; then
+        hunt finish "$1" 2>/dev/null
+    fi
+}
+function _hunt_stop () {
+    if hash hunt 2>/dev/null; then
+        hunt stop &>/dev/null
+    fi
+}
+function _hunt_estimate () {
+    if hash hunt 2>/dev/null; then
+        read -er -p "Estimate '${1}' (hrs): " estimate
+        if [[ ! -z $estimate ]]; then
+            hunt estimate $estimate -t "$1" 1>/dev/null
+        fi
+    fi
+}
+function _hunt_create() {
+    if hash hunt 2>/dev/null; then
+        hunt create "$1" 1>/dev/null
+        _hunt_estimate "$1"
+    fi
+}
+function _hunt_workon_or_create() {
+    if hash hunt 2>/dev/null; then
+        hunt workon "$1" &>/dev/null
+        if [ "$?" == 2 ]; then
+            _hunt_create "$1"
+            hunt workon "$1" 1>/dev/null
+        fi
+    fi
+}
 function gstlist() {
     git stash list "$@" | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
 }
@@ -76,6 +128,9 @@ function gpush() {
     force=false
     current_branch=$(git rev-parse --abbrev-ref HEAD)
     push_command="git push origin $current_branch"
+    if [[ $current_branch != 'master' ]]; then
+        _hunt_workon_or_create "$current_branch"
+    fi
     if [[ $1 = "-f" ]] || [[ $1 = "--force" ]]; then
         force=true
     fi
