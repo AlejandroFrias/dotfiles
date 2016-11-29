@@ -17,12 +17,6 @@ function gbd () {
     _hunt_finish "$1"
     git branch -d "$1"
 }
-function gpom () {
-    current_branch=$(git rev-parse --abbrev-ref HEAD)
-    if [[ $current_branch != 'master' ]]; then
-        _hunt_workon_or_create "$current_branch"
-    fi
-}
 function gchb () {
     _hunt_workon_or_create "$1"
     git checkout -b "$1"
@@ -128,9 +122,6 @@ function gpush() {
     force=false
     current_branch=$(git rev-parse --abbrev-ref HEAD)
     push_command="git push origin $current_branch"
-    if [[ $current_branch != 'master' ]]; then
-        _hunt_workon_or_create "$current_branch"
-    fi
     if [[ $1 = "-f" ]] || [[ $1 = "--force" ]]; then
         force=true
     fi
