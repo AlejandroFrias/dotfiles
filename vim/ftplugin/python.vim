@@ -8,7 +8,8 @@ setlocal softtabstop=4
 nnoremap <bar> 79<bar>
 
 " Add nopep8 to end of line
-let @p = "A  # nopep8"
+let @o = '  # nopep8'
+let @p = 'mp$"op`p'
 
 """"""""""""""""""""""""""""""""
 " Better code block navigation "
