@@ -55,22 +55,34 @@ filetype plugin indent on    " required
 """"""""""""""""""""
 " General Settings "
 """"""""""""""""""""
-" Map key to toggle opt
+" Shortcut for toggling options
 function! MapToggle(key, opt)
   let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
   exec 'nnoremap '.a:key.' '.cmd
 endfunction
 command! -nargs=+ MapToggle call MapToggle(<f-args>)
 
+MapToggle <F1> hlsearch
+MapToggle <F2> wrap
+MapToggle <F3> list
+MapToggle <C-L> spell
+MapToggle <F11> relativenumber
+MapToggle <F12> paste
+set pastetoggle=<F12>
+
 " my preferred settings for text files, should be overridden if vim picks up
-" the filetype
 set tabstop=4
+" the filetype
 set shiftwidth=4
 set expandtab
 
+" list view makes finding angry whitespace easier
+set list
+set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,conceal:*
+
 syntax on
 
-" Allow us to use Ctrl-s and Ctrl-q as keybinds
+" Allow us to use Ctrl-s and Ctrl-q as keybindings
 silent !stty -ixon
 " Restore default behaviour when leaving Vim.
 autocmd VimLeave * silent !stty ixon
@@ -109,8 +121,6 @@ set nowrap
 " relative line numbers are cool!
 set relativenumber
 set number
-" Toggle relative line numbers manualy
-MapToggle <leader>trn relativenumber
 
 " don't need relative numbers when not in focus
 autocmd FocusLost * set norelativenumber
@@ -250,9 +260,6 @@ endif
 """""""""""""""""""""""
 " Custom Key Mappings "
 """""""""""""""""""""""
-" Toggle spell check
-MapToggle <leader>tsp spell
-
 " Quick exit insert and undo
 inoremap <C-Z> <ESC>u
 
