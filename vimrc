@@ -102,7 +102,7 @@ set autoread
 
 " persistent undo!
 " Assumes Unix system.
-set undofile                  
+set undofile
 set undodir=$HOME/.vim/undo
 if empty(&undodir)
     call mkdir(&undodir, "p")
