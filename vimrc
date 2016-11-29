@@ -62,13 +62,19 @@ function! MapToggle(key, opt)
 endfunction
 command! -nargs=+ MapToggle call MapToggle(<f-args>)
 
+" Display altering toggle options
 MapToggle <F1> hlsearch
 MapToggle <F2> wrap
 MapToggle <F3> list
-MapToggle <C-L> spell
-MapToggle <F11> relativenumber
+MapToggle <F4> relativenumber
+
+" Behavior-altering option toggles
+MapToggle <F11> ignorecase
 MapToggle <F12> paste
 set pastetoggle=<F12>
+
+" spell check (Sublime-like shortcut)
+MapToggle <C-L> spell
 
 " my preferred settings for text files, should be overridden if vim picks up
 set tabstop=4
@@ -77,7 +83,6 @@ set shiftwidth=4
 set expandtab
 
 " list view makes finding angry whitespace easier
-set list
 set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,conceal:*
 
 syntax on
