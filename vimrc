@@ -69,12 +69,11 @@ MapToggle <F3> list
 MapToggle <F4> relativenumber
 
 " Behavior-altering option toggles
+MapToggle <F10> spell
 MapToggle <F11> ignorecase
 MapToggle <F12> paste
 set pastetoggle=<F12>
 
-" spell check (Sublime-like shortcut)
-MapToggle <C-L> spell
 
 " my preferred settings for text files, should be overridden if vim picks up
 set tabstop=4
