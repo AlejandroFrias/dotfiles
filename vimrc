@@ -9,7 +9,7 @@ let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_coffeescript_checkers = ['coffeelint']
 let g:syntastic_json_checkers = ['jsonlint']
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-let g:syntastic_python_checkers_args="--ignore=E731"
+let g:syntastic_python_checkers_args="--ignore=E731,F821"
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_balloons = 0
 let g:syntastic_check_on_open = 1
@@ -69,6 +69,7 @@ MapToggle <F3> list
 MapToggle <F4> relativenumber
 
 " Behavior-altering option toggles
+MapToggle <F9> scrollbind
 MapToggle <F10> spell
 MapToggle <F11> ignorecase
 MapToggle <F12> paste
@@ -82,7 +83,7 @@ set shiftwidth=4
 set expandtab
 
 " list view makes finding angry whitespace easier
-set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,conceal:*
+set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,conceal:*,space:\ 
 
 syntax on
 
@@ -322,14 +323,11 @@ autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>
 nnoremap <leader>m :marks 'qwertyuiopasdfghjklzxcvbnm0123456789\"[]^.<CR>:normal `
 nnoremap <leader>M :marks QWERTYUIOPASDFGHJKLZXCVBNM<CR>:normal `
 
-" Easier movement to end of line
+" Easier movement to beginning/end of line
 noremap - $
 vnoremap - $h
-
-" quick access to yank buffer (for easy pasting from or deleting into
-" yank buffer) at price of slower go to beginning of line
-noremap 0 "0
-noremap 00 0
+noremap 0 ^
+noremap _ 0
 
 " Quicker line jumps
 nnoremap <CR> G
@@ -365,6 +363,11 @@ nnoremap <leader>DO mqkdd`q
 nnoremap <C-S> :w<CR>
 vnoremap <C-S> <ESC>:w<CR>
 inoremap <C-S> <ESC>:w<CR>
+
+" Save and close file
+nnoremap <C-Q> :wq<CR>
+vnoremap <C-Q> <ESC>:wq<CR>
+inoremap <C-Q> <ESC>:wq<CR>
 
 " Exit insert mode
 inoremap jk <ESC>
