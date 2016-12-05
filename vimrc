@@ -4,15 +4,20 @@ filetype off                  " required
 """"""""""""""""""""""
 " Syntastic Settings "
 """"""""""""""""""""""
-let g:syntastic_python_checkers = ['pep8','pylint','flake8']
+let g:syntastic_python_checkers = ['pep8', 'pylint', 'flake8']
 let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_coffeescript_checkers = ['coffeelint']
 let g:syntastic_json_checkers = ['jsonlint']
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-let g:syntastic_python_checkers_args="--ignore=E731,F821"
+let g:syntastic_python_pep8_args="--ignore=E731,F821"
+let g:syntastic_python_flake8_args="--ignore=E731,F821"
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_balloons = 0
 let g:syntastic_check_on_open = 1
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": [] }
 
 """""""""""""""""""""""""""y"
 " Plugins (Vundle Managed) "
@@ -255,7 +260,7 @@ colorscheme solarized
 """""""""""""""""""
 " Ctrl-P Settings "
 """""""""""""""""""
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = "a"
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
       let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
