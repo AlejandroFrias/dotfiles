@@ -1,6 +1,9 @@
 #!/bin/bash
 alias lsa="ls -Flah"
 
+# rerun ctags in background
+alias ct="ctags . >/dev/null 2>&1 &"
+
 function set_repo() {
     if [[ -z $1 ]]; then
         echo "WEBSITE_REPO=website"

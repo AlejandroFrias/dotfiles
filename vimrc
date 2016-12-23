@@ -11,6 +11,7 @@ let g:syntastic_json_checkers = ['jsonlint']
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:syntastic_python_pep8_args="--ignore=E731,F821"
 let g:syntastic_python_flake8_args="--ignore=E731,F821"
+let g:syntastic_python_pylint_args="--disable=too-few-public-methods,import-error,attribute-defined-outside-init,invalid-name,missing-docstring,wrong-import-order,too-many-locals,line-too-long,--enable=undefined-variable,unused-variable,unused-import"
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_balloons = 0
 let g:syntastic_check_on_open = 1
@@ -38,6 +39,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'craigemery/vim-autotag'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'dhruvasagar/vim-prosession'
@@ -45,6 +47,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'ervandew/supertab'
 Plugin 'haya14busa/incsearch-fuzzy.vim'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
@@ -53,6 +56,7 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/gitignore'
+Plugin 'vimwiki/vimwiki'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -60,6 +64,9 @@ filetype plugin indent on    " required
 """"""""""""""""""""
 " General Settings "
 """"""""""""""""""""
+" closetag.vim
+autocmd FileType html,xml,xsl source ~/.vim/scripts/closetag.vim
+
 " Shortcut for toggling options
 function! MapToggle(key, opt)
   let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
@@ -197,10 +204,6 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 map  // <Plug>(easymotion-sn)
 omap // <Plug>(easymotion-tn)
 
-" next and previous that keep highlighting
-map <C-N> <Plug>(easymotion-next)
-map <C-B> <Plug>(easymotion-prev)
-
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 
@@ -211,10 +214,7 @@ map gk <Plug>(easymotion-k)
 map gl <Plug>(easymotion-sol-bd-jk)
 
 " <leader>f {char} to move to {char}
-" map <leader>f <Plug>(easymotion-bd-f)
-
-" Move to word in line
-map <leader>w <Plug>(easymotion-bd-W)
+map <leader>f <Plug>(easymotion-bd-f)
 
 """"""""""""""""""""""""""""""
 " IncrementalSearch Settings "
@@ -234,8 +234,8 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " UltiSnips Settings "
 """"""""""""""""""""""
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsJumpForwardTrigger="<C-J>"
-let g:UltiSnipsJumpBackwardTrigger="<C-K>"
+let g:UltiSnipsJumpForwardTrigger="<C-N>"
+let g:UltiSnipsJumpBackwardTrigger="<C-P>"
 
 """""""""""""""""""""
 " NERDTree Settings "
@@ -260,11 +260,14 @@ colorscheme solarized
 """""""""""""""""""
 " Ctrl-P Settings "
 """""""""""""""""""
-let g:ctrlp_working_path_mode = "a"
+let g:ctrlp_working_path_mode = "ar"
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
       let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+
+" ctrl-p ctags integration
+nnoremap <leader>. :CtrlPTag<CR>
 
 """""""""""""""""""""""
 " Custom Key Mappings "
@@ -289,13 +292,8 @@ endfunction
 nnoremap <silent> <leader>z :call ToggleWindowZoom()<CR>
 
 " Duplicates line
-nnoremap yp Yp
-vnoremap yp y`]p
-" yank selection without delay (suggest yp is flawed)
-vnoremap yy y
-
-" Source vimrc
-nnoremap <leader>so :so ~/.vimrc<CR>
+nnoremap <leader>p Yp
+vnoremap <leader>p y`]p
 
 " Undo-able insert mode shortcuts
 inoremap <c-w> <c-g>u<c-w>
@@ -360,10 +358,6 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <leader>o mqo<ESC>`qj
 nnoremap <leader>O mqO<ESC>`q
 
-" Delete lines above and below cursor
-nnoremap <leader>do mqjdd`q
-nnoremap <leader>DO mqkdd`q
-
 " Save easily
 nnoremap <C-S> :w<CR>
 vnoremap <C-S> <ESC>:w<CR>
@@ -386,9 +380,6 @@ inoremap lll <ESC>
 inoremap <C-U> <C-O>u
 
 "" BUFFER/WINDOW MADNESS
-" Split window
-nnoremap <leader>sv <C-W>v
-nnoremap <leader>ss <C-W>s
 " Quick movement between windows
 nnoremap <leader>h <C-W>h
 nnoremap <leader>j <C-W>j
@@ -405,14 +396,6 @@ nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bj :bnext<CR>
 " Sqitch to last used buffer
 nnoremap <leader>bl :e#<CR>
-
-" Paste from registers
-nnoremap <silent> <leader>p :registers poiuylkjhgfdsamnbvcxz0123456789<CR>:silent put<space>
-nnoremap <silent> <leader>P :registers poiuylkjhgfdsamnbvcxz0123456789<CR>:silent put!<space>
-
-" Display registers when using them
-nnoremap <leader>" :registers poiuylkjhgfdsamnbvcxz<CR>:normal! "
-vnoremap <leader>" <ESC>:registers poiuylkjhgfdsamnbvcxz<CR>:normal! gv"
 
 " Easy quit
 nnoremap <leader>q :q<CR>

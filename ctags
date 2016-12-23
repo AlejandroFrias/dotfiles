@@ -1,0 +1,12 @@
+--recurse=yes
+--tag-relative=yes
+-f ./.git/tags
+--exclude=.git
+--exclude=vendor/*
+--exclude=node_modules/*
+--exclude=db/*
+--exclude=log/*
+--exclude=*/thirdparty/*
+--exclude=*/fixtures/*
+--exclude=*/watched_assets/*
+--python-kinds=-i

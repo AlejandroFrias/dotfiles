@@ -7,27 +7,23 @@ alias gb='git branch'
 alias gpom='git pull origin master'
 alias gcommend='git commit --amend --no-edit'
 alias ginit='git init && git commit -m “root” --allow-empty'
-alias glog='git log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"'
+alias glog='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"'
 alias gst='git stash'
 alias gstsave='git stash save'
 alias gstunstaged='git stash save --keep-index'
 alias gstuntracked='git stash save --include-untracked'
 alias gstall='git stash save --all'
 function gbd () {
-    _hunt_finish "$1"
-    git branch -d "$1"
+    git branch -d "$1" && _hunt_finish "$1"
 }
 function gchb () {
-    _hunt_workon_or_create "$1"
-    git checkout -b "$1"
+    git checkout -b "$1" && _hunt_workon_or_create "$1"
 }
 function gch () {
-    _hunt_workon_or_create "$1"
-    git checkout "$1"
+    git checkout "$1" && _hunt_workon_or_create "$1"
 }
 function gchm () {
-    _hunt_stop
-    git checkout master
+    git checkout master && _hunt_stop
 }
 function _hunt_finish () {
     if hash hunt 2>/dev/null; then
@@ -131,26 +127,4 @@ function gpush() {
     fi
     echo $push_command
     $push_command
-}
-function checkout_test_data() {
-    echo -n "Are you sure? (y/N) "
-    read response
-    if [[ $response = "y" ]]; then
-        checkout_command=
-        checkout_site_media=
-        if [[ $1 = -* ]]; then
-            checkout_command="git checkout $2 counsyl/product/mynomics/test_data/$(basename ${1:1})"
-            if [[ $1 = "-pdf" ]]; then
-                checkout_site_media="git checkout $2 counsyl/product/site_media/pdf/"
-            fi
-        else
-            checkout_command="git checkout $1 counsyl/product/mynomics/test_data/"
-            checkout_site_media="git checkout $1 counsyl/product/site_media/pdf/"
-        fi
-        echo $checkout_command
-        $checkout_command
-        echo $checkout_site_media
-        $checkout_site_media
-        git status
-    fi
 }
