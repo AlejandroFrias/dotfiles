@@ -38,7 +38,7 @@ function! ftplugin#python#CounsylImport(regname)
 endfunction
 function! ftplugin#python#CounsylTestPath(regname)
     " TODO: be smart and recognize being in a TestCase class
-    let test_path = ftplugin#python#CounsylPythonPath().":".expand("<cword>")."\n"
+    let test_path = ftplugin#python#CounsylPythonPath().":".expand("<cword>")
     call setreg(a:regname, test_path)
     echom test_path
 endfunction

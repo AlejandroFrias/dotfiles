@@ -1,5 +1,8 @@
 #!/bin/bash
-alias lsa="ls -Fila"
+alias lsa="ls -Flah"
+
+# rerun ctags in background
+alias ct="ctags . >/dev/null 2>&1 &"
 
 function set_repo() {
     if [[ -z $1 ]]; then
@@ -42,9 +45,14 @@ function tvssh() {
 }
 
 function tvsetup() {
+    cp -f ~/.bash/vagrant_bash_commands.sh ~/$TESTV_NFS/vagrant_bash_commands.sh
     cdtv
     vagrant up
-    vagrant ssh -c "echo 'export NFS_SHARE=$NFS_SHARE' > ~/.bash_profile && echo 'export REPO=website' >> ~/.bash_profile && echo 'test -f ~/$NFS_SHARE/script.sh && source \$_' >> ~/.bash_profile && source ~/.bash_profile"
+    setup_command="echo 'export NFS_SHARE=$NFS_SHARE' > ~/.bashrc"
+    setup_command=$setup_command" && echo 'export REPO=website' >> ~/.bashrc"
+    setup_command=$setup_command" && echo 'test -f ~/$NFS_SHARE/vagrant_bash_commands.sh && source \$_' >> ~/.bashrc"
+    setup_command=$setup_command" && echo 'test -f ~/.bashrc && source \$_' > ~/.bash_profile"
+    vagrant ssh -c "$setup_command"
 }
 
 function cdriver() {
@@ -58,4 +66,18 @@ function maze() {
     python -c "from maze import *; m = Maze(40, 30); m.redraw()"
     cd $LAST_DIR
 }
+
+function repl() {
+    command="${*}"
+    echo "Initialized REPL for ${command}"
+    prompt="${command}> "
+    IFS= read -er -p "$prompt" input
+    while [ "$input" != "" ];
+    do
+        eval "$command $input"
+        IFS= read -er -p "$prompt" input
+    done
+}
+
 alias src=". ~/.bashrc"
+alias h="repl hunt"

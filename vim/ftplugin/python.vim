@@ -1,24 +1,27 @@
+setlocal autoindent
 setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
 setlocal textwidth=79
+setlocal softtabstop=4
 
 nnoremap <bar> 79<bar>
 
 " Add nopep8 to end of line
-let @p = "A  # nopep8"
+let @o = '  # nopep8'
+let @p = 'mp$"op`p'
 
 """"""""""""""""""""""""""""""""
 " Better code block navigation "
 """"""""""""""""""""""""""""""""
 
-" next/prev def block
-nnoremap ]d /^\s*def <CR>^
-nnoremap [d 0?^\s*def <CR>^
-
 " next/prev if/elif/else block
-nnoremap ]i /^\s*if \\|^\s*elif \\|^\s*else:<CR>^
-nnoremap [i 0?^\s*if \\|^\s*elif \\|^\s*else:<CR>^
+noremap <silent> ]i /^\s*if \\|^\s*elif \\|^\s*else:<CR>^
+noremap <silent> [i 0?^\s*if \\|^\s*elif \\|^\s*else:<CR>^
+
+" next/prev vaiable definition
+noremap <silent> ]v /^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
+noremap <silent> [v 0?^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
 
 " Grep for possible definition declarations of word under cursor
 nnoremap <silent> <leader>gd :call ftplugin#python#GoToDefinition()<CR>
