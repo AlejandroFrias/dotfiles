@@ -388,7 +388,14 @@ nnoremap <leader>l <C-W>l
 " List and switch buffers
 nnoremap <leader>bb :ls<CR>:b<space>
 " Close current buffer and open next
-nnoremap <leader>bq :bnext <BAR> bd #<CR>
+function! BufferDelete()
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) > 1
+        execute "bp|bd#"
+    else
+        execute "enew|bd#"
+    endif
+endfunction
+nnoremap <leader>bq :call BufferDelete()<CR>
 " Go to next/previous buffer
 nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bk :bprevious<CR>
