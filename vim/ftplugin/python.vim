@@ -24,7 +24,7 @@ noremap <silent> ]v /^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
 noremap <silent> [v 0?^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
 
 " Grep for possible definition declarations of word under cursor
-nnoremap <silent> <leader>gd :call ftplugin#python#GoToDefinition()<CR>
+" nnoremap <silent> <leader>gd :call ftplugin#python#GoToDefinition()<CR>
 
 """"""""""""""""""""
 " Counsyl specific "
