@@ -80,4 +80,10 @@ function repl() {
 }
 
 alias src=". ~/.bashrc"
-alias h="repl hunt"
+function h() {
+    if [[ -z $1 ]]; then
+        repl hunt
+    else
+        hunt "$@"
+    fi
+}

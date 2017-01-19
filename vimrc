@@ -95,7 +95,9 @@ set shiftwidth=4
 set expandtab
 
 " list view makes finding angry whitespace easier
-set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,conceal:*,space:\ 
+set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,space:\ ,conceal:*
+
+set spell
 
 syntax on
 
@@ -190,6 +192,12 @@ let g:airline_symbols.whitespace = 'Ξ'
 """""""""""""""""""""""""
 nmap S ysiw
 
+"""""""""""""""""""
+" Tagbar Settings "
+"""""""""""""""""""
+
+nnoremap <leader>tb :TagbarOpenAutoClose<CR>
+
 """"""""""""""""""""""
 " GitGutter Settings "
 """"""""""""""""""""""
@@ -235,6 +243,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 let g:UltiSnipsJumpForwardTrigger="<C-N>"
 let g:UltiSnipsJumpBackwardTrigger="<C-P>"
+let g:ultisnips_python_style="google"
 
 """""""""""""""""""""
 " NERDTree Settings "

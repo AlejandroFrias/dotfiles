@@ -62,9 +62,34 @@ class Maze(object):
 
     def draw_random_line(self):
         point = random.choice(list(self.empties()))
+        direction = random.choice(DIRECTIONS)
         if point:
             row, col = point
-            self.draw_line(row, col, random.choice(DIRECTIONS))
+            line_length = self.line_length(row, col, direction)
+            if line_length < 5:
+                self.draw_line(row, col, direction)
+
+    def line_length(self, row, col, direction):
+        line_length = 0
+        row_change = 0
+        col_change = 0
+        if direction == UP:
+            row_change = -1
+        elif direction == DOWN:
+            row_change = 1
+        elif direction == LEFT:
+            col_change = -1
+        elif direction == RIGHT:
+            col_change = 1
+        row += row_change
+        col += col_change
+        while True:
+            line_length += 1
+            if self._maze[row][col]:
+                return line_length
+            else:
+                row += row_change
+                col += col_change
 
     def empties(self):
         return self._empties
