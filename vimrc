@@ -401,9 +401,7 @@ endfunction
 nnoremap <leader>bq :call BufferDelete()<CR>
 " Go to next/previous buffer
 nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bk :bprevious<CR>
 nnoremap <leader>bn :bnext<CR>
-nnoremap <leader>bj :bnext<CR>
 " Sqitch to last used buffer
 nnoremap <leader>bl :e#<CR>
 

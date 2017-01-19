@@ -24,6 +24,9 @@ export HOMEBREW_GITHUB_API_TOKEN="3669a732a6640800e8e48c5aefefe7dc7c955b6d"
 # helps with line wrapping issues in tmux
 shopt -s checkwinsize
 
+# Stop sotring duplicates in bash history
+export HISTCONTROL=ignoreboth:erasedups
+
 # Testv nfs settings
 export WEBSITE_REPO=website
 export TESTV_NFS=testv-nfs-2

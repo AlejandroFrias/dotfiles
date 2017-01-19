@@ -7,7 +7,7 @@ setlocal softtabstop=4
 
 nnoremap <bar> 79<bar>
 
-" Add nopep8 to end of line
+" Add nopep8 to end of line with @p
 let @o = '  # nopep8'
 let @p = 'mp$"op`p'
 
