@@ -29,8 +29,6 @@ export HISTCONTROL=ignoreboth:erasedups
 
 # Testv nfs settings
 export WEBSITE_REPO=website
-export TESTV_NFS=testv-nfs-2
-export NFS_SHARE=nfs-share-2
 export YELLOW="$(tput setaf 3)"
 export GREEN="$(tput setaf 2)"
 export RED="$(tput setaf 1)"
@@ -38,11 +36,5 @@ export RESET="$(tput sgr0)"
 
 # Vault for counsyl
 export VAULT_ADDR=https://vault.counsyl.com
-
-# Desk settings
-alias d.='desk .'
-
-# Hook for desk activation
-[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

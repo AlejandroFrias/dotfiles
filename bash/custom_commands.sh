@@ -6,10 +6,8 @@ alias ct="ctags . >/dev/null 2>&1 &"
 
 function set_repo() {
     if [[ -z $1 ]]; then
-        echo "WEBSITE_REPO=website"
         WEBSITE_REPO=website
     else
-        echo "WEBSITE_REPO=$1"
         WEBSITE_REPO=$1
     fi
 }
@@ -19,40 +17,19 @@ function cdtv() {
     cd ~/vagrant/boxes/testv-dev
 }
 
-function cdcms() {
-    echo cd ~/websitecms
-    cd ~/websitecms
-}
-
 function cdw() {
-    set_repo
-    echo cd ~/$TESTV_NFS/$WEBSITE_REPO
-    cd ~/$TESTV_NFS/$WEBSITE_REPO
-    echo "On branch ${GREEN}$(git rev-parse --abbrev-ref HEAD)${RESET}"
-}
-
-function cdwcr() {
-    set_repo website-create-reports
-    echo cd ~/$TESTV_NFS/$WEBSITE_REPO
-    cd ~/$TESTV_NFS/$WEBSITE_REPO
-    echo "On branch ${GREEN}$(git rev-parse --abbrev-ref HEAD)${RESET}"
+    if [[ -z $1 ]]; then
+        set_repo
+    else
+        set_repo "website"-$1
+    fi
+    cd ~/$WEBSITE_REPO
 }
 
 function tvssh() {
     cdtv
     vagrant up
     vagrant ssh
-}
-
-function tvsetup() {
-    cp -f ~/.bash/vagrant_bash_commands.sh ~/$TESTV_NFS/vagrant_bash_commands.sh
-    cdtv
-    vagrant up
-    setup_command="echo 'export NFS_SHARE=$NFS_SHARE' > ~/.bashrc"
-    setup_command=$setup_command" && echo 'export REPO=website' >> ~/.bashrc"
-    setup_command=$setup_command" && echo 'test -f ~/$NFS_SHARE/vagrant_bash_commands.sh && source \$_' >> ~/.bashrc"
-    setup_command=$setup_command" && echo 'test -f ~/.bashrc && source \$_' > ~/.bash_profile"
-    vagrant ssh -c "$setup_command"
 }
 
 function cdriver() {
@@ -86,4 +63,89 @@ function h() {
     else
         hunt "$@"
     fi
+}
+
+function m() {
+    echo source ~/$WEBSITE_REPO/vendor/venv/bin/activate
+    source ~/$WEBSITE_REPO/vendor/venv/bin/activate
+    echo cd ~/$REPO/counsyl/product
+    cd ~/$REPO/counsyl/product
+    if [[ $1 = "-r" ]]; then
+        echo REMOTEDB=1 ./manage.py "${@:2}"
+        REMOTEDB=1 ./manage.py "${@:2}"
+    else
+        echo ./manage.py "$@"
+        ./manage.py "$@"
+    fi
+}
+
+function rs() {
+    m $1 runserver 0.0.0.0:8000
+}
+
+function mk() {
+    echo cd ~/$WEBSITE_REPO
+    cd ~/$WEBSITE_REPO
+    echo make "$@"
+    make "$@"
+}
+
+function runtest() {
+    if [[ $1 = "-h" ]] || [[ -z $1 ]]; then
+        echo ":Usage: runtest [test params] test"
+    else
+        if [[ $1 == --* ]]; then
+            m test "$@"
+        else
+            m test --retest "$@"
+        fi
+    fi
+}
+
+function runtestlengthy() {
+    if [[ $1 = "-h" ]] || [[ -z $1 ]]; then
+        echo "Usage: runtestlengthy [test params] test"
+    else
+        if [[ $1 == --* ]]; then
+            m test --run-all "$@"
+        else
+            m test --run-all --retest "$@"
+        fi
+    fi
+}
+
+function runtestcoverage() {
+    if [[ $1 = "-h" ]] || [[ -z $1 ]]; then
+        echo "Usage: runtestcoverage test module [html-dir]"
+    else
+        m test --run-all --retest $1 --cover-package=$2 --cover-html-dir=${3:-~/coverage}
+    fi
+}
+
+function runtestselenium() {
+    if [[ $1 == "-c" ]]; then
+        if [[ $2 == --* ]]; then
+            m test --run-all ${@:2:$#-2} --settings=counsyl.product.settings_test --only-selenium-tests --with-seleniumnosefilter --selenium-config-preset=remote-chrome --selenium-remote-driver-url=http://10.0.2.2:9515 --selenium-liveserver-external-url=http://testv-dev.counsyl.dev:8081/ --liveserver=0.0.0.0:8081 counsyl.product.${@:$#}
+        else
+            m test --run-all --retest --with-olfaction --with-progressive --settings=counsyl.product.settings_test --only-selenium-tests --with-seleniumnosefilter --selenium-config-preset=remote-chrome --selenium-remote-driver-url=http://10.0.2.2:9515 --selenium-liveserver-external-url=http://testv-dev.counsyl.dev:8081/ --liveserver=0.0.0.0:8081 counsyl.product.$2
+        fi
+    elif [[ $1 == --* ]]; then
+        m test --run-all ${@:1:$#-1} --settings=counsyl.product.settings_test --with-seleniumnosefilter --only-selenium-tests --selenium-config-preset=local-chrome-xvfb counsyl.product.${@:$#}
+    else
+        m test --run-all --retest --with-olfaction --with-progressive --settings=counsyl.product.settings_test --with-seleniumnosefilter --only-selenium-tests --selenium-config-preset=local-chrome-xvfb counsyl.product.$1
+    fi
+}
+
+function runtestseleniumlegacy() {
+    if [[ $1 == -* ]]; then
+        m test --run-all ${@:2:$#-1} --liveserver=0.0.0.0:8081 --only-legacy-selenium-tests counsyl.product.${@:$#}
+    else
+        m test --run-all --retest --with-progressive --liveserver=0.0.0.0:8081 --only-legacy-selenium-tests counsyl.product.$1
+    fi
+}
+
+function tunnel() {
+    COMMAND="ssh -NL 3333:127.0.0.1:5432 $1.counsyl.com";
+    echo $COMMAND;
+    eval $COMMAND;
 }

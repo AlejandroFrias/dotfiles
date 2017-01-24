@@ -97,8 +97,9 @@ function gcam() {
     else
         echo "Linting..."
         message="$1"
-        if [[ $PWD = $HOME'/'$TESTV_NFS'/'$WEBSITE_REPO ]]; then
-            ssh testv-dev.counsyl.dev 'cd '$NFS_SHARE'/'$WEBSITE_REPO' && make gitlint' || SUCCESS=false
+        if [[ $1 = "-gl" ]] || [[ $1 = "--git-lint" ]]; then
+            message="$2"
+            make gitlint || SUCCESS=false
         else
             make lint || SUCCESS=false
         fi

@@ -9,9 +9,9 @@ let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_coffeescript_checkers = ['coffeelint']
 let g:syntastic_json_checkers = ['jsonlint']
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-let g:syntastic_python_pep8_args="--ignore=E731,F821"
-let g:syntastic_python_flake8_args="--ignore=E731,F821"
-let g:syntastic_python_pylint_args="--disable=too-few-public-methods,import-error,attribute-defined-outside-init,invalid-name,missing-docstring,wrong-import-order,too-many-locals,line-too-long,--enable=undefined-variable,unused-variable,unused-import"
+let g:syntastic_python_pep8_args="--ignore=E731,F821,W503"
+let g:syntastic_python_flake8_args="--ignore=E731,F821,W503"
+let g:syntastic_python_pylint_args="--disable=too-many-lines,ungrouped-imports,too-few-public-methods,import-error,attribute-defined-outside-init,invalid-name,missing-docstring,wrong-import-order,too-many-locals,line-too-long,--enable=undefined-variable,unused-variable,unused-import"
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_balloons = 0
 let g:syntastic_check_on_open = 1
@@ -168,6 +168,7 @@ set encoding=utf-8
 let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 0
 let g:airline_skip_empty_sections = 1
+let g:airline_theme='zenburn'
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -215,7 +216,6 @@ omap // <Plug>(easymotion-tn)
 let g:EasyMotion_smartcase = 1
 
 " Easy Line motions
-let g:EasyMotion_startofline = 0
 map gj <Plug>(easymotion-j)
 map gk <Plug>(easymotion-k)
 map gl <Plug>(easymotion-sol-bd-jk)
@@ -410,10 +410,12 @@ nnoremap <leader>q :q<CR>
 vnoremap <leader>q <ESC>:q<CR>
 
 " arrow keys for scrolling
-noremap <Down> 3<C-E>
-noremap <Up> 3<C-Y>
+noremap <Down> 5<C-E>
+noremap <Up> 5<C-Y>
 noremap <Left> 10zh
 noremap <Right> 10zl
+noremap <C-E> 5<C-E>
+noremap <C-Y> 5<C-Y>
 
 " Stop that stupid window from popping up
 map q: :q
@@ -441,8 +443,6 @@ endfunction
 
 nnoremap <silent> <leader>cgd :call GitDiffNameOnly("master")<CR>
 vnoremap <silent> <leader>cgd "ty:call GitDiffNameOnly(getreg("t"))<CR>
-nnoremap <silent> <leader>cwf :call WriteBufferToQuickFixFileList("/tmp/quickfix.txt")<CR>
-nnoremap <silent> <leader>clf :call LoadQuickfixFileList("/tmp/quickfix.txt")<CR>
 
 """"""""""""""""""""
 " Counsyl specific "
