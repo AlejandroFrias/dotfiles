@@ -68,8 +68,8 @@ function h() {
 function m() {
     echo source ~/$WEBSITE_REPO/vendor/venv/bin/activate
     source ~/$WEBSITE_REPO/vendor/venv/bin/activate
-    echo cd ~/$REPO/counsyl/product
-    cd ~/$REPO/counsyl/product
+    echo cd ~/$WEBSITE_REPO/counsyl/product
+    cd ~/$WEBSITE_REPO/counsyl/product
     if [[ $1 = "-r" ]]; then
         echo REMOTEDB=1 ./manage.py "${@:2}"
         REMOTEDB=1 ./manage.py "${@:2}"
