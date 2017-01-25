@@ -10,7 +10,7 @@ fi
 vim +PluginInstall +qall
 
 # Install TMUX plugins
-hash tmux 2>/dev/null || { echo >&2 "Please install tmux. Aborting."; exit 1; }
+hash tmux 2>/dev/null && [[ ! `tmux -V | cut -d' ' -f2` -ge 2.1 ]] || { echo >&2 "Please install tmux 2.1 or greater. Aborting."; exit 1; }
 if [ ! -d ~/.tmux/plugins/tpm ]; then
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
