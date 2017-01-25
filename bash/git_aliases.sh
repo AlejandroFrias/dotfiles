@@ -91,16 +91,16 @@ function gstpop() {
 function gcam() {
     SUCCESS=true
     message=
-    if [[ $1 = "-nl" ]] || [[ $1 = "--no-lint" ]]; then
+    if [[ $1 = "-n" ]] || [[ $1 = "-nl" ]] || [[ $1 = "--no-lint" ]]; then
         echo "Skipping lint..."
         message="$2"
     else
         echo "Linting..."
         message="$1"
-        if [[ $1 = "-gl" ]] || [[ $1 = "--git-lint" ]]; then
+        if [[ $1 = "-g" ]] || [[ $1 = "-gl" ]] || [[ $1 = "--git-lint" ]]; then
             message="$2"
             make gitlint || SUCCESS=false
-        elif [[ -f "Makefile" ]]; then
+        else
             make lint || SUCCESS=false
         fi
         if [[ $SUCCESS = true ]]; then
