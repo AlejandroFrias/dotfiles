@@ -100,7 +100,7 @@ function gcam() {
         if [[ $1 = "-gl" ]] || [[ $1 = "--git-lint" ]]; then
             message="$2"
             make gitlint || SUCCESS=false
-        else
+        elif [[ -f "Makefile" ]]; then
             make lint || SUCCESS=false
         fi
         if [[ $SUCCESS = true ]]; then

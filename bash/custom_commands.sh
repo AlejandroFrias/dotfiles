@@ -1,7 +1,7 @@
 #!/bin/bash
 alias lsa="ls -Flah"
 
-# rerun ctags in background
+# run ctags in background
 alias ct="ctags . >/dev/null 2>&1 &"
 
 function set_repo() {
@@ -10,6 +10,23 @@ function set_repo() {
     else
         WEBSITE_REPO=$1
     fi
+}
+
+# cd to directory containing file, searching subdirectories and then parent directories
+function updownsearch() {
+    mdir=$(find . -name "$1" -exec dirname {} \;)
+    if [[ -z $mdir ]]; then
+        pushd . >/dev/null 2>&1
+        mdir=$(upsearch "$1")
+        popd >/dev/null 2>&1
+    fi
+    if [[ ! -z $mdir ]]; then
+        cd $mdir
+    fi
+}
+
+function upsearch() {
+    test / == "$PWD" && return || test -e "$1" && echo $(pwd) && return || cd .. && upsearch "$1"
 }
 
 function cdtv() {
