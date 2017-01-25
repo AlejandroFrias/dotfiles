@@ -92,7 +92,7 @@ function gcam() {
     SUCCESS=true
     message=
     if [[ $1 = "-n" ]] || [[ $1 = "-nl" ]] || [[ $1 = "--no-lint" ]]; then
-        echo "Skipping lint..."
+        echo "${YELLOW}Skipping lint...${RESET}"
         message="$2"
     else
         echo "Linting..."
