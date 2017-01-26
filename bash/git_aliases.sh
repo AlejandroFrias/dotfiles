@@ -28,6 +28,10 @@ function gbd () {
         psql -lqt | cut -d \| -f 1 | grep -qw "$DATABASE" && dropdb "$DATABASE"
     fi
 }
+# remove merged branches
+function gbdm () {
+    git branch --merged | grep -v "*" | xargs --no-run-if-empty -n 1 | gbd
+}
 function gchb () {
     git checkout -b "$1" && _hunt_workon_or_create "$1"
 }
