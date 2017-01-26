@@ -14,7 +14,21 @@ alias gstunstaged='git stash save --keep-index'
 alias gstuntracked='git stash save --include-untracked'
 alias gstall='git stash save --all'
 function gbd () {
-    git branch -d "$1" && _hunt_finish "$1"
+    SUCCESS=false
+    if [[ $1 == -D ]]; then
+        BRANCH="$2"
+        git branch -D "$BRANCH" && SUCCESS=true
+    else
+        BRANCH="$1"
+        git branch -d "$BRANCH" && SUCCESS=true
+    fi
+    if [[ $SUCCESS = true ]]; then
+        _hunt_finish "$BRANCH"
+        DATABASE="counsyl_product_""$(echo $BRANCH | tr '[:upper:]' '[:lower:]' | tr '[\-]' '[_]')"
+        if psql -lqt | cut -d \| -f 1 | grep -qw "$BRANCH"; then
+            dropdb "$DATABASE"
+        fi
+    fi
 }
 function gchb () {
     git checkout -b "$1" && _hunt_workon_or_create "$1"
