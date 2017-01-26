@@ -4,43 +4,28 @@ alias lsa="ls -Flah"
 # run ctags in background
 alias ct="ctags . >/dev/null 2>&1 &"
 
-function set_repo() {
-    if [[ -z $1 ]]; then
-        WEBSITE_REPO=website
-    else
-        WEBSITE_REPO=$1
-    fi
-}
-
-# cd to directory containing file, searching subdirectories and then parent directories
+# return directory containing file, searching parent directories and then subdirectories
 function updownsearch() {
-    mdir=$(find . -name "$1" -exec dirname {} \;)
+    mdir="$(upsearch "$1")"
     if [[ -z $mdir ]]; then
-        pushd . >/dev/null 2>&1
-        mdir=$(upsearch "$1")
-        popd >/dev/null 2>&1
+        mdir="$(find . -name "$1" -exec dirname {} \;)"
     fi
-    if [[ ! -z $mdir ]]; then
-        cd $mdir
-    fi
+    echo "$mdir"
 }
 
 function upsearch() {
-    test / == "$PWD" && return || test -e "$1" && echo $(pwd) && return || cd .. && upsearch "$1"
+    pushd . >/dev/null 2>&1
+    mdir="$(test / == "$PWD" && return || test -e "$1" && echo $(pwd) && return || cd .. && upsearch "$1")"
+    popd >/dev/null 2>&1
+    echo "$mdir"
 }
 
 function cdtv() {
-    echo cd ~/vagrant/boxes/testv-dev
     cd ~/vagrant/boxes/testv-dev
 }
 
 function cdw() {
-    if [[ -z $1 ]]; then
-        set_repo
-    else
-        set_repo "website"-$1
-    fi
-    cd ~/$WEBSITE_REPO
+    cd ~/website
 }
 
 function tvssh() {
@@ -83,15 +68,11 @@ function h() {
 }
 
 function m() {
-    echo source ~/$WEBSITE_REPO/vendor/venv/bin/activate
-    source ~/$WEBSITE_REPO/vendor/venv/bin/activate
-    echo cd ~/$WEBSITE_REPO/counsyl/product
-    cd ~/$WEBSITE_REPO/counsyl/product
+    source "$(updownsearch activate)"/"activate"
+    cd "$(updownsearch manage.py)"
     if [[ $1 = "-r" ]]; then
-        echo REMOTEDB=1 ./manage.py "${@:2}"
         REMOTEDB=1 ./manage.py "${@:2}"
     else
-        echo ./manage.py "$@"
         ./manage.py "$@"
     fi
 }
@@ -101,9 +82,7 @@ function rs() {
 }
 
 function mk() {
-    echo cd ~/$WEBSITE_REPO
-    cd ~/$WEBSITE_REPO
-    echo make "$@"
+    cd "$(updownsearch Makefile)"
     make "$@"
 }
 
