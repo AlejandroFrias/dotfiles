@@ -24,7 +24,7 @@ function gbd () {
     fi
     if [[ $SUCCESS = true ]]; then
         _hunt_finish "$BRANCH"
-        DATABASE="counsyl_product_""$(echo $BRANCH | tr '[:upper:]' '[:lower:]' | tr '[\-]' '[_]')"
+        DATABASE="counsyl_product_""$(echo $BRANCH | tr '[:upper:]-' '[:lower:]_')"
         psql -lqt | cut -d \| -f 1 | grep -qw "$DATABASE" && dropdb "$DATABASE"
     fi
 }
