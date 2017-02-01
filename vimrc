@@ -86,6 +86,8 @@ MapToggle <F11> ignorecase
 MapToggle <F12> paste
 set pastetoggle=<F12>
 
+tags=.git/tags
+
 
 " my preferred settings for text files, should be overridden if vim picks up
 set tabstop=4
