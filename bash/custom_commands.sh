@@ -69,7 +69,7 @@ function h() {
 
 function m() {
     cdw
-    source "$(updownsearch venv)"/"bin"/"activate"
+    source "$(updownsearch venv)"/"venv"/"bin"/"activate"
     cd "$(updownsearch manage.py)"
     if [[ $1 = "-r" ]]; then
         REMOTEDB=1 ./manage.py "${@:2}"
