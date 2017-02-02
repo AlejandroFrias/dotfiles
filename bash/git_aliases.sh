@@ -115,9 +115,9 @@ function gcam() {
         message="$1"
         if [[ $1 = "-g" ]] || [[ $1 = "-gl" ]] || [[ $1 = "--git-lint" ]]; then
             message="$2"
-            make gitlint || SUCCESS=false
+            mk gitlint || SUCCESS=false
         else
-            make lint || SUCCESS=false
+            mk lint || SUCCESS=false
         fi
         if [[ $SUCCESS = true ]]; then
             echo "${GREEN}Lint successful${RESET}"
