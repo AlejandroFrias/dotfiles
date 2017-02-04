@@ -11,8 +11,8 @@ vim +PluginInstall +qall
 
 # Install TMUX plugins
 hash tmux 2>/dev/null || { echo >&2 "Please install tmux. Aborting."; exit 1; }
-if [[ ! `tmux -V | cut -d' ' -f2` = "2.1" ]]; then
-    echo >&2 "Please upgrade tmx to 2.1 or greater. Aborting."; exit 1;
+if [[ ! `echo "$(tmux -V | cut -d' ' -f2)"" < 2.1" | bc` ]]; then
+    echo >&2 "Please upgrade tmux to 2.1 or greater. Aborting."; exit 1;
 fi
 if [ ! -d ~/.tmux/plugins/tpm ]; then
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
