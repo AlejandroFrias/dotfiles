@@ -99,6 +99,9 @@ function _gst_action() {
     echo git stash $1 $stash_name
     git stash $1 $stash_name
 }
+function gstshow() {
+    _gst_action show "$@"
+}
 function gstdrop() {
     _gst_action drop "$@"
 }
