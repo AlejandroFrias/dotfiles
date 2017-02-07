@@ -122,22 +122,22 @@ function runtestcoverage() {
 function runtestselenium() {
     if [[ $1 == "-c" ]]; then
         if [[ $2 == --* ]]; then
-            m test --run-all ${@:2:$#-2} --settings=counsyl.product.settings_test --only-selenium-tests --with-seleniumnosefilter --selenium-config-preset=remote-chrome --selenium-remote-driver-url=http://10.0.2.2:9515 --selenium-liveserver-external-url=http://testv-dev.counsyl.dev:8081/ --liveserver=0.0.0.0:8081 counsyl.product.${@:$#}
+            m test --run-all ${@:2:$#-2} --settings=counsyl.product.settings_test --only-selenium-tests --with-seleniumnosefilter --selenium-config-preset=remote-chrome --selenium-remote-driver-url=http://10.0.2.2:9515 --selenium-liveserver-external-url=http://testv-dev.counsyl.dev:8081/ --liveserver=0.0.0.0:8081 ${@:$#}
         else
-            m test --run-all --retest --with-olfaction --with-progressive --settings=counsyl.product.settings_test --only-selenium-tests --with-seleniumnosefilter --selenium-config-preset=remote-chrome --selenium-remote-driver-url=http://10.0.2.2:9515 --selenium-liveserver-external-url=http://testv-dev.counsyl.dev:8081/ --liveserver=0.0.0.0:8081 counsyl.product.$2
+            m test --run-all --retest --with-olfaction --with-progressive --settings=counsyl.product.settings_test --only-selenium-tests --with-seleniumnosefilter --selenium-config-preset=remote-chrome --selenium-remote-driver-url=http://10.0.2.2:9515 --selenium-liveserver-external-url=http://testv-dev.counsyl.dev:8081/ --liveserver=0.0.0.0:8081 $2
         fi
     elif [[ $1 == --* ]]; then
-        m test --run-all ${@:1:$#-1} --settings=counsyl.product.settings_test --with-seleniumnosefilter --only-selenium-tests --selenium-config-preset=local-chrome-xvfb counsyl.product.${@:$#}
+        m test --run-all ${@:1:$#-1} --settings=counsyl.product.settings_test --with-seleniumnosefilter --only-selenium-tests --selenium-config-preset=local-chrome-xvfb ${@:$#}
     else
-        m test --run-all --retest --with-olfaction --with-progressive --settings=counsyl.product.settings_test --with-seleniumnosefilter --only-selenium-tests --selenium-config-preset=local-chrome-xvfb counsyl.product.$1
+        m test --run-all --retest --with-olfaction --with-progressive --settings=counsyl.product.settings_test --with-seleniumnosefilter --only-selenium-tests --selenium-config-preset=local-chrome-xvfb $1
     fi
 }
 
 function runtestseleniumlegacy() {
     if [[ $1 == -* ]]; then
-        m test --run-all ${@:2:$#-1} --liveserver=0.0.0.0:8081 --only-legacy-selenium-tests counsyl.product.${@:$#}
+        m test --run-all ${@:2:$#-1} --liveserver=0.0.0.0:8081 --only-legacy-selenium-tests ${@:$#}
     else
-        m test --run-all --retest --with-progressive --liveserver=0.0.0.0:8081 --only-legacy-selenium-tests counsyl.product.$1
+        m test --run-all --retest --with-progressive --liveserver=0.0.0.0:8081 --only-legacy-selenium-tests $1
     fi
 }
 
