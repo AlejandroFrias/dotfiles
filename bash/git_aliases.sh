@@ -27,8 +27,8 @@ function gbd () {
         if $(hash psql 2>/dev/null) && $(hash dropdb 2>/dev/null); then
             DATABASE="counsyl_product_""$(echo $BRANCH | tr '[:upper:]-' '[:lower:]_')"
             TEST_DATABASE="test_"$DATABASE
-            psql -lqt | cut -d \| -f 1 | grep -qw "$DATABASE" && echo dropdb "$DATABASE" && dropdb "$DATABASE"
-            psql -lqt | cut -d \| -f 1 | grep -qw "$TEST_DATABASE" && echo dropdb "$TEST_DATABASE" && dropdb "$TEST_DATABASE"
+            psql -lqt 2>/dev/null | cut -d \| -f 1 | grep -qw "$DATABASE" && echo dropdb "$DATABASE" && dropdb "$DATABASE"
+            psql -lqt 2>/dev/null | cut -d \| -f 1 | grep -qw "$TEST_DATABASE" && echo dropdb "$TEST_DATABASE" && dropdb "$TEST_DATABASE"
         fi
     fi
 }
