@@ -378,11 +378,6 @@ inoremap <C-Q> <ESC>:wq<CR>
 
 " Exit insert mode
 inoremap jk <ESC>
-inoremap kj <ESC>
-inoremap kk <ESC>
-inoremap jj <ESC>
-inoremap hh <ESC>
-inoremap lll <ESC>
 
 " Undo but stay in insert mode
 inoremap <C-U> <C-O>u
