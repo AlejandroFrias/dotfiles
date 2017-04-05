@@ -20,8 +20,8 @@ function! ftplugin#python#CounsylPythonPath()
     " Remove everything up to and includeing 'site-packages' for third party
     " stuff.
     let path = substitute(path, "^.*site-packages/", "", "")
-    " Remove python file extension
-    let path = substitute(path, "\.py$", "", "")
+    " Remove python file extension (and possibly __init__)
+    let path = substitute(path, "\\(/__init__\\)\\?\.py$", "", "")
     " Convert '/' to '.'
     let path = substitute(path, "/", ".", "g")
     return path
