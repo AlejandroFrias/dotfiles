@@ -14,6 +14,21 @@ _django_completion()
                         --scenario*)
                             COMPREPLY=($(grep "^$2" $HOME/.django/scenarios_lists/${COMP_WORDS[1]}.txt | awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
                             ;;
+                        -*)
+                            local option_desc
+                            option_desc=$(grep " $3 " ~/.django/help_output/${COMP_WORDS[1]}.txt | sed -e 's/^.*'$3' \([,{a-zA-Z0-9_-]*}\?\).*/\1/')
+                            case $option_desc in
+                                {*)
+                                    COMPREPLY=($(echo $option_desc | sed -e 's/{\(.*\)}/\1/' | sed -e 's/,/\n/g' | grep "^$2" | sort | awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
+                                    ;;
+                                [[:upper:]]*)
+                                    COMPREPLY=($option_desc)
+                                    ;;
+                                *)
+                                    COMPREPLY=($(grep "^  -" $HOME/.django/help_output/${COMP_WORDS[1]}.txt | sed -e 's/^  .*\(--[-a-z]\+,\?\).*$/\1/' | grep "^$2" | sort| awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
+                                    ;;
+                            esac
+                            ;;
                         *)
                             COMPREPLY=($(grep "^  -" $HOME/.django/help_output/${COMP_WORDS[1]}.txt | sed -e 's/^  .*\(--[-a-z]\+,\?\).*$/\1/' | grep "^$2" | sort| awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
                             ;;
