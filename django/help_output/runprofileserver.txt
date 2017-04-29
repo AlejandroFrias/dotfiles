@@ -1,0 +1,45 @@
+usage: manage.py runprofileserver [-h] [--version] [-v {0,1,2,3}]
+                                  [--settings SETTINGS]
+                                  [--pythonpath PYTHONPATH] [--traceback]
+                                  [--no-color] [--noreload]
+                                  [--prof-path PROF_PATH]
+                                  [--prof-file PROF_FILE] [--nomedia]
+                                  [--use-cprofile] [--kcachegrind]
+                                  [--nostatic] [--insecure]
+                                  [args [args ...]]
+
+Starts a lightweight Web server with profiling enabled.
+
+positional arguments:
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --noreload            Tells Django to NOT use the auto-reloader.
+  --prof-path PROF_PATH
+                        Specifies the directory which to save profile
+                        information in.
+  --prof-file PROF_FILE
+                        Set filename format, default if
+                        "{path}.{duration:06d}ms.{time}".
+  --nomedia             Do not profile MEDIA_URL
+  --use-cprofile        Use cProfile if available, this is disabled per
+                        default because of incompatibilities.
+  --kcachegrind         Create kcachegrind compatible lsprof files, this
+                        requires and automatically enables cProfile.
+  --nostatic            Tells Django to NOT automatically serve static files
+                        at STATIC_URL.
+  --insecure            Allows serving static files even if DEBUG is False.

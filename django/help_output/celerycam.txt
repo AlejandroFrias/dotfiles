@@ -1,0 +1,34 @@
+Usage: manage.py celerycam [options] 
+
+Takes snapshots of the clusters state to the database.
+
+Options:
+  --version             show program's version number and exit
+  -h, --help            show this help message and exit
+  -v VERBOSITY, --verbosity=VERBOSITY
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings=SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath=PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  -d, --dump            
+  -c CAMERA, --camera=CAMERA
+  --detach              
+  -F FREQUENCY, --frequency=FREQUENCY, --freq=FREQUENCY
+  -r MAXRATE, --maxrate=MAXRATE
+  -l LOGLEVEL, --loglevel=LOGLEVEL
+  -f LOGFILE, --logfile=LOGFILE
+  --pidfile=PIDFILE     
+  --uid=UID             
+  --gid=GID             
+  --umask=UMASK         
+  --executable=EXECUTABLE
+  -b BROKER, --broker=BROKER
+  --workdir=WORKING_DIRECTORY
+  -q, --quiet           

@@ -1,0 +1,29 @@
+usage: manage.py dump_rerelease_info [-h] [--version] [-v {0,1,2,3}]
+                                     [--settings SETTINGS]
+                                     [--pythonpath PYTHONPATH] [--traceback]
+                                     [--no-color] [--alleles ALLELES]
+                                     [--samples SAMPLES] [--csvfile CSVFILE]
+
+Dump info for the corrected reports SOP for the supplied allele IDs as CSV.
+More info on the SOP and the fields we include here can be found at: https://d
+ocs.google.com/document/d/1-aB3ptErOqCAooKGT1uLFLSsbcIV7BtjGTKDZlPqOIc/edit?ts
+=571a8e62#
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --alleles ALLELES     Allele ids separated by commas
+  --samples SAMPLES     Sample barcodes separated by commas
+  --csvfile CSVFILE     File to dump the rerelease information to.

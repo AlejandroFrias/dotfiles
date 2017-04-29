@@ -1,0 +1,35 @@
+usage: manage.py show_urls [-h] [--version] [-v {0,1,2,3}]
+                           [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                           [--traceback] [--no-color] [--unsorted]
+                           [--language LANGUAGE] [--decorator DECORATOR]
+                           [--format FORMAT_STYLE] [--urlconf URLCONF]
+
+Displays all of the url matching routes for the project.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --unsorted, -u        Show urls unsorted but same order as found in url
+                        patterns
+  --language LANGUAGE, -l LANGUAGE
+                        Only show this language code (useful for
+                        i18n_patterns)
+  --decorator DECORATOR, -d DECORATOR
+                        Show the presence of given decorator on views
+  --format FORMAT_STYLE, -f FORMAT_STYLE
+                        Style of the output. Choices: ['dense', 'verbose',
+                        'pretty-json', 'json', 'table', 'aligned']
+  --urlconf URLCONF, -c URLCONF
+                        Set the settings URL conf variable to use

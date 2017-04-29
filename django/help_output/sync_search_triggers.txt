@@ -1,0 +1,47 @@
+usage: manage.py sync_search_triggers [-h] [--version] [-v {0,1,2,3}]
+                                      [--settings SETTINGS]
+                                      [--pythonpath PYTHONPATH] [--traceback]
+                                      [--no-color] [--no-regenerate-sql]
+                                      [--path-to-sql-file PATH_TO_SQL_FILE]
+                                      [--print-to-screen]
+                                      [--no-generate-migration]
+
+Manage the generation of Postgres triggers required for Ticket Search Fields.
+Overview - Compare
+/home/alejandro/website/counsyl/product/queues/sql/ticket.sql, which holds the
+current state of migrations, to the current state of database models in the
+code. If no changes need to be made, this command is a no-op. - With no
+arguments, this command will generate a new migration and regenerate the
+fixtures. How should this be used? - During development, if models or Ticket
+Search Fields are changed, then a migration and new source-controlled SQL file
+(/home/alejandro/website/counsyl/product/queues/sql/ticket.sql) should be
+generated using ./manage.py sync_search_triggers
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --no-regenerate-sql   Skip regeneration of the source-controlled SQL file
+                        holding all triggers associated with Ticket Search
+                        Fields and executed on cleandb.
+  --path-to-sql-file PATH_TO_SQL_FILE
+                        The path to the source-controlled SQL file, holding
+                        all triggers associated with Ticket SearchFields and
+                        executed on cleandb. Defaults to /home/alejandro/websi
+                        te/counsyl/product/queues/sql/ticket.sql.
+  --print-to-screen     Instead of generating the migration containing the
+                        needed forwards and backwards migration functions,
+                        print them to the screen.
+  --no-generate-migration
+                        Do not create data migration in the Queues app.

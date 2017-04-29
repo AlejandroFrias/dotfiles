@@ -1,0 +1,29 @@
+usage: manage.py shell [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS]
+                       [--pythonpath PYTHONPATH] [--traceback] [--no-color]
+                       [--plain] [--no-startup] [-i {ipython,bpython}]
+
+Runs a Python interactive interpreter. Tries to use IPython or bpython, if one
+of them is available.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --plain               Tells Django to use plain Python, not IPython or
+                        bpython.
+  --no-startup          When using plain Python, ignore the PYTHONSTARTUP
+                        environment variable and ~/.pythonrc.py script.
+  -i {ipython,bpython}, --interface {ipython,bpython}
+                        Specify an interactive interpreter interface.
+                        Available options: "ipython" and "bpython"

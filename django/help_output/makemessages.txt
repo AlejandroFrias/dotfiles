@@ -1,0 +1,56 @@
+usage: manage.py makemessages [-h] [--version] [-v {0,1,2,3}]
+                              [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                              [--traceback] [--no-color] [--locale LOCALE]
+                              [--exclude EXCLUDE] [--domain DOMAIN] [--all]
+                              [--extension EXTENSIONS] [--symlinks]
+                              [--ignore PATTERN] [--no-default-ignore]
+                              [--no-wrap] [--no-location] [--no-obsolete]
+                              [--keep-pot]
+
+Runs over the entire source tree of the current directory and pulls out all
+strings marked for translation. It creates (or updates) a message file in the
+conf/locale (in the django tree) or locale (for projects and applications)
+directory. You must run this command with one of either the --locale,
+--exclude or --all options.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --locale LOCALE, -l LOCALE
+                        Creates or updates the message files for the given
+                        locale(s) (e.g. pt_BR). Can be used multiple times.
+  --exclude EXCLUDE, -x EXCLUDE
+                        Locales to exclude. Default is none. Can be used
+                        multiple times.
+  --domain DOMAIN, -d DOMAIN
+                        The domain of the message files (default: "django").
+  --all, -a             Updates the message files for all existing locales.
+  --extension EXTENSIONS, -e EXTENSIONS
+                        The file extension(s) to examine (default:
+                        "html,txt,py", or "js" if the domain is "djangojs").
+                        Separate multiple extensions with commas, or use -e
+                        multiple times.
+  --symlinks, -s        Follows symlinks to directories when examining source
+                        code and templates for translation strings.
+  --ignore PATTERN, -i PATTERN
+                        Ignore files or directories matching this glob-style
+                        pattern. Use multiple times to ignore more.
+  --no-default-ignore   Don't ignore the common glob-style patterns 'CVS',
+                        '.*', '*~' and '*.pyc'.
+  --no-wrap             Don't break long message lines into several lines.
+  --no-location         Don't write '#: filename:line' lines.
+  --no-obsolete         Remove obsolete message strings.
+  --keep-pot            Keep .pot file after making messages. Useful when
+                        debugging.

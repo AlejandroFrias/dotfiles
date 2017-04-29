@@ -1,0 +1,41 @@
+usage: manage.py reset_db [-h] [--version] [-v {0,1,2,3}]
+                          [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                          [--traceback] [--no-color] [--noinput] [--no-utf8]
+                          [-U USER] [-O OWNER] [-P PASSWORD] [-D DBNAME]
+                          [-R ROUTER] [-c]
+
+Resets the database for this project.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --noinput             Tells Django to NOT prompt the user for input of any
+                        kind.
+  --no-utf8             Tells Django to not create a UTF-8 charset database
+  -U USER, --user USER  Use another user for the database then defined in
+                        settings.py
+  -O OWNER, --owner OWNER
+                        Use another owner for creating the database then the
+                        user defined in settings or via --user
+  -P PASSWORD, --password PASSWORD
+                        Use another password for the database then defined in
+                        settings.py
+  -D DBNAME, --dbname DBNAME
+                        Use another database name then defined in settings.py
+  -R ROUTER, --router ROUTER
+                        Use this router-database other then defined in
+                        settings.py
+  -c, --close-sessions  Close database connections before dropping database
+                        (PostgreSQL only)

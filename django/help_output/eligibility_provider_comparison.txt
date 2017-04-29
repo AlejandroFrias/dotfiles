@@ -1,0 +1,33 @@
+usage: manage.py eligibility_provider_comparison [-h] [--version]
+                                                 [-v {0,1,2,3}]
+                                                 [--settings SETTINGS]
+                                                 [--pythonpath PYTHONPATH]
+                                                 [--traceback] [--no-color]
+
+Compare Zirmed vs Eligible. Given an arbitrary set of InsuranceClaims,
+specified (on the command line) using filters of the form: payer=Cigna
+min_date_of_service=2014-01-01 plan_type=ppo
+orderkit__disease_panel__name='Universal Panel' this prepares two
+PricingEstimates for each claim comparing Zirmed versus Eligible API
+inquiries. Inquiries must exist in db before this command is run (we don't
+perform an inquiry if on doesn't exist for a claim). Each paired estimate,
+along with information about the insurance claim, are output as CSV (path
+specified on command line). Example command line: manage.py
+eligibility_provider_comparison payer=Cigna min_date_of_service=2014-05-01
+max_date_of_service=2014-05-03 plan_type=pos cigna-comparison.csv --traceback
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.

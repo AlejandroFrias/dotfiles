@@ -1,0 +1,38 @@
+usage: manage.py order_advance [-h] [--version] [-v {0,1,2,3}]
+                               [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                               [--traceback] [--no-color]
+                               [--state {pending,tracked,customer_outgoing,customer_received,accessioning_incoming,accessioning_received,lab_processing,lab_complete,pending_report,report_received,science_review,cls_review,director_review,final_hold,complete}]
+                               [--no-pdf] [--show-states] [--show-status]
+                               [args [args ...]]
+
+Advances a profile or individual sample to a specified state. If no state is
+specified then the object will be advanced to the very next state. NOTE: Only
+basic functionality is available at the moment. Example: ./manage.py
+order_advance family@counsyl.com --state=tracked ./manage.py order_advance
+13000903100012 --state=lab_complete
+
+positional arguments:
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --state {pending,tracked,customer_outgoing,customer_received,accessioning_incoming,accessioning_received,lab_processing,lab_complete,pending_report,report_received,science_review,cls_review,director_review,final_hold,complete}
+                        Specify the state you want to advance the order to.
+                        State must be a valid state from the order state
+                        machine (product/common/state.py)
+  --no-pdf              Won't generate pdf but will still advance state
+  --show-states         Shows all possible states
+  --show-status         Show the current status of the order

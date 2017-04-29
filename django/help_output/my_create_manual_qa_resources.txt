@@ -1,0 +1,48 @@
+usage: manage.py my_create_manual_qa_resources [-h] [--version] [-v {0,1,2,3}]
+                                               [--settings SETTINGS]
+                                               [--pythonpath PYTHONPATH]
+                                               [--traceback] [--no-color]
+                                               [--scenario SCENARIOS]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --scenario SCENARIOS  Name of scenario to generate. Default is all
+                        scenarios. This option can be applied multiple times
+                        to select multiple scenarios. Available scenario names
+                        are: get_counsyl pac patient_orders patient_registers_
+                        with_barcode_for_unreceived_physician_order patient_re
+                        gisters_with_barcode_for_received_physician_order pati
+                        ent_registers_without_barcode_for_received_physician_o
+                        rder patient_registers_without_barcode_for_unreceived_
+                        physician_order empty_account
+                        account_with_one_test_ordered
+                        account_with_one_test_results_released account_with_on
+                        e_test_ordered_and_one_test_results_released
+                        account_with_two_tests_results_released
+                        account_with_counseling_scheduled
+                        account_with_counseling_completed
+                        account_with_one_test_results_released_to_physician ac
+                        count_with_three_tests_results_released_and_counseling
+                        _complete paid_with_max_oop paid_in_full
+                        canceled_chose_cash paid_to_patient_unknown
+                        paid_with_max_deductible troublesome_ipa
+                        claim_response_paid inn_medicaid
+                        bill_to_patient_service
+                        paid_with_bill_to_patient_service oon_medicaid
+                        claim_invoiced_cash_bad_info
+                        claim_maximum_oop_no_insurance
+                        paid_all_patient_responsibility paid_to_patient
+                        unclaimed_test_with_invoice

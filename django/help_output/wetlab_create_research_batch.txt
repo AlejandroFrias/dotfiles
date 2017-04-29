@@ -1,0 +1,34 @@
+usage: manage.py wetlab_create_research_batch [-h] [--version] [-v {0,1,2,3}]
+                                              [--settings SETTINGS]
+                                              [--pythonpath PYTHONPATH]
+                                              [--traceback] [--no-color]
+                                              [--new-batch-name NEW_BATCH_NAME]
+                                              [--batch-type {Production,QC,R&D,Training,Stale}]
+                                              [args [args ...]]
+
+Create a research batch as a copy of an existing batch. This command will take
+an existing batch, and create an exact copy of it except with a new name, a
+different batch_type, and all of the sample wells will be research.
+
+positional arguments:
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --new-batch-name NEW_BATCH_NAME
+  --batch-type {Production,QC,R&D,Training,Stale}
+                        Choose one of Production, QC, R&D, Training, Stale. QC
+                        is the default.

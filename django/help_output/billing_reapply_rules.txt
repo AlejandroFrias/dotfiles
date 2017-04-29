@@ -1,0 +1,55 @@
+usage: manage.py billing_reapply_rules [-h] [--version] [-v {0,1,2,3}]
+                                       [--settings SETTINGS]
+                                       [--pythonpath PYTHONPATH] [--traceback]
+                                       [--no-color] [--statuses STATUSES]
+                                       [--claim-ids CLAIM_IDS]
+                                       [--exclude-payers EXCLUDE_PAYERS]
+                                       [--adjustment-codes ADJUSTMENT_CODES]
+                                       [--min-eob-count MIN_EOB_COUNT]
+                                       [--dry-run]
+                                       [--treat-as-single-eob-check]
+                                       [--after-last-status-change AFTER_LAST_STATUS_CHANGE]
+                                       [--ignore-human-status-updates]
+                                       [--show-diffs] [--include-invoices]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --statuses STATUSES   Comma separated list of claim states to reprocess
+  --claim-ids CLAIM_IDS
+                        Comma separated list of claim ids to reprocess
+  --exclude-payers EXCLUDE_PAYERS
+                        Comma separated list of payer ids to exclude when
+                        selecting claims.
+  --adjustment-codes ADJUSTMENT_CODES
+                        Reprocess only claims which have adjustment codes in
+                        this comma-separated list of adjustment codes.
+  --min-eob-count MIN_EOB_COUNT
+                        Only process claims with at least this many EOBs
+  --dry-run             Do not update the database, but show the changes to
+                        claim states.
+  --treat-as-single-eob-check
+                        Only reprocess rules for claims where
+                        can_treat_eobs_as_single_eob evaluates to True.
+                        Warning: slows evaluation significantly.
+  --after-last-status-change AFTER_LAST_STATUS_CHANGE
+                        Only process claims whose last status change was after
+                        this ISO date. Eg --after-last-status-
+                        change=2013-01-01
+  --ignore-human-status-updates
+                        Only process claims whose last status update was made
+                        by a non-human (or NULL) user.
+  --show-diffs          Show stats for claim status updates.
+  --include-invoices    Reprocess rules for claims with invoices.

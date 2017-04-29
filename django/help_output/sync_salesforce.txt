@@ -1,0 +1,42 @@
+usage: manage.py sync_salesforce [-h] [--version] [-v {0,1,2,3}]
+                                 [--settings SETTINGS]
+                                 [--pythonpath PYTHONPATH] [--traceback]
+                                 [--no-color] [-l LIMIT] [-m MODEL] [-k PK]
+                                 [-n NOT_NULL] [-a] [-s] [-o] [-c SINCE]
+                                 [-u UNTIL] [-e] [-r]
+
+Sync data to Salesforce.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  -l LIMIT, --limit LIMIT
+                        Maximum number of objects to sync.
+  -m MODEL, --model MODEL
+                        Which model to sync over
+  -k PK, --pk PK        Provide a primary key to select a specific model to
+                        sync
+  -n NOT_NULL, --not-null NOT_NULL
+                        Remove items where specified field is null or blank.
+  -a, --auto            Auto Remove as many null fields as possible
+  -s, --sample-error    Only include sample errors for Ticket objects
+  -o, --all             Sync all models
+  -c SINCE, --since SINCE
+                        Pull in tickets from this date and newer.
+  -u UNTIL, --until UNTIL
+                        Pull in tickets up until this date (not including
+                        specified date).
+  -e, --consume         Start consuming queue immediately.
+  -r, --clear           Clear the queue out before enqueuing new items.

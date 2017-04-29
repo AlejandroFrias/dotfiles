@@ -1,0 +1,50 @@
+usage: manage.py dumpdata [-h] [--version] [-v {0,1,2,3}]
+                          [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                          [--traceback] [--no-color] [--format FORMAT]
+                          [--indent INDENT] [--database DATABASE] [-e EXCLUDE]
+                          [--natural-foreign] [--natural-primary] [-a]
+                          [--pks PRIMARY_KEYS] [-o OUTPUT]
+                          [app_label[.ModelName] [app_label[.ModelName] ...]]
+
+Output the contents of the database as a fixture of the given format (using
+each model's default manager unless --all is specified).
+
+positional arguments:
+  app_label[.ModelName]
+                        Restricts dumped data to the specified app_label or
+                        app_label.ModelName.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --format FORMAT       Specifies the output serialization format for
+                        fixtures.
+  --indent INDENT       Specifies the indent level to use when pretty-printing
+                        output.
+  --database DATABASE   Nominates a specific database to dump fixtures from.
+                        Defaults to the "default" database.
+  -e EXCLUDE, --exclude EXCLUDE
+                        An app_label or app_label.ModelName to exclude (use
+                        multiple --exclude to exclude multiple apps/models).
+  --natural-foreign     Use natural foreign keys if they are available.
+  --natural-primary     Use natural primary keys if they are available.
+  -a, --all             Use Django's base manager to dump all models stored in
+                        the database, including those that would otherwise be
+                        filtered or modified by a custom manager.
+  --pks PRIMARY_KEYS    Only dump objects with given primary keys. Accepts a
+                        comma separated list of keys. This option will only
+                        work when you specify one model.
+  -o OUTPUT, --output OUTPUT
+                        Specifies file to which the output is written.

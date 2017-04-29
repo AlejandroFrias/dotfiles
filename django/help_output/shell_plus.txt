@@ -1,0 +1,48 @@
+usage: manage.py shell_plus [-h] [--version] [-v {0,1,2,3}]
+                            [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                            [--traceback] [--no-color] [--plain] [--bpython]
+                            [--ptpython] [--ptipython] [--ipython]
+                            [--notebook] [--kernel]
+                            [--connection-file CONNECTION_FILE]
+                            [--use-pythonrc] [--print-sql]
+                            [--dont-load DONT_LOAD] [--quiet-load] [--vi]
+                            [--no-browser]
+
+Like the 'shell' command but autoloads the models of all installed Django
+apps.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --plain               Tells Django to use plain Python, not BPython nor
+                        IPython.
+  --bpython             Tells Django to use BPython, not IPython.
+  --ptpython            Tells Django to use PTPython, not IPython.
+  --ptipython           Tells Django to use PT-IPython, not IPython.
+  --ipython             Tells Django to use IPython, not BPython.
+  --notebook            Tells Django to use IPython Notebook.
+  --kernel              Tells Django to start an IPython Kernel.
+  --connection-file CONNECTION_FILE
+                        Specifies the connection file to use if using the
+                        --kernel option
+  --use-pythonrc        Tells Django to execute PYTHONSTARTUP file (BE
+                        CAREFULL WITH THIS!)
+  --print-sql           Print SQL queries as they're executed
+  --dont-load DONT_LOAD
+                        Ignore autoloading of some apps/models. Can be used
+                        several times.
+  --quiet-load          Do not display loaded models messages
+  --vi                  Load Vi key bindings (for --ptpython and --ptipython)
+  --no-browser          Don't open the notebook in a browser after startup.

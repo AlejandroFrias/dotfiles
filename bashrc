@@ -1,7 +1,9 @@
 # brew bash complete
+PS1="\w\$(__git_ps1 \" $YELLOW(%s)$RESET\")\$ "
 test -f ~/.git-completion.bash && . $_
 test -f ~/.git-prompt.sh && . $_
-PS1="\w\$(__git_ps1 \" $YELLOW(%s)$RESET\")\$ "
+test -f /usr/share/bash-completion/bash_completion && . $_
+test -f ~/.bash/django_bash_completion.sh && . $_
 GIT_PS1_SHOWDIRTYSTATE=1
 
 # Default editor
@@ -15,9 +17,6 @@ test -f /usr/local/bin/virtualenvwrapper.sh && . $_
 # custom commands and aliases
 test -f ~/.bash/custom_commands.sh && . $_
 test -f ~/.bash/git_aliases.sh && . $_
-
-# git bash complete
-test -f ~/.git-completion.bash && . $_
 
 export HOMEBREW_GITHUB_API_TOKEN="3669a732a6640800e8e48c5aefefe7dc7c955b6d"
 

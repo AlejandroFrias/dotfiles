@@ -1,15 +1,21 @@
 snippet "if " "Django If Block" rbA
 {% if ${1:condition} %}
-	${0}
+${0}
 {% endif %}
 endsnippet
 
 snippet "elif " "Django Elif Block" rbA
 {% elif ${1:condition} %}
-	${0}
+${0}
 endsnippet
 
 snippet "else " "Django Else Block" rbA
 {% else %}
-	${0}
+${0}
+endsnippet
+
+snippet "with " "Django With block" rbA
+{% with ${1:expression} as ${2:variable} %}
+${0}
+{% endwith %}
 endsnippet

@@ -1,0 +1,39 @@
+usage: manage.py emr_generate_fake_order_from_previous [-h] [--version]
+                                                       [-v {0,1,2,3}]
+                                                       [--settings SETTINGS]
+                                                       [--pythonpath PYTHONPATH]
+                                                       [--traceback]
+                                                       [--no-color]
+                                                       [--original-api-order-id ORIGINAL_API_ORDER_ID]
+                                                       [--new-requisition-number NEW_REQUISITION_NUMBER]
+                                                       [--new-barcode NEW_BARCODE]
+                                                       [--changes CHANGES]
+
+Duplicate an existing APIOrder/Item. This disconnects any OrderKit and Sample
+information from the copy, and changes the requisition_number, and barcode.
+Conversion of multiple orders with the same PHI and clinic will fail in the
+web interface. See <emr_generate_fake_results> for details on processing
+artificial orders.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --original-api-order-id ORIGINAL_API_ORDER_ID
+                        The ID of the API Order
+  --new-requisition-number NEW_REQUISITION_NUMBER
+                        The new requisitition number. Default appends .n.
+  --new-barcode NEW_BARCODE
+                        The new barcode. By default sets to empty.
+  --changes CHANGES     Other properties to change in JSON format.

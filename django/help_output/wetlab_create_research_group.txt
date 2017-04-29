@@ -1,0 +1,33 @@
+usage: manage.py wetlab_create_research_group [-h] [--version] [-v {0,1,2,3}]
+                                              [--settings SETTINGS]
+                                              [--pythonpath PYTHONPATH]
+                                              [--traceback] [--no-color]
+                                              [--research-group-name RESEARCH_GROUP_NAME]
+                                              [--copy-quant]
+                                              [args [args ...]]
+
+Create a research group using an extraction plate. This command will take an
+existing extraction group, create a research group from it (with all samples
+having kit_type extracted DNA), and then create an extraction plate from the
+research group.
+
+positional arguments:
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --research-group-name RESEARCH_GROUP_NAME
+  --copy-quant          Copy quant data from the existing extraction plate

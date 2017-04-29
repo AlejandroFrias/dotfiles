@@ -1,0 +1,44 @@
+usage: manage.py load_internal_frequency_VCF [-h] [--version] [-v {0,1,2,3}]
+                                             [--settings SETTINGS]
+                                             [--pythonpath PYTHONPATH]
+                                             [--traceback] [--no-color]
+                                             [--source SOURCE] [--pop POP]
+                                             [--total-count TOTAL_COUNT]
+                                             [--total-count-x TOTAL_COUNT_X]
+                                             [--info-AC INFO_AC]
+                                             [--info-AN INFO_AN]
+                                             [--info-AF INFO_AF]
+                                             [args [args ...]]
+
+Load variants and HGMD mutations. This command assumes that all the alleles in
+the VCF are already in our database and the ID in the VCF is the allele ID in
+our DB.
+
+positional arguments:
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --source SOURCE       Data source (e.g. counsyl, 1kg, esp).
+  --pop POP             population (e.g. ALL,AFR,AMR,ASN,EUR).
+  --total-count TOTAL_COUNT
+                        Override total chromosome count (AN).
+  --total-count-x TOTAL_COUNT_X
+                        Override total chromosome count (AN) if the chromosome
+                        for the allele is chrX
+  --info-AC INFO_AC     INFO field for alternate allele count.
+  --info-AN INFO_AN     INFO field for total allele count.
+  --info-AF INFO_AF     INFO field for alternate allele frequency.

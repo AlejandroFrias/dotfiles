@@ -1,0 +1,30 @@
+usage: manage.py order_cleanup_orderkit_tat [-h] [--version] [-v {0,1,2,3}]
+                                            [--settings SETTINGS]
+                                            [--pythonpath PYTHONPATH]
+                                            [--traceback] [--no-color]
+
+Re-calculate denormalized TAT fields on OrderKit. The fields are
+OrderKit.started_on and OrderKit.completed_on. The algorithm is: 1. Given an
+OrderKit, identify the non-terminated sample. If there are none, then the TAT
+values should both be None. (There should not be more than one non-terminated
+sample.) 2. Given the sample, identify all associated sample status objects.
+The timestamp of the first lab_processing status should populate
+OrderKit.started_on. The timestamp of the first complete status should
+populate OrderKit.completd_on. If either of these statuses do not exist, the
+respective TAT values should be None.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.

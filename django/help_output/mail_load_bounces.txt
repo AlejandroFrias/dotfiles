@@ -1,0 +1,41 @@
+usage: manage.py mail_load_bounces [-h] [--version] [-v {0,1,2,3}]
+                                   [--settings SETTINGS]
+                                   [--pythonpath PYTHONPATH] [--traceback]
+                                   [--no-color] [--dry-run]
+                                   [--max-bounces MAX_BOUNCES]
+                                   [--offset OFFSET]
+                                   [args [args ...]]
+
+Load bounce records from postmark into the PostmarkBounce table. Existing
+bounce records are not overwritten. New bounce records are stored by the
+bounce_pingback endpoint in mail.postmark_views. This command is for loading
+historical bounce records or records missed due to failure of the endpoint. To
+load bounce records for one or more email addresses, specify the addresses as
+positional arguments on the command line. If no addresses are given, the
+command will start with the most recent bounce plus the value of the --offset
+option. The command will read at most 500 (or the value of the --max-bounces
+option) bounces from postmark, regardless of whether they are already in the
+database or not.
+
+positional arguments:
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --dry-run             Just say what would happen.
+  --max-bounces MAX_BOUNCES
+                        Maximum number of bounces to read (Default 500).
+  --offset OFFSET       Offset of bounce to start with (Default 0).

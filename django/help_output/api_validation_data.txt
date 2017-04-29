@@ -1,0 +1,57 @@
+usage: manage.py api_validation_data [-h] [--version] [-v {0,1,2,3}]
+                                     [--settings SETTINGS]
+                                     [--pythonpath PYTHONPATH] [--traceback]
+                                     [--no-color]
+                                     [--target-assays TARGET_ASSAYS]
+                                     [--target-batches TARGET_BATCHES]
+                                     [--reference-assays REFERENCE_ASSAYS]
+                                     [--discordance-only]
+                                     [--limit-variants LIMIT_VARIANTS]
+                                     [--include-id-variants]
+                                     [--include-controls] [--indent INDENT]
+                                     [--curated-genotypes CURATED_GENOTYPES]
+
+Export sample and control call data for use with validation or analytics. The
+results are returned in a JSON dump with a default indent=4. Example:
+./manage.py api_validation_data --target-assays=taqman_sma --reference-
+assays=taqman_cn
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --target-assays TARGET_ASSAYS
+                        Comma separated list of assay types (e.g. taqman_sma)
+                        to include in the dump. All batches of this assay
+                        subtype will be returned.
+  --target-batches TARGET_BATCHES
+                        Comma separated list of batch ids to include in the
+                        dump.
+  --reference-assays REFERENCE_ASSAYS
+                        Comma separated list of assay types (e.g. taqman_sma)
+                        to use as 'known_genotypes'. Curated calls for all
+                        matching batches will be returned.
+  --discordance-only    Return discordant data only instead of full validation
+                        output
+  --limit-variants LIMIT_VARIANTS
+                        Comma separated list of variant ids to limit to in the
+                        dump of the target and reference batches. By default
+                        all variants in the assay will be included.
+  --include-id-variants
+                        Include in the dump 'ID' variants.
+  --include-controls    Include control individuals whencollecting known
+                        genotypes.
+  --indent INDENT       Indent size for the JSON output.
+  --curated-genotypes CURATED_GENOTYPES
+                        Optional JSON dump of curated genotype data

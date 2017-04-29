@@ -1,0 +1,38 @@
+usage: manage.py housecall_create_free_slots [-h] [--version] [-v {0,1,2,3}]
+                                             [--settings SETTINGS]
+                                             [--pythonpath PYTHONPATH]
+                                             [--traceback] [--no-color]
+                                             [--days DAYS] [--starting-now]
+                                             [args [args ...]]
+
+Create free appointment slots for the given GC. Example: ./manage.py
+housecall_create_free_slots fake_kenny@counsyl.com The above command generates
+two free appointment slots for (fake) Kenny Wong starting now and in 24 hours.
+If no GC email is provided, (fake) Kenny's account is used by default. The
+fake GCs have to exist already; create them with `./manage.py
+housecall_create_fake_gcs`. Note that this command is only useful in a dev
+environment. GCs can use the healthcare interface to specify their
+availability.
+
+positional arguments:
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --days DAYS           Number of days of housecall slots to create
+  --starting-now, --now
+                        Generate slots for the immediate next 8 hours instead
+                        of from 9am-5pm starting tomorrow (the default).

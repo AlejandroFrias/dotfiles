@@ -1,0 +1,44 @@
+usage: manage.py mynomics_buildpdf [-h] [--version] [-v {0,1,2,3}]
+                                   [--settings SETTINGS]
+                                   [--pythonpath PYTHONPATH] [--traceback]
+                                   [--no-color] [--only-html]
+                                   [--update-type {CORRECTED,AMENDED}]
+                                   [--update-reason UPDATE_REASON]
+                                   [--clinical-notes CLINICAL_NOTES]
+                                   [--no-fulltable]
+                                   [args [args ...]]
+
+positional arguments:
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --only-html           Debug utility. Write the HTML version of the report to
+                        stdout, but do not continue on to build the PDF or
+                        change the account state.
+  --update-type {CORRECTED,AMENDED}
+                        Type of update for the report. Required for reports
+                        already released to the physician.
+  --update-reason UPDATE_REASON
+                        Max 300 character string explaining the reason for the
+                        report being updated. Required for reports already
+                        released to the physician.
+  --clinical-notes CLINICAL_NOTES
+                        Max 300 character string with any custom analysis for
+                        the report being updated.
+  --no-fulltable        Exclude the mutations tested and risk calculations
+                        table from the generatd PDF and/or HTML build.
+                        Significant improvement in speed.

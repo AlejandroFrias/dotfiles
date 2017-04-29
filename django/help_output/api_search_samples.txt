@@ -1,0 +1,43 @@
+usage: manage.py api_search_samples [-h] [--version] [-v {0,1,2,3}]
+                                    [--settings SETTINGS]
+                                    [--pythonpath PYTHONPATH] [--traceback]
+                                    [--no-color] [--zygosity ZYGOSITY]
+                                    [--variants VARIANTS] [--assays ASSAYS]
+                                    [--exclude-controls]
+                                    [--exclude-barcodes EXCLUDE_BARCODES]
+                                    [--indent INDENT] [--as-tsv]
+                                    [--genotype-ids]
+
+Export matching validation samples. The results are returned by default as a
+JSON, but can be dumped as a table to a TSV file. Example: ./manage.py
+api_search_samples --variants=18,862,193 --exclude-
+barcodes=13000904073495,13000904150660 --as-tsv
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --zygosity ZYGOSITY   Zygosity short code to match against.
+  --variants VARIANTS   Comma separated list of variant ids to match. If no
+                        variants are supplied, all reportable will be matched.
+  --assays ASSAYS       Comma separated list of assay types (e.g. taqman_sma)
+                        to include in the dump. All batches of this assay
+                        subtype will be returned.
+  --exclude-controls    Flag to exclude all controls from the result output.
+  --exclude-barcodes EXCLUDE_BARCODES
+                        Comma separated list of barcodes (e.g., 1300xxx) to
+                        exclude from the result output.
+  --indent INDENT       Indent size for the JSON output.
+  --as-tsv              Output TSV data table.
+  --genotype-ids        Output integer genotype IDs.

@@ -1,0 +1,29 @@
+usage: manage.py sqlcreate [-h] [--version] [-v {0,1,2,3}]
+                           [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                           [--traceback] [--no-color] [-R ROUTER] [-D]
+
+Generates the SQL to create your database for you, as specified in settings.py
+The envisioned use case is something like this: ./manage.py sqlcreate
+[--router=<routername>] | mysql -u <db_administrator> -p ./manage.py sqlcreate
+[--router=<routername>] | psql -U <db_administrator> -W
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  -R ROUTER, --router ROUTER
+                        Use this router-database other then defined in
+                        settings.py
+  -D, --drop            If given, includes commands to drop any existing user
+                        and database.

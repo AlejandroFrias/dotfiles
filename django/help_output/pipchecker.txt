@@ -1,0 +1,30 @@
+usage: manage.py pipchecker [-h] [--version] [-v {0,1,2,3}]
+                            [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                            [--traceback] [--no-color] [-t GITHUB_API_TOKEN]
+                            [-r FILENAME] [-n]
+
+Scan pip requirement files for out-of-date packages.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  -t GITHUB_API_TOKEN, --github-api-token GITHUB_API_TOKEN
+                        A github api authentication token.
+  -r FILENAME, --requirement FILENAME
+                        Check all the packages listed in the given
+                        requirements file. This option can be used multiple
+                        times.
+  -n, --newer           Also show when newer version then available is
+                        installed.

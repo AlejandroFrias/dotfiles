@@ -1,0 +1,63 @@
+usage: manage.py runserver_plus [-h] [--version] [-v {0,1,2,3}]
+                                [--settings SETTINGS]
+                                [--pythonpath PYTHONPATH] [--traceback]
+                                [--no-color] [--ipv6] [--noreload] [--browser]
+                                [--nothreading] [--threaded]
+                                [--output OUTPUT_FILE] [--print-sql]
+                                [--cert CERT_PATH] [--extra-file EXTRA_FILES]
+                                [--reloader-interval RELOADER_INTERVAL]
+                                [--pdb] [--ipdb] [--pm]
+                                [--startup-messages STARTUP_MESSAGES]
+                                [--keep-meta-shutdown] [--nostatic]
+                                [--insecure]
+                                [addrport]
+
+Starts a lightweight Web server for development.
+
+positional arguments:
+  addrport              Optional port number, or ipaddr:port
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --ipv6, -6            Tells Django to use a IPv6 address.
+  --noreload            Tells Django to NOT use the auto-reloader.
+  --browser             Tells Django to open a browser.
+  --nothreading         Do not run in multithreaded mode.
+  --threaded            Run in multithreaded mode.
+  --output OUTPUT_FILE  Specifies an output file to send a copy of all
+                        messages (not flushed immediately).
+  --print-sql           Print SQL queries as they're executed
+  --cert CERT_PATH      To use SSL, specify certificate path.
+  --extra-file EXTRA_FILES
+                        auto-reload whenever the given file changes too (can
+                        be specified multiple times)
+  --reloader-interval RELOADER_INTERVAL
+                        After how many seconds auto-reload should scan for
+                        updates in poller-mode [default=1]
+  --pdb                 Drop into pdb shell at the start of any view.
+  --ipdb                Drop into ipdb shell at the start of any view.
+  --pm                  Drop into (i)pdb shell if an exception is raised in a
+                        view.
+  --startup-messages STARTUP_MESSAGES
+                        When to show startup messages: reload [default], once,
+                        always, never.
+  --keep-meta-shutdown  Keep request.META['werkzeug.server.shutdown'] function
+                        which is automatically removed because Django debug
+                        pages tries to call the function and unintentionally
+                        shuts down the Werkzeug server.
+  --nostatic            Tells Django to NOT automatically serve static files
+                        at STATIC_URL.
+  --insecure            Allows serving static files even if DEBUG is False.

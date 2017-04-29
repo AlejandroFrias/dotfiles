@@ -1,0 +1,34 @@
+usage: manage.py compare_allele_frequency_methods [-h] [--version]
+                                                  [-v {0,1,2,3}]
+                                                  [--settings SETTINGS]
+                                                  [--pythonpath PYTHONPATH]
+                                                  [--traceback] [--no-color]
+                                                  [args [args ...]]
+
+Compare the "fast" and "slow" frequency calculators to one another. This
+command let's you compare the denominators calculated by the fast and slow
+allele frequency calculators. The command requires a sample size and VCF file
+name as arguments. A random sample of LaneSamples will be chosen and then the
+denominators for allele frequencies from allels in those LaneSamples will be
+compared between one method and the other. The denominator comparison should
+always match. The command will print a message before completing indicating
+whether this is the case or not.
+
+positional arguments:
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.

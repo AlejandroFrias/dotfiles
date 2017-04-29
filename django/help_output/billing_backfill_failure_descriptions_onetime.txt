@@ -1,0 +1,28 @@
+usage: manage.py billing_backfill_failure_descriptions_onetime
+       [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS]
+       [--pythonpath PYTHONPATH] [--traceback] [--no-color]
+       [args [args ...]]
+
+Populate the failure_description field in the FailedPayments model for Recurly
+or Stripe failed payments without a failure description. Takes optional set of
+lookups to filter failed payments by. Usage: ./manage.py
+billing_backfill_failure_descriptions [field=value]
+
+positional arguments:
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.

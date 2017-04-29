@@ -1,0 +1,38 @@
+usage: manage.py order_migrate_dts_hashes_and_tiers [-h] [--version]
+                                                    [-v {0,1,2,3}]
+                                                    [--settings SETTINGS]
+                                                    [--pythonpath PYTHONPATH]
+                                                    [--traceback] [--no-color]
+                                                    [--offset OFFSET]
+                                                    [--count COUNT]
+
+Update report_hash, autopass_tier, and cache for DTS orders. The hashing
+function was changed for DTS orders requiring an update for all DTS orders
+that already have a report_hash. Autopass tier was previously set such that no
+DTS order would enter the cache. The autopass tier is recomputed using the
+standard logic that checks disease classifications. Orders that have been
+reviewed and pass can_enter_autopass_cache will be entered into the cache as
+ReportHash instances Note that this task will take a very long time to run.
+20000 Orders takes about 6 hours to run. --start and --count options allow
+simple -- pagination to split the task as needed. Usage: ./manage.py
+order_migrate_dts_hashes_and_tiers ./manage.py
+order_migrate_dts_hashes_and_tiers --offset 100 ./manage.py
+order_migrate_dts_hashes_and_tiers --count 100
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --offset OFFSET       Specify the Order index to start at
+  --count COUNT         Specify the number of Orders to update
