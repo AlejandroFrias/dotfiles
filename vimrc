@@ -99,6 +99,9 @@ set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,space:\ ,con
 
 set spell
 
+set cursorline
+set cursorcolumn
+
 syntax on
 
 " Allow us to use Ctrl-s and Ctrl-q as keybindings
@@ -329,7 +332,6 @@ nnoremap <silent> <leader>vp :lprevious<CR>
 " Close location list or quickfix when selecting file
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>
 
-
 " Marks
 nnoremap <leader>m :marks 'qwertyuiopasdfghjklzxcvbnm0123456789\"[]^.<CR>:normal `
 nnoremap <leader>M :marks QWERTYUIOPASDFGHJKLZXCVBNM<CR>:normal `
@@ -411,6 +413,13 @@ noremap <Left> 10zh
 noremap <Right> 10zl
 noremap <C-E> 5<C-E>
 noremap <C-Y> 5<C-Y>
+"
+" Wrapped lines goes down/up to next row, rather than next line in file.
+noremap j gj
+noremap k gk
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
 
 " Stop that stupid window from popping up
 map q: :q
