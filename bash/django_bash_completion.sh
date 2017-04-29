@@ -40,3 +40,14 @@ _django_completion()
 
 }
 complete -F _django_completion -o default m
+
+update_helpoutput()
+{
+    cdw
+    m help > $HOME/.django/help_output/help.txt
+    COMMANDS=($(grep '    ' $HOME/.django/help_output/help.txt | sort | sed -e 's/^[[:space:]]*//' | grep "^$2" | awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
+    for COMMAND in ${COMMANDS}
+    do
+        m help $COMMAND > $HOME/.django/help_output/$COMMAND.txt
+    done
+}
