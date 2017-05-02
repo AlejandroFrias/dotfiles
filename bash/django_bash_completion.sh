@@ -22,7 +22,11 @@ _django_completion()
                                     COMPREPLY=($(echo $option_desc | sed -e 's/{\(.*\)}/\1/' | sed -e 's/,/\n/g' | grep "^$2" | sort | awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
                                     ;;
                                 [[:upper:]]*)
-                                    COMPREPLY=($option_desc)
+                                    if [[ -z $2 ]]; then
+                                        COMPREPLY=($option_desc)
+                                    else
+                                        COMPREPLY=()
+                                    fi
                                     ;;
                                 *)
                                     COMPREPLY=($(grep "^  -" $HOME/.django/help_output/${COMP_WORDS[1]}.txt | sed -e 's/^  .*\(--[-a-z]\+,\?\).*$/\1/' | grep "^$2" | sort| awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
