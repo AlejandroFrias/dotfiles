@@ -41,9 +41,8 @@ _django_completion()
             esac
             ;;
     esac
-
 }
-complete -F _django_completion -o default m
+complete -F _django_completion -o default m ./manage.py manage.sh
 
 update_helpoutput()
 {

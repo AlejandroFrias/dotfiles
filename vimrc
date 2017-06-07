@@ -286,21 +286,8 @@ nnoremap <leader>. :CtrlPTag<CR>
 " Quick exit insert and undo
 inoremap <C-Z> <ESC>u
 
-" Zoom on vim windows.
-let g:zoomed = 0
-function! ToggleWindowZoom()
-    if !exists('w:zoomed')
-        let w:zoomed = g:zoomed
-    endif
-    if w:zoomed == 0
-        let w:zoomed = 1
-        execute "normal! \<C-W>\<bar>\<C-W>_"
-    else
-        let w:zoomed = 0
-        execute "normal! \<C-W>="
-    endif
-endfunction
-nnoremap <silent> <leader>z :call ToggleWindowZoom()<CR>
+" Full screen vim window
+nnoremap <C-W>+ <C-W>\|<C-W>_
 
 " Duplicates line
 nnoremap <leader>p Yp
@@ -413,7 +400,7 @@ noremap <Left> 10zh
 noremap <Right> 10zl
 noremap <C-E> 5<C-E>
 noremap <C-Y> 5<C-Y>
-"
+
 " Wrapped lines goes down/up to next row, rather than next line in file.
 noremap j gj
 noremap k gk

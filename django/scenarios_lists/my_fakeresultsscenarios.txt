@@ -1,3 +1,6 @@
+brca-negative
+brca-negative-known-benign
+brca-not-ready
 brca1-exclude-vus
 brca1-known-deleterious
 brca1-known-deleterious-brca2-exclude-vus
@@ -11,12 +14,11 @@ brca1-vus-custom-interp-string
 brca1-vus-not-reported
 brca2-known-deleterious
 brca2-vus
-brca-negative
-brca-negative-known-benign
-brca-not-ready
 ics-atm-chek2
 ics-attenuated-fap
 ics-bmpr1a-known-deleterious
+ics-brca1-and-brca2-known-deleterious
+ics-brca1-and-palb2-known-deleterious
 ics-brca12-known-deleterious
 ics-brca12-known-deleterious-and-vus
 ics-brca12-known-deleterious-preliminary
@@ -25,8 +27,6 @@ ics-brca12-palb2-known-deleterious
 ics-brca12-palb2-multiple-vus
 ics-brca12-vus
 ics-brca12-vus-exclude-vus
-ics-brca1-and-brca2-known-deleterious
-ics-brca1-and-palb2-known-deleterious
 ics-breast-gyn-gi-known-deleterious
 ics-breast-known-deleterious
 ics-cdh1-known-deleterious
@@ -107,10 +107,10 @@ partnered-alpha-thal-negative-nocall
 partnered-alpha-thal-positive-nocall
 partnered-cah-carrier-same-disease
 partnered-cah-dup
-partnered-cah-dup3
 partnered-cah-dup-carrier
 partnered-cah-dup-q319x
 partnered-cah-dup-q319x-homozygote
+partnered-cah-dup3
 partnered-cah-one-carrier
 partnered-cah-q319x
 partnered-cah-q319x-and-dup3
@@ -149,6 +149,7 @@ partnered-positive-cf-synlab-donor
 partnered-reclassified-whitelist-mpi-variant
 partnered-results-not-ready
 partnered-same-disease-fps3
+partnered-synlab-carrier-multiple-diseases-and-symptoms
 partnered-whitelist-vus
 partnered-x-linked-non-fragile-x-female-carrier
 partnered-x-linked-non-fragile-x-male-affected
