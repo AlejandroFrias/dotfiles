@@ -4,6 +4,22 @@ function! ftplugin#python#GoToDefinition()
     let search_regex = "^\\s*\\(def \\|class \\)".symbol."(\\|^\\s*".symbol." = "
     exec "Ggrep '".search_regex."'"
 endfunction
+function! ftplugin#python#GitHubURL(regname) range
+    " Get current file path
+    let path = expand('%:p')
+    " Remove current working directory from path
+    let path = substitute(path, getcwd()."/", "", "")
+    let branch = system("git rev-parse --abbrev-ref HEAD")
+    let branch = substitute(branch, '\n\+$', '', '')
+    let remote_url = system("git config --get remote.origin.url")
+    let remote_url = substitute(remote_url, '\n\+$', '', '')
+    let domain = substitute(remote_url, 'git@\(.*\):.*', '\1', '')
+    let repo = substitute(remote_url, '.*\:\(.*\)', '\1', '')
+    let path = "https://".domain."/".repo."/blob/".branch."/".path
+    let path = path."#L".a:firstline."-L".a:lastline
+    call setreg(a:regname, path."\n")
+    echom path
+endfunction
 
 """"""""""""""""""""
 " Counsyl specific "

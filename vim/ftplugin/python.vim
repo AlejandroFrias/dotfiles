@@ -34,3 +34,6 @@ noremap <silent> [v 0?^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
 nnoremap <silent> <leader>ii :call ftplugin#python#CounsylImport(v:register)<CR>
 " Copy test path to register for word under cursor
 nnoremap <silent> <leader>it :call ftplugin#python#CounsylTestPath(v:register)<CR>
+" Copy test path to register for word under cursor
+nnoremap <silent> <leader>ig :call ftplugin#python#GitHubURL(v:register)<CR>
+vnoremap <silent> <leader>ig :call ftplugin#python#GitHubURL(v:register)<CR>

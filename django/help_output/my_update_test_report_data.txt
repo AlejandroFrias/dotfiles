@@ -4,6 +4,7 @@ usage: manage.py my_update_test_report_data [-h] [--version] [-v {0,1,2,3}]
                                             [--traceback] [--no-color]
                                             [--no-pdf-html] [--no-emr-json]
                                             [--no-api-json] [--no-hl7]
+                                            [--no-diseasebook]
                                             [--scenario SCENARIO]
                                             [--scenario-like SCENARIO_LIKE]
                                             [--healthcare-scenarios] [--reuse]
@@ -42,6 +43,7 @@ optional arguments:
   --no-emr-json         Do not generate EMR JSON files.
   --no-api-json         Do not generate Report API JSON files.
   --no-hl7              Do not generate HL7 files.
+  --no-diseasebook      Do not generate disease book files.
   --scenario SCENARIO   Limit update to specific scenarios. Default is all.
                         This option can be applied multiple times to select
                         multiple scenarios. Available scenario names are:
@@ -89,8 +91,9 @@ optional arguments:
                         partnered-alpha-thal-negative-duplication partnered-
                         alpha-thal-positive-nocall partnered-cah-carrier-same-
                         disease partnered-cah-dup partnered-cah-dup-carrier
-                        partnered-cah-dup-q319x partnered-cah-dup-q319x-
-                        homozygote partnered-cah-dup3 partnered-cah-one-
+                        partnered-cah-dup-q319x partnered-cah-dup-q319x-cis
+                        partnered-cah-dup-q319x-homozygote partnered-cah-dup-
+                        q319x-trans partnered-cah-dup3 partnered-cah-one-
                         carrier partnered-cah-q319x partnered-cah-q319x-and-
                         dup3 partnered-canceled partnered-carrier-different-
                         diseases partnered-carrier-different-diseases-
@@ -106,52 +109,55 @@ optional arguments:
                         affected partnered-g6pd-female-carrier-male-unaffected
                         partnered-g6pd-female-unaffected-male-affected
                         partnered-negative partnered-negative-fps3 partnered-
-                        one-carrier partnered-one-carrier-increased-risk
-                        partnered-one-carrier-likely-deleterious partnered-
-                        one-carrier-mild partnered-one-carrier-one-ivs8-5t-
-                        positive-force-ivs8 partnered-one-carrier-one-nocall-
-                        multiple-diseases partnered-reclassified-whitelist-
-                        mpi-variant partnered-results-not-ready partnered-
-                        whitelist-vus partnered-x-linked-non-fragile-x-female-
-                        carrier partnered-x-linked-non-fragile-x-male-affected
-                        sendout-nips-15q11del-detected sendout-nips-15q11del-
-                        detected-fetal-fraction-present sendout-nips-1p36del-
-                        detected sendout-nips-22q11del-detected sendout-nips-
-                        5pdel-detected sendout-nips-female-4pdel-detected
-                        sendout-nips-female-no-microdeletions-detected
-                        sendout-nips-ff-less-than-one-percent sendout-nips-
-                        monosomy-x-detected sendout-nips-negative sendout-
-                        nips-negative-female sendout-nips-negative-high-risk
-                        sendout-nips-negative-male sendout-nips-negative-
-                        twin-y-detected sendout-nips-negative-twin-y-not-
-                        detected sendout-nips-results-not-ready sendout-nips-
-                        trisomy-13-suspected sendout-nips-trisomy-21-detected
-                        sendout-nips-trisomy-21-detected-multiple-indications
-                        sendout-nips-twin-y-detected-trisomy-18-and-15q11del-
-                        detected single-affected-hgmd-promoter-allele single-
-                        affected-mild single-alpha-thal-alphaplus-
-                        nondeletion-2-0 single-autosomal-recessive-affected
-                        single-cah-carrier single-carrier-aj-med17-fps3
-                        single-carrier-autosomal-recessive single-carrier-dmd-
-                        fps3 single-carrier-gjb6-deletion-fps3 single-carrier-
-                        mild-autosomal single-carrier-mild-bche single-
-                        carrier-mild-x-linked single-carrier-multiple-cftr-
-                        variants-5t-e60x single-carrier-multiple-diseases-and-
-                        carrier-symptoms single-carrier-multiple-likely-
-                        deleterious-single-disease single-carrier-multiple-
-                        variants-single-disease single-carrier-symptoms-
-                        variant single-carrier-x-linked-non-fragile-x single-
-                        deprecated-disease-panel single-fragile-x-full-
-                        mutation single-fragile-x-hybrid single-
-                        fragile-x-intermediate single-fragile-x-male-hybrid
-                        single-fragile-x-premutation-and-non-fragile-x single-
-                        increased-risk-and-mild single-indeterminate single-
-                        ivs8-5t-indeterminate-force-ivs8 single-ivs8-5t-
-                        positive-force-ivs8 single-negative single-negative-
-                        no-indications single-reclassified-whitelist-mpi-
-                        variant single-results-not-ready single-sma-neu-
-                        copynumber-2-snp-het-negative single-sma-silent-
-                        carrier
+                        negative-synlab-donor partnered-one-carrier partnered-
+                        one-carrier-increased-risk partnered-one-carrier-
+                        likely-deleterious partnered-one-carrier-mild
+                        partnered-one-carrier-one-ivs8-5t-positive-force-ivs8
+                        partnered-one-carrier-one-nocall-multiple-diseases
+                        partnered-positive-cf-synlab-donor partnered-
+                        reclassified-whitelist-mpi-variant partnered-results-
+                        not-ready partnered-whitelist-vus partnered-x-linked-
+                        non-fragile-x-female-carrier partnered-x-linked-non-
+                        fragile-x-male-affected sendout-nips-15q11del-detected
+                        sendout-nips-15q11del-detected-fetal-fraction-present
+                        sendout-nips-1p36del-detected sendout-nips-22q11del-
+                        detected sendout-nips-5pdel-detected sendout-nips-
+                        female-4pdel-detected sendout-nips-female-no-
+                        microdeletions-detected sendout-nips-ff-less-than-one-
+                        percent sendout-nips-monosomy-x-detected sendout-nips-
+                        negative sendout-nips-negative-female sendout-nips-
+                        negative-high-risk sendout-nips-negative-male sendout-
+                        nips-negative-twin-y-detected sendout-nips-negative-
+                        twin-y-not-detected sendout-nips-results-not-ready
+                        sendout-nips-trisomy-13-suspected sendout-nips-
+                        trisomy-21-detected sendout-nips-trisomy-21-detected-
+                        multiple-indications sendout-nips-twin-y-detected-
+                        trisomy-18-and-15q11del-detected single-affected-hgmd-
+                        promoter-allele single-affected-mild single-alpha-
+                        thal-alphaplus-nondeletion-2-0 single-autosomal-
+                        recessive-affected single-cah-carrier single-cah-
+                        nocall single-carrier-aj-med17-fps3 single-carrier-
+                        autosomal-recessive single-carrier-dmd-fps3 single-
+                        carrier-gjb6-deletion-fps3 single-carrier-mild-
+                        autosomal single-carrier-mild-bche single-carrier-
+                        mild-x-linked single-carrier-multiple-cftr-variants-
+                        5t-e60x single-carrier-multiple-diseases-and-carrier-
+                        symptoms single-carrier-multiple-likely-deleterious-
+                        single-disease single-carrier-multiple-variants-
+                        single-disease single-carrier-symptoms-variant single-
+                        carrier-x-linked-non-fragile-x single-deprecated-
+                        disease-panel single-fragile-x-full-mutation single-
+                        fragile-x-hybrid single-fragile-x-intermediate single-
+                        fragile-x-male-hybrid single-fragile-x-premutation-
+                        and-non-fragile-x single-increased-risk-and-mild
+                        single-indeterminate single-ivs8-5t-indeterminate-
+                        force-ivs8 single-ivs8-5t-positive-force-ivs8 single-
+                        negative single-negative-no-indications single-
+                        negative-synlab single-positive-cf-synlab single-
+                        reclassified-whitelist-mpi-variant single-results-not-
+                        ready single-sma-neu-copynumber-2-snp-het-negative
+                        single-sma-only-carrier single-sma-only-silent-carrier
+                        single-sma-silent-carrier
   --scenario-like SCENARIO_LIKE
                         Like --scenario, but support partial matches.
   --healthcare-scenarios

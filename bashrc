@@ -1,9 +1,14 @@
 # brew bash complete
-PS1="\w\$(__git_ps1 \" $YELLOW(%s)$RESET\")\$ "
 test -f ~/.git-completion.bash && . $_
 test -f ~/.git-prompt.sh && . $_
 test -f /usr/share/bash-completion/bash_completion && . $_
 test -f ~/.bash/django_bash_completion.sh && . $_
+
+export YELLOW="$(tput setaf 3)"
+export GREEN="$(tput setaf 2)"
+export RED="$(tput setaf 1)"
+export RESET="$(tput sgr0)"
+PS1="\w\$(__git_ps1 \" $YELLOW(%s)$RESET\")\$ "
 GIT_PS1_SHOWDIRTYSTATE=1
 
 # Default editor
