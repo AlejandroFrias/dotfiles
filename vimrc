@@ -344,10 +344,6 @@ noremap <Right> 10zl
 noremap <C-E> 5<C-E>
 noremap <C-Y> 5<C-Y>
 
-" Wrapped lines goes down/up to next row, rather than next line in file.
-noremap j gj
-noremap k gk
-
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
