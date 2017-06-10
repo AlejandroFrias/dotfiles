@@ -435,6 +435,25 @@ endfunction
 nnoremap <silent> <leader>cgd :call GitDiffNameOnly("master")<CR>
 vnoremap <silent> <leader>cgd "ty:call GitDiffNameOnly(getreg("t"))<CR>
 
+function! ChompedSystem( ... )
+    return substitute(call('system', a:000), '\n\+$', '', '')
+endfunction
+
+function! GitHubURL(regname) range
+    let path = expand('%')
+    let branch = ChompedSystem("git rev-parse --abbrev-ref HEAD")
+    let remote_url = ChompedSystem("git config --get remote.origin.url")
+    " extract domain and repo from both ssh and https style remote urls
+    let domain = substitute(remote_url, '\(git@\|https://\)\([a-z.]*\)\(:\|/\).*', '\2', '')
+    let repo = substitute(remote_url, '.*'.domain.'\(:\|/\)\([a-zA-Z0-9/]*\)\(\.git\)\?', '\2', '')
+    let github_url = "https://".domain."/".repo."/blob/".branch."/".path."#L".a:firstline."-L".a:lastline
+    call setreg(a:regname, github_url."\n")
+    echom github_url
+endfunction
+" Copy GitHubURL to register and echo at bottom of screen
+nnoremap <silent> <leader>ig :call GitHubURL(v:register)<CR>
+vnoremap <silent> <leader>ig :call GitHubURL(v:register)<CR>
+
 """"""""""""""""""""
 " Counsyl specific "
 """"""""""""""""""""
