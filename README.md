@@ -17,6 +17,7 @@ sh install.sh
   * `git` - git is used to install vim/tmux plugins
   * `vim` - Using version 8.0
   * `tmux` - Using version 2.1
+  * `ctags` - Exuberant Ctags 5.9~svn20110310
   * `iterm2` (optional) - If you have iterm2 installed, you'll get my custom profiles and key mappings!
 
 ## Sublime
@@ -30,7 +31,7 @@ No automatic installation has been setup for this.
 Django has bash completion, but if you're `./manage.py` script takes a long time to run `help`, then
 the built-in bash completion is too slow to be useful. My bash completion simply saves the output of
 `./manage.py help <subcommand>` and parses the saved output of `help` instead of needed to generate
-it on each autocomplete attempt. 
+it on each autocomplete attempt.
 
 Here's how to cherry pick my ./manage.py bash completion.
 ```
