@@ -87,17 +87,42 @@ function _get_stash_name() {
         echo $stash_name
     fi
 }
+function _convert_stash_number() {
+    local re='^[0-9]+$'
+    local args=()
+    local var
+    for var in "$@";
+    do
+        if [[ $var =~ $re ]]; then
+            args+=("stash@{$var}");
+        else
+            args+=("$var");
+        fi;
+    done;
+    echo "${args[@]}"
+}
+function _contains_stash_number() {
+    local re='^([0-9]+|stash@\{[0-9]+\})$'
+    local var
+    for var in "$@";
+    do
+        if [[ $var =~ $re ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
 function _gst_action() {
-    if [[ -z $2 ]]; then
+    local args=("$@")
+    _contains_stash_number "${args[@]}"
+    if [[ $? == 1 ]]; then
         gstlist
         echo "Select stash number to "$1":"
         read stash_number
-    else
-        stash_number=$2
+        args+=($stash_number)
     fi
-    stash_name=$(_get_stash_name $stash_number)
-    echo git stash $1 $stash_name
-    git stash $1 $stash_name
+    echo git stash $(_convert_stash_number "${args[@]}")
+    git stash $(_convert_stash_number "${args[@]}")
 }
 function gstshow() {
     _gst_action show "$@"
