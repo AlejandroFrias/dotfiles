@@ -116,6 +116,7 @@ Available subcommands:
     create_command
     create_jobs
     create_template_tags
+    delete_squashed_migrations
     describe_form
     drop_test_database
     dumpscript
@@ -216,6 +217,7 @@ Available subcommands:
     my_fakeresultsscenarios
     my_populate_customerprofile_uuid
     my_populate_ethnicity
+    my_update_disease_book_factsheet
     my_update_test_report_data
 
 [mynomics]

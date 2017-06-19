@@ -4,7 +4,6 @@ usage: manage.py my_update_test_report_data [-h] [--version] [-v {0,1,2,3}]
                                             [--traceback] [--no-color]
                                             [--no-pdf-html] [--no-emr-json]
                                             [--no-api-json] [--no-hl7]
-                                            [--no-diseasebook]
                                             [--scenario SCENARIO]
                                             [--scenario-like SCENARIO_LIKE]
                                             [--healthcare-scenarios] [--reuse]
@@ -43,7 +42,6 @@ optional arguments:
   --no-emr-json         Do not generate EMR JSON files.
   --no-api-json         Do not generate Report API JSON files.
   --no-hl7              Do not generate HL7 files.
-  --no-diseasebook      Do not generate disease book files.
   --scenario SCENARIO   Limit update to specific scenarios. Default is all.
                         This option can be applied multiple times to select
                         multiple scenarios. Available scenario names are:

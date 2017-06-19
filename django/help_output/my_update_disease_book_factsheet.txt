@@ -1,0 +1,30 @@
+usage: manage.py my_update_disease_book_factsheet [-h] [--version]
+                                                  [-v {0,1,2,3}]
+                                                  [--settings SETTINGS]
+                                                  [--pythonpath PYTHONPATH]
+                                                  [--traceback] [--no-color]
+                                                  [--no-diseasebook]
+                                                  [--no-factsheet]
+
+This management command regenerates the disease book and the factsheet. There
+is a pipeline you can run that will generate these along with all other golden
+files. Instruction: http://discourse.counsyl.com/t/how-do-i-create-the-golden-
+files-using-the-test-report-data-pipeline/601/2. # nopep8
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+  --settings SETTINGS   The Python path to a settings module, e.g.
+                        "myproject.settings.main". If this isn't provided, the
+                        DJANGO_SETTINGS_MODULE environment variable will be
+                        used.
+  --pythonpath PYTHONPATH
+                        A directory to add to the Python path, e.g.
+                        "/home/djangoprojects/myproject".
+  --traceback           Raise on CommandError exceptions
+  --no-color            Don't colorize the command output.
+  --no-diseasebook      Do not generate disease book files.
+  --no-factsheet        Do not generate factsheet files.
