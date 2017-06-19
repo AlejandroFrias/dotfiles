@@ -29,12 +29,12 @@ _django_completion()
                                     fi
                                     ;;
                                 *)
-                                    COMPREPLY=($(grep "^  -" $HOME/.django/help_output/${COMP_WORDS[1]}.txt | sed -e 's/^  .*\(--[-a-z]\+,\?\).*$/\1/' | grep "^$2" | sort| awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
+                                    COMPREPLY=($(grep "^  -" $HOME/.django/help_output/${COMP_WORDS[1]}.txt | sed -e 's/^  .*\(--[-a-z0-9]\+,\?\).*$/\1/' | grep "^$2" | sort| awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
                                     ;;
                             esac
                             ;;
                         *)
-                            COMPREPLY=($(grep "^  -" $HOME/.django/help_output/${COMP_WORDS[1]}.txt | sed -e 's/^  .*\(--[-a-z]\+,\?\).*$/\1/' | grep "^$2" | sort| awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
+                            COMPREPLY=($(grep "^  -" $HOME/.django/help_output/${COMP_WORDS[1]}.txt | sed -e 's/^  .*\(--[-a-z0-9]\+,\?\).*$/\1/' | grep "^$2" | sort| awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
                             ;;
                     esac
                     ;;
