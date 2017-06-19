@@ -37,7 +37,7 @@ Here's how to cherry pick my ./manage.py bash completion.
 ```
 git clone https://github.com/AlejandroFrias/dotfiles.git
 mv dotfiles/django ~/.django
-mv bash/django_bash_completion.sh ~/.django_bash_completion.sh
+mv dotfiles/bash/django_bash_completion.sh ~/.django_bash_completion.sh
 echo "source ~/.django_bash_completeion.sh" >> ~/.bashrc
 ```
 
