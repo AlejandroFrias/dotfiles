@@ -28,7 +28,7 @@ No automatic installation has been setup for this.
 
 ## How to cherry pick Counsyl ./manage.py bash completeion
 
-Django has bash completion, but if you're `./manage.py` script takes a long time to run `help`, then
+Django has bash completion, but if your `./manage.py` script takes a long time to run `help`, then
 the built-in bash completion is too slow to be useful. My bash completion simply saves the output of
 `./manage.py help <subcommand>` and parses the saved output of `help` instead of needed to generate
 it on each autocomplete attempt.

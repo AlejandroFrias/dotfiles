@@ -11,6 +11,12 @@ nnoremap <bar> 79<bar>
 let @o = '  # nopep8'
 let @p = 'mp$"op`p'
 
+
+" Copy import statement to register for word under cursor
+nnoremap <silent> <leader>ii :call ftplugin#python#ImportPath(v:register)<CR>
+" Copy test path to register for word under cursor
+nnoremap <silent> <leader>it :call ftplugin#python#TestPath(v:register)<CR>
+
 """"""""""""""""""""""""""""""""
 " Better code block navigation "
 """"""""""""""""""""""""""""""""
@@ -22,15 +28,3 @@ noremap <silent> [i 0?^\s*if \\|^\s*elif \\|^\s*else:<CR>^
 " next/prev vaiable definition
 noremap <silent> ]v /^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
 noremap <silent> [v 0?^\s*[a-zA-Z_][a-zA-Z_0-9]* = <CR>^
-
-" Grep for possible definition declarations of word under cursor
-" nnoremap <silent> <leader>gd :call ftplugin#python#GoToDefinition()<CR>
-
-""""""""""""""""""""
-" Counsyl specific "
-""""""""""""""""""""
-
-" Copy import statement to register for word under cursor
-nnoremap <silent> <leader>ii :call ftplugin#python#CounsylImport(v:register)<CR>
-" Copy test path to register for word under cursor
-nnoremap <silent> <leader>it :call ftplugin#python#CounsylTestPath(v:register)<CR>

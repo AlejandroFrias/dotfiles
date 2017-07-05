@@ -99,11 +99,8 @@ def create_counsyl_import(view, symbol, locations):
             path_words.remove("__init__")
 
         path = ".".join(path_words)
-        import_statement = "from " + path + " import " + symbol
-        if len(import_statement) > 79:
-            import_statement += "  # nopep8"
-
-        return import_statement + "\n"
+        import_statement = "from " + path + " import " + symbol + "\n"
+        return import_statement
 
     def insert_import(window, l):
         view.run_command(
