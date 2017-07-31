@@ -22,13 +22,13 @@ endfunction
 function! ftplugin#python#ImportPath(regname)
     " Create import string for word under cursor
     let import_string = "from ".ftplugin#python#PythonPath()." import ".expand("<cword>")
-    let import_string = import_string."\n"
-    call setreg(a:regname, import_string)
+    let import_string = import_string
+    call setreg(a:regname, import_string."\n")
     echom import_string
 endfunction
 function! ftplugin#python#TestPath(regname)
     " TODO: be smart and recognize being in a TestCase class
     let test_path = ftplugin#python#PythonPath().":".expand("<cword>")
-    call setreg(a:regname, test_path)
+    call setreg(a:regname, test_path."\n")
     echom test_path
 endfunction

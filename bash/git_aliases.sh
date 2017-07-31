@@ -1,3 +1,23 @@
+########################
+#     Git aliases      #
+########################
+alias g='git'
+git config --global alias.ch checkout
+git config --global alias.chb checkout -b
+git config --global alias.b branch
+git config --global alias.s status
+git config --global alias.st stash
+git config --global alias.stsave stash save
+git config --global alias.d diff
+git config --global alias.c commit
+git config --global alias.cm commit -m
+git config --global alias.cam commit -am
+
+
+########################
+# Custom git shortcuts #
+########################
+alias gupdate='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias ga='git add'
 alias gc='git commit'
 alias gcm='git commit -m'
@@ -12,7 +32,6 @@ alias gst='git stash'
 alias gstsave='git stash save'
 alias gstunstaged='git stash save --keep-index'
 alias gstuntracked='git stash save --include-untracked'
-alias gstall='git stash save --all'
 function gbd () {
     SUCCESS=false
     if [[ $1 == -D ]]; then
@@ -162,7 +181,6 @@ function gcam() {
     echo git commit -am "$message"
     git commit -am "$message"
 }
-alias gupdate='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 function gpush() {
     force=false
     current_branch=$(git rev-parse --abbrev-ref HEAD)
