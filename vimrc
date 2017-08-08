@@ -56,6 +56,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/gitignore'
 Plugin 'vimwiki/vimwiki'
+Plugin 'Yggdroot/indentLine'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -63,25 +64,18 @@ filetype plugin indent on    " required
 """"""""""""""""""
 " TOGGLE OPTIONS "
 """"""""""""""""""
-" Shortcut for toggling options
-function! MapToggle(key, opt)
-  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
-  exec 'nnoremap '.a:key.' '.cmd
-endfunction
-command! -nargs=+ MapToggle call MapToggle(<f-args>)
-
 " Display altering toggle options
-MapToggle <F1> hlsearch
-MapToggle <F2> wrap
-MapToggle <F3> list
-MapToggle <F4> relativenumber
-nnoremap <F5> :set cursorline! \| set cursorline?<CR>:set cursorcolumn! \| set cursorcolumn?<CR>
+nnoremap <silent> <F1> :set hlsearch! \| set hlsearch?<CR>
+nnoremap <silent> <F2> :set wrap! \| set wrap?<CR>
+nnoremap <silent> <F3> :set list! \| set list?<CR>:IndentLinesToggle<CR>
+nnoremap <silent> <F4> :set relativenumber! \| set relativenumber?<CR>
+nnoremap <silent> <F5> :set cursorline! \| set cursorline?<CR>:set cursorcolumn! \| set cursorcolumn?<CR>
 
-" Behavior-altering option toggles
-MapToggle <F9> scrollbind
-MapToggle <F10> spell
-MapToggle <F11> ignorecase
-MapToggle <F12> paste
+" Behaviosilent r-altering option toggles
+nnoremap <silent> <F9> :set scrollbind! \| set scrollbind?<CR>
+nnoremap <silent> <F10> :set spell! \| set spell?<CR>
+nnoremap <silent> <F11> :set ignorecase! \| set ignorecase?<CR>
+nnoremap <silent> <F12> :set paste! \| set paste?<CR>
 
 " toggle option defaults and settings
 set spell
@@ -105,6 +99,8 @@ autocmd InsertLeave * set relativenumber
 " General Settings "
 """"""""""""""""""""
 let mapleader=" "
+syntax on
+set timeoutlen=3000 ttimeoutlen=100
 
 " closetag.vim. <C-_> auto closes html/xml tags
 autocmd FileType html,xml,xsl source ~/.vim/scripts/closetag.vim
@@ -113,21 +109,16 @@ autocmd FileType html,xml,xsl source ~/.vim/scripts/closetag.vim
 " folder
 set tags=.git/tags
 
-" my preferred settings for text files, should be overridden if vim picks up
+set softtabstop=4
 set tabstop=4
-" the filetype
 set shiftwidth=4
 set expandtab
-
-syntax on
 
 " allow copy/paste to interact with system clipboard
 set clipboard=unnamed
 
 set scrolloff=1
 set sidescrolloff=0
-
-set timeoutlen=3000 ttimeoutlen=100
 
 set autoread
 
@@ -144,7 +135,7 @@ set wildmode=longest:full               " prefix matching for wildmenu
 set completeopt+=longest                " insert up to the matched prefix
 set wildignore+=*.class,*.o,*.pyc,*.git,*/venv/*,*.swp " unlikely to want to match these
 
-set backspace=2 " make backspace work like most other apps
+set backspace=2 " make backspace work like most other editors
 
 set confirm  " prompt a confirm message when switching from a modified buffer
 
@@ -181,6 +172,14 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+
+"""""""""""""""""""""""
+" indentLine Settings "
+"""""""""""""""""""""""
+let g:indentLine_color_term = 239
+let g:indentLine_bgcolor_term = 235
+let g:indentLine_char = '┆'
+let g:indentLine_enabled = 0   "don't use indentLine by default
 
 """""""""""""""""""""""
 " EasyMotion Settings "
