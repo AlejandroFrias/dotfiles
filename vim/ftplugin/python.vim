@@ -4,6 +4,7 @@ setlocal shiftwidth=4
 setlocal expandtab
 setlocal textwidth=79
 setlocal softtabstop=4
+setlocal colorcolumn=80
 
 nnoremap <bar> 79<bar>
 
