@@ -212,6 +212,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """"""""""""""""""
 " Theme Settings "
 """"""""""""""""""
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
 syntax enable     " Use syntax highlighting
 set background=dark
 let g:solarized_termcolors = 256
@@ -235,10 +237,6 @@ nnoremap <C-W>+ <C-W>\|<C-W>_
 " Duplicates line
 nnoremap <leader>p Yp
 vnoremap <leader>p y`]p
-
-" Keep visual selection when indenting
-vnoremap < <gv
-vnoremap > >gv
 
 " Quickfix Shortcuts
 nnoremap <silent> <leader>co :copen<CR>
