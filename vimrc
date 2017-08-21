@@ -33,7 +33,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'  " Git integration
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -139,6 +139,10 @@ set backspace=2 " make backspace work like most other editors
 
 set confirm  " prompt a confirm message when switching from a modified buffer
 
+" Close location list or quickfix when selecting file
+autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>
+
+
 """"""""""""""""""""
 " SuperTab Settings "
 """""""""""""""""""""
@@ -225,9 +229,6 @@ endif
 """""""""""""""""""""""
 " Custom Key Mappings "
 """""""""""""""""""""""
-" Quick exit insert and undo
-inoremap <C-Z> <ESC>u
-
 " Full screen vim window
 nnoremap <C-W>+ <C-W>\|<C-W>_
 
@@ -235,13 +236,10 @@ nnoremap <C-W>+ <C-W>\|<C-W>_
 nnoremap <leader>p Yp
 vnoremap <leader>p y`]p
 
-" Undo-able insert mode shortcuts
-inoremap <c-w> <c-g>u<c-w>
-inoremap <c-u> <c-g>u<c-u>
+" Keep visual selection when indenting
+vnoremap < <gv
+vnoremap > >gv
 
-""""""""""""""""""""""""""""""""""""""""
-" Quickfix and Location List shortcuts "
-""""""""""""""""""""""""""""""""""""""""
 " Quickfix Shortcuts
 nnoremap <silent> <leader>co :copen<CR>
 nnoremap <silent> <leader>cq :cclose<CR>
@@ -258,9 +256,6 @@ nnoremap <silent> <leader>vl :llast<CR>
 nnoremap <silent> <leader>vn :lnext<CR>
 nnoremap <silent> <leader>vp :lprevious<CR>
 
-" Close location list or quickfix when selecting file
-autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>
-
 " Marks
 nnoremap <leader>m :marks 'qwertyuiopasdfghjklzxcvbnm0123456789\"[]^.<CR>:normal `
 nnoremap <leader>M :marks QWERTYUIOPASDFGHJKLZXCVBNM<CR>:normal `
@@ -270,14 +265,6 @@ noremap - $
 vnoremap - $h
 noremap 0 ^
 noremap _ 0
-
-" Quicker line jumps
-nnoremap <CR> G
-vnoremap <CR> G
-nnoremap <BS> gg
-vnoremap <BS> gg
-autocmd CmdwinEnter * nnoremap <CR> <CR>
-autocmd BufReadPost quickfix noremap <CR> G
 
 " Insert a single character
 function! RepeatChar(char, count)
@@ -310,9 +297,6 @@ inoremap <C-Q> <ESC>:wq<CR>
 " Exit insert mode
 inoremap jk <ESC>
 
-" Undo but stay in insert mode
-inoremap <C-U> <C-O>u
-
 "" BUFFER/WINDOW MADNESS
 " List and switch buffers
 nnoremap <leader>bb :ls<CR>:b<space>
@@ -328,7 +312,7 @@ nnoremap <leader>bq :call BufferDelete()<CR>
 " Go to next/previous buffer
 nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bn :bnext<CR>
-" Sqitch to last used buffer
+" Switch to last used buffer
 nnoremap <leader>bl :e#<CR>
 
 " Easy quit
@@ -340,8 +324,6 @@ noremap <Down> 5<C-E>
 noremap <Up> 5<C-Y>
 noremap <Left> 10zh
 noremap <Right> 10zl
-noremap <C-E> 5<C-E>
-noremap <C-Y> 5<C-Y>
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
@@ -352,6 +334,7 @@ map q: :q
 " macro for the ubiquitous 'n.'
 let @n = "n."
 
+" System call, but chomp off newline
 function! ChompedSystem( ... )
     return substitute(call('system', a:000), '\n\+$', '', '')
 endfunction
