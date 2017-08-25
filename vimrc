@@ -67,11 +67,11 @@ filetype plugin indent on    " required
 " Display altering toggle options
 nnoremap <silent> <F1> :set hlsearch! \| set hlsearch?<CR>
 nnoremap <silent> <F2> :set wrap! \| set wrap?<CR>
-nnoremap <silent> <F3> :set list! \| set list?<CR>:IndentLinesToggle<CR>
+nnoremap <silent> <F3> :if &list == 0 \| set list \| execute 'IndentLinesEnable' \| else \| set nolist \| execute 'IndentLinesDisable' \| endif<CR>
 nnoremap <silent> <F4> :set relativenumber! \| set relativenumber?<CR>
 nnoremap <silent> <F5> :set cursorline! \| set cursorline?<CR>:set cursorcolumn! \| set cursorcolumn?<CR>
 
-" Behaviosilent r-altering option toggles
+" Behavior-altering option toggles
 nnoremap <silent> <F9> :set scrollbind! \| set scrollbind?<CR>
 nnoremap <silent> <F10> :set spell! \| set spell?<CR>
 nnoremap <silent> <F11> :set ignorecase! \| set ignorecase?<CR>
