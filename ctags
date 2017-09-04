@@ -9,4 +9,5 @@
 --exclude=*/thirdparty/*
 --exclude=*/fixtures/*
 --exclude=*/watched_assets/*
+--exclude=.*/*
 --python-kinds=-i
