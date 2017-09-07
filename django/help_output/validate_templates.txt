@@ -1,8 +1,8 @@
 usage: manage.py validate_templates [-h] [--version] [-v {0,1,2,3}]
                                     [--settings SETTINGS]
                                     [--pythonpath PYTHONPATH] [--traceback]
-                                    [--no-color] [--break] [--check-urls]
-                                    [--force-new-urls] [--include INCLUDES]
+                                    [--no-color] [--break]
+                                    [--include INCLUDES]
 
 Validate templates on syntax and compile errors
 
@@ -22,8 +22,5 @@ optional arguments:
   --traceback           Raise on CommandError exceptions
   --no-color            Don't colorize the command output.
   --break, -b           Break on first error.
-  --check-urls, -u      Check url tag view names are quoted appropriately
-  --force-new-urls, -n  Error on usage of old style url tags (without {% load
-                        urls from future %}
   --include INCLUDES, -i INCLUDES
                         Append these paths to TEMPLATE DIRS

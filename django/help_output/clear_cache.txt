@@ -1,6 +1,6 @@
 usage: manage.py clear_cache [-h] [--version] [-v {0,1,2,3}]
                              [--settings SETTINGS] [--pythonpath PYTHONPATH]
-                             [--traceback] [--no-color]
+                             [--traceback] [--no-color] [--cache CACHE]
 
 Fully clear site-wide cache.
 
@@ -19,3 +19,4 @@ optional arguments:
                         "/home/djangoprojects/myproject".
   --traceback           Raise on CommandError exceptions
   --no-color            Don't colorize the command output.
+  --cache CACHE         Name of cache to clear

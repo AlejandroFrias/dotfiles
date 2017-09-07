@@ -8,14 +8,14 @@ usage: manage.py load_internal_frequency_VCF [-h] [--version] [-v {0,1,2,3}]
                                              [--info-AC INFO_AC]
                                              [--info-AN INFO_AN]
                                              [--info-AF INFO_AF]
-                                             [args [args ...]]
+                                             VCF_file_name
 
 Load variants and HGMD mutations. This command assumes that all the alleles in
 the VCF are already in our database and the ID in the VCF is the allele ID in
 our DB.
 
 positional arguments:
-  args
+  VCF_file_name
 
 optional arguments:
   -h, --help            show this help message and exit

@@ -5,10 +5,10 @@ usage: manage.py sequencing_load_batch [-h] [--version] [-v {0,1,2,3}]
                                        [--skip_lane] [--dry-run]
                                        [--sample SAMPLE_IDENTIFIERS]
                                        [--no-homref]
-                                       [args [args ...]]
+                                       workdir
 
 positional arguments:
-  args
+  workdir
 
 optional arguments:
   -h, --help            show this help message and exit

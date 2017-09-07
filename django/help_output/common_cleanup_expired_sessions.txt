@@ -5,8 +5,6 @@ usage: manage.py common_cleanup_expired_sessions [-h] [--version]
                                                  [--traceback] [--no-color]
                                                  [--dry-run]
 
-Remove sessions that expired over 30 days ago.
-
 optional arguments:
   -h, --help            show this help message and exit
   --version             show program's version number and exit

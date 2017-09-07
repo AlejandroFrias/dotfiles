@@ -4,9 +4,6 @@ usage: manage.py load_sql_fixtures [-h] [--version] [-v {0,1,2,3}]
                                    [--no-color]
                                    [app-label [app-label ...]]
 
-Loads individual SQL fixtures into the current db. Used for local development
-only. See `cleandb`.
-
 positional arguments:
   app-label
 

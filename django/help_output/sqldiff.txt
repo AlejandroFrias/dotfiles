@@ -2,6 +2,7 @@ usage: manage.py sqldiff [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS]
                          [--pythonpath PYTHONPATH] [--traceback] [--no-color]
                          [--all-applications] [--not-only-existing]
                          [--dense-output] [--output_text]
+                         [--include-proxy-models]
                          [app_label [app_label ...]]
 
 Prints the (approximated) difference between models and fields in the database
@@ -39,3 +40,5 @@ optional arguments:
                         spreaded over multiple lines.
   --output_text, -t     Outputs the differences as descriptive text instead of
                         SQL
+  --include-proxy-models
+                        Include proxy models in the graph

@@ -10,12 +10,6 @@ Available subcommands:
     api_sf_sync
     sync_salesforce
 
-[assay]
-    process_batch
-    process_batches
-    reprocess_regression_batch
-    rotate_science_repos
-
 [auth]
     changepassword
     createsuperuser
@@ -193,7 +187,6 @@ Available subcommands:
     housecall_create_free_slots
     housecall_fake_housecall
     housecall_redo_link
-    housecall_test_signature
 
 [mail]
     mail_deprovision_faxage_number
@@ -261,12 +254,10 @@ Available subcommands:
     dump_allele_frequency_vcf
     dump_rerelease_info
     fix_flowcell_barcode
-    load_assay_regions
     load_external_frequency_VCF
     load_flowcell_manifest
     load_hgmd
     load_internal_frequency_VCF
-    queue_copy_and_load_seq_batchdata
     sequencing_dump_counsyl_alleles
     sequencing_dump_hgmd_alleles
     sequencing_fake_batch

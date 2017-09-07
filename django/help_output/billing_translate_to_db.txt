@@ -6,6 +6,7 @@ usage: manage.py billing_translate_to_db [-h] [--version] [-v {0,1,2,3}]
                                          [--dbpassword DBPASSWORD] [--verbose]
                                          [--num-procs NUM_PROCS]
                                          [--limit LIMIT] [--only ONLY]
+                                         [--only-update-current-with-schema SCHEMA]
                                          [--test]
                                          [args [args ...]]
 
@@ -47,6 +48,8 @@ optional arguments:
                         exported.
   --only ONLY           Only run translators whose names match this Python-
                         style regexp
+  --only-update-current-with-schema SCHEMA
+                        Only update the current schema from the given schema.
   --test                Run in test mode. Uses test database, creates roles
                         etc. Note, first run
                         billing_fakes_for_financedb_export.

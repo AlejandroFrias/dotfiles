@@ -2,8 +2,6 @@ usage: manage.py accountperms [-h] [--version] [-v {0,1,2,3}]
                               [--settings SETTINGS] [--pythonpath PYTHONPATH]
                               [--traceback] [--no-color]
 
-Create all required staff and user `Group`s and permissions for groups.
-
 optional arguments:
   -h, --help            show this help message and exit
   --version             show program's version number and exit

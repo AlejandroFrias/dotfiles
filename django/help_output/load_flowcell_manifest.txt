@@ -2,12 +2,12 @@ usage: manage.py load_flowcell_manifest [-h] [--version] [-v {0,1,2,3}]
                                         [--settings SETTINGS]
                                         [--pythonpath PYTHONPATH]
                                         [--traceback] [--no-color]
-                                        [args [args ...]]
+                                        filenames [filenames ...]
 
 Load FlowCell manifest file.
 
 positional arguments:
-  args
+  filenames
 
 optional arguments:
   -h, --help            show this help message and exit

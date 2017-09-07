@@ -2,10 +2,10 @@ usage: manage.py sequencing_fake_batch [-h] [--version] [-v {0,1,2,3}]
                                        [--settings SETTINGS]
                                        [--pythonpath PYTHONPATH] [--traceback]
                                        [--no-color] [-f] [-a ASSAY_SUBTYPE]
-                                       [args [args ...]]
+                                       manifest_file
 
 positional arguments:
-  args
+  manifest_file
 
 optional arguments:
   -h, --help            show this help message and exit

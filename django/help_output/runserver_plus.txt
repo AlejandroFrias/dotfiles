@@ -6,9 +6,10 @@ usage: manage.py runserver_plus [-h] [--version] [-v {0,1,2,3}]
                                 [--output OUTPUT_FILE] [--print-sql]
                                 [--cert CERT_PATH] [--extra-file EXTRA_FILES]
                                 [--reloader-interval RELOADER_INTERVAL]
-                                [--pdb] [--ipdb] [--pm]
+                                [--reloader-type RELOADER_TYPE] [--pdb]
+                                [--ipdb] [--pm]
                                 [--startup-messages STARTUP_MESSAGES]
-                                [--keep-meta-shutdown] [--nostatic]
+                                [--keep-meta-shutdown] [--nopin] [--nostatic]
                                 [--insecure]
                                 [addrport]
 
@@ -47,6 +48,9 @@ optional arguments:
   --reloader-interval RELOADER_INTERVAL
                         After how many seconds auto-reload should scan for
                         updates in poller-mode [default=1]
+  --reloader-type RELOADER_TYPE
+                        Werkzeug reloader type [options are auto, watchdog, or
+                        stat, default=auto]
   --pdb                 Drop into pdb shell at the start of any view.
   --ipdb                Drop into ipdb shell at the start of any view.
   --pm                  Drop into (i)pdb shell if an exception is raised in a
@@ -58,6 +62,7 @@ optional arguments:
                         which is automatically removed because Django debug
                         pages tries to call the function and unintentionally
                         shuts down the Werkzeug server.
+  --nopin               Disable the PIN in werkzeug. USE IT WISELY!
   --nostatic            Tells Django to NOT automatically serve static files
                         at STATIC_URL.
   --insecure            Allows serving static files even if DEBUG is False.
