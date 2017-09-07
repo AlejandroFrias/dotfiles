@@ -45,6 +45,18 @@ usage: manage.py my_createprofile [-h] [--version] [-v {0,1,2,3}]
                                   [--save-pdf SAVE_PDF]
                                   [args [args ...]]
 
+Create a single fake account. Example: ./manage.py my_createprofile
+family@counsyl.com --state=complete Summary of how order registration/claiming
+works with this command: email provided | --with-account | effect
+-------------------|----------------|-----------------------------------------
+no | no | Create an unclaimed profile without an | | email | | no | yes |
+Create an account with a random email and | | claim the profile | | yes
+doesn't exist | no | Create an unclaimed profile with the | | provided email |
+| yes doesn't exist | yes | Create an account with the provided email | | and
+claim the profile | | yes exists | no | Create an unclaimed profile with the |
+| provided email | | yes exists | yes | Get the account with the provided
+email | | and claim the profile
+
 positional arguments:
   args
 
@@ -78,8 +90,8 @@ optional arguments:
                         Select the desired disease panel.
   --product {family-prep-screen,inherited-cancer-screen,informed-pregnancy-screen}
                         Select a disease panel by product slug. This will
-                        currently select the Universal Panel for the Family
-                        Prep Screen.
+                        currently select the Universal Panel for the carrier
+                        screen.
   --fragile_x           Include Fragile X.
   --collection-type COLLECTION_TYPE
                         Select 'saliva', 'extracted_dna', or 'blood'.
@@ -89,8 +101,7 @@ optional arguments:
                         Patient has declined/scheduled/completed housecall.
   --additional-owner-product {family-prep-screen,inherited-cancer-screen,informed-pregnancy-screen}
                         Add additional products to the owner. Currently only
-                        supports adding the Informed Pregnant Screen to the
-                        Family Prep Screen.
+                        supports adding the NIPS screen to the carrier screen.
   --bill-type {cc,in,cnsmt}
                         Select which bill type (either credit card or
                         insurance. Default: cc

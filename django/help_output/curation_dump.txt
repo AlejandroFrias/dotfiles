@@ -2,6 +2,8 @@ usage: manage.py curation_dump [-h] [--version] [-v {0,1,2,3}]
                                [--settings SETTINGS] [--pythonpath PYTHONPATH]
                                [--traceback] [--no-color]
 
+Dump curation models to essential sql fixtures.
+
 optional arguments:
   -h, --help            show this help message and exit
   --version             show program's version number and exit

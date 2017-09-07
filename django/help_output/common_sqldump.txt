@@ -4,10 +4,6 @@ usage: manage.py common_sqldump [-h] [--version] [-v {0,1,2,3}]
                                 [--no-color]
                                 app_label [app_label ...]
 
-Prints the CREATE TABLE, custom SQL and CREATE INDEX SQL statements for all
-installed apps that contain models. File is cloned from
-django/core/management/commands/sqlall.py
-
 positional arguments:
   app_label             One or more application label.
 

@@ -4,10 +4,10 @@ usage: manage.py sequencing_load_metrics [-h] [--version] [-v {0,1,2,3}]
                                          [--traceback] [--no-color]
                                          [--skip_sample] [--skip_lane]
                                          [--dry-run]
-                                         [args [args ...]]
+                                         workdir
 
 positional arguments:
-  args
+  workdir
 
 optional arguments:
   -h, --help            show this help message and exit

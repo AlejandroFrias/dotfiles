@@ -3,10 +3,10 @@ usage: manage.py sequencing_dump_counsyl_alleles [-h] [--version]
                                                  [--settings SETTINGS]
                                                  [--pythonpath PYTHONPATH]
                                                  [--traceback] [--no-color]
-                                                 [args [args ...]]
+                                                 output_vcf
 
 positional arguments:
-  args
+  output_vcf
 
 optional arguments:
   -h, --help            show this help message and exit

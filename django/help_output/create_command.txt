@@ -1,7 +1,8 @@
 usage: manage.py create_command [-h] [--version] [-v {0,1,2,3}]
                                 [--settings SETTINGS]
                                 [--pythonpath PYTHONPATH] [--traceback]
-                                [--no-color] [--name COMMAND_NAME] [--dry-run]
+                                [--no-color] [--name COMMAND_NAME]
+                                [--base BASE_COMMAND] [--dry-run]
                                 app_label [app_label ...]
 
 Creates a Django management command directory structure for the given app name
@@ -27,4 +28,7 @@ optional arguments:
   --no-color            Don't colorize the command output.
   --name COMMAND_NAME, -n COMMAND_NAME
                         The name to use for the management command
+  --base BASE_COMMAND, -b BASE_COMMAND
+                        The base class used for implementation of this
+                        command. Should be one of Base, App, Label, or NoArgs
   --dry-run             Do not actually create any files

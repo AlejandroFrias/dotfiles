@@ -1,17 +1,18 @@
 usage: manage.py runprofileserver [-h] [--version] [-v {0,1,2,3}]
                                   [--settings SETTINGS]
                                   [--pythonpath PYTHONPATH] [--traceback]
-                                  [--no-color] [--noreload]
+                                  [--no-color] [--noreload] [--nothreading]
                                   [--prof-path PROF_PATH]
                                   [--prof-file PROF_FILE] [--nomedia]
                                   [--use-cprofile] [--kcachegrind]
                                   [--nostatic] [--insecure]
-                                  [args [args ...]]
+                                  [args [args ...]] [addrport]
 
 Starts a lightweight Web server with profiling enabled.
 
 positional arguments:
   args
+  addrport              Optional port number, or ipaddr:port
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -29,6 +30,7 @@ optional arguments:
   --traceback           Raise on CommandError exceptions
   --no-color            Don't colorize the command output.
   --noreload            Tells Django to NOT use the auto-reloader.
+  --nothreading         Tells Django to NOT use threading.
   --prof-path PROF_PATH
                         Specifies the directory which to save profile
                         information in.

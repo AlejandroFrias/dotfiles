@@ -2,10 +2,10 @@ usage: manage.py sequencing_dump_hgmd_alleles [-h] [--version] [-v {0,1,2,3}]
                                               [--settings SETTINGS]
                                               [--pythonpath PYTHONPATH]
                                               [--traceback] [--no-color]
-                                              [args [args ...]]
+                                              output_vcf
 
 positional arguments:
-  args
+  output_vcf
 
 optional arguments:
   -h, --help            show this help message and exit

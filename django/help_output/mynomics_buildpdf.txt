@@ -8,6 +8,14 @@ usage: manage.py mynomics_buildpdf [-h] [--version] [-v {0,1,2,3}]
                                    [--no-fulltable]
                                    [args [args ...]]
 
+Generate the PDF `Result` for a CustomerProfile given an email. This command
+assumes that report data has already been loaded for the account. * If no
+previous report has been created a new report will be generated. * If the
+latest report has not been released to the phsyician, the original report will
+be rescinded and a new report will be generated. * If the latest report has
+already been released to the physician, then the report must be updated (and
+the original is preserved). The updated report requires a reason and type.
+
 positional arguments:
   args
 

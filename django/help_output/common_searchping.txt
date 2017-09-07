@@ -3,9 +3,6 @@ usage: manage.py common_searchping [-h] [--version] [-v {0,1,2,3}]
                                    [--pythonpath PYTHONPATH] [--traceback]
                                    [--no-color]
 
-Management command to ping all the primary search engines of an update to the
-sitemap.xml and trigger a recrawl.
-
 optional arguments:
   -h, --help            show this help message and exit
   --version             show program's version number and exit

@@ -4,10 +4,10 @@ usage: manage.py sequencing_update_seq_alleles [-h] [--version] [-v {0,1,2,3}]
                                                [--traceback] [--no-color]
                                                [--force-genes]
                                                [--force-snpeff]
-                                               [args [args ...]]
+                                               vcf_files [vcf_files ...]
 
 positional arguments:
-  args
+  vcf_files
 
 optional arguments:
   -h, --help            show this help message and exit

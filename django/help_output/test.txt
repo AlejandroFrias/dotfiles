@@ -18,17 +18,21 @@ usage: manage.py test [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS]
                       [--selenium-config-preset SELENIUM_CONFIG_PRESET]
                       [--selenium-remote-driver-url SELENIUM_REMOTE_DRIVER_URL]
                       [--selenium-liveserver-external-url SELENIUM_LIVESERVER_EXTERNAL_URL]
-                      [--with-seleniumnosefilter] [--with-counsyldoctest]
-                      [--doctest-tests] [--doctest-extension EXT]
-                      [--doctest-result-variable VAR]
-                      [--doctest-fixtures SUFFIX] [--doctest-options OPTIONS]
-                      [--with-memory-usage]
+                      [--with-seleniumnosefilter] [--with-memory-usage]
                       [--memory-usage-file MEMORY_USAGE_FILE]
                       [--memory-usage-no-truncate] [--memory-usage-no-sort]
-                      [--with-fixture-bundling] [-a ATTR] [-A EXPR] [-s]
-                      [--nologcapture] [--logging-format FORMAT]
-                      [--logging-datefmt FORMAT] [--logging-filter FILTER]
-                      [--logging-clear-handlers]
+                      [--with-fixture-bundling] [--with-progressive]
+                      [--progressive-editor EDITOR] [--progressive-abs]
+                      [--progressive-advisories] [--progressive-with-styling]
+                      [--progressive-with-bar]
+                      [--progressive-function-color FUNCTION_COLOR]
+                      [--progressive-dim-color DIM_COLOR]
+                      [--progressive-bar-filled-color BAR_FILLED_COLOR]
+                      [--progressive-bar-empty-color BAR_EMPTY_COLOR]
+                      [--progressive-editor-shortcut-template EDITOR_SHORTCUT_TEMPLATE]
+                      [-a ATTR] [-A EXPR] [-s] [--nologcapture]
+                      [--logging-format FORMAT] [--logging-datefmt FORMAT]
+                      [--logging-filter FILTER] [--logging-clear-handlers]
                       [--logging-level LOGCAPTURE_LEVEL] [--with-coverage]
                       [--cover-package PACKAGE] [--cover-erase]
                       [--cover-tests]
@@ -37,6 +41,9 @@ usage: manage.py test [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS]
                       [--cover-html-dir DIR] [--cover-branches] [--cover-xml]
                       [--cover-xml-file FILE] [--pdb] [--pdb-failures]
                       [--pdb-errors] [--no-deprecated] [--with-doctest]
+                      [--doctest-tests] [--doctest-extension EXT]
+                      [--doctest-result-variable VAR]
+                      [--doctest-fixtures SUFFIX] [--doctest-options OPTIONS]
                       [--with-isolation] [-d] [--with-profile]
                       [--profile-sort SORT] [--profile-stats-file FILE]
                       [--profile-restrict RESTRICT] [--no-skip] [--with-id]
@@ -45,8 +52,8 @@ usage: manage.py test [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS]
                       [--with-xunit] [--xunit-file FILE]
                       [--xunit-testsuite-name PACKAGE] [--all-modules]
                       [--collect-only] [--run-all] [--no-clean] [--no-destroy]
-                      [--retest] [--no-test-db] [--shufflemonkey]
-                      [--enable-all-loggers] [--no-compile-assets]
+                      [--retest] [--no-test-db] [--enable-all-loggers]
+                      [--no-compile-assets]
                       [test_label [test_label ...]]
 
 Discover and run tests in the specified modules or the current directory.
@@ -190,8 +197,10 @@ optional arguments:
                         Selenium driver config preset, choose one from: local-
                         chrome, local-chrome-xvfb, local-firefox, local-
                         phantomjs, remote-android-nexus7, remote-chrome,
-                        remote-firefox, remote-ie10, remote-ie11, remote-ie8,
-                        remote-ie9, remote-ipad, remote-iphone
+                        remote-chrome-mobile, remote-edge-win10, remote-
+                        firefox, remote-ie10, remote-ie11, remote-ie11-win7,
+                        remote-ie8, remote-ie9, remote-ipad, remote-iphone,
+                        remote-iphone6-ios10, remote-iphone6-ios9
   --selenium-remote-driver-url SELENIUM_REMOTE_DRIVER_URL
                         Selenium remote driver URL
   --selenium-liveserver-external-url SELENIUM_LIVESERVER_EXTERNAL_URL
@@ -209,27 +218,6 @@ optional arguments:
                         to pick up both legacy SeleniumBase and
                         selenium_setup_helper's SeleniumDjangoTestCase tests.
                         [NOSE_WITH_SELENIUMNOSEFILTER]
-  --with-counsyldoctest
-                        Enable plugin CounsylDoctest: (no help available)
-                        [NOSE_WITH_COUNSYLDOCTEST]
-  --doctest-tests       Also look for doctests in test modules. Note that
-                        classes, methods and functions should have either
-                        doctests or non-doctest tests, not both.
-                        [NOSE_DOCTEST_TESTS]
-  --doctest-extension EXT
-                        Also look for doctests in files with this extension
-                        [NOSE_DOCTEST_EXTENSION]
-  --doctest-result-variable VAR
-                        Change the variable name set to the result of the last
-                        interpreter command from the default '_'. Can be used
-                        to avoid conflicts with the _() function used for text
-                        translation. [NOSE_DOCTEST_RESULT_VAR]
-  --doctest-fixtures SUFFIX
-                        Find fixtures for a doctest file in module with this
-                        name appended to the base name of the doctest file
-  --doctest-options OPTIONS
-                        Specify options to pass to doctest. Eg.
-                        '+ELLIPSIS,+NORMALIZE_WHITESPACE'
   --with-memory-usage   Output information about test memory usage.
   --memory-usage-file MEMORY_USAGE_FILE
                         Output information about test memory usage.
@@ -240,6 +228,50 @@ optional arguments:
   --with-fixture-bundling
                         Load a unique set of fixtures only once, even across
                         test classes. [NOSE_WITH_FIXTURE_BUNDLING]
+  --with-progressive    Enable plugin ProgressivePlugin: A nose plugin which
+                        has a progress bar and formats tracebacks for humans
+                        [NOSE_WITH_PROGRESSIVE]
+  --progressive-editor EDITOR
+                        The editor to use for the shortcuts in tracebacks.
+                        Defaults to the value of $EDITOR and then "vi".
+                        [NOSE_PROGRESSIVE_EDITOR]
+  --progressive-abs     Display paths in traceback as absolute, rather than
+                        relative to the current working directory.
+                        [NOSE_PROGRESSIVE_ABSOLUTE_PATHS]
+  --progressive-advisories
+                        Show skips and deprecation exceptions in addition to
+                        failures and errors. [NOSE_PROGRESSIVE_ADVISORIES]
+  --progressive-with-styling
+                        nose-progressive automatically omits bold and color
+                        formatting when its output is directed to a non-
+                        terminal. Specifying --progressive-with-styling forces
+                        such styling to be output regardless.
+                        [NOSE_PROGRESSIVE_WITH_STYLING]
+  --progressive-with-bar
+                        nose-progressive automatically omits the progress bar
+                        when its output is directed to a non-terminal.
+                        Specifying --progressive-with-bar forces the bar to be
+                        output regardless. This option implies --progressive-
+                        with-styling. [NOSE_PROGRESSIVE_WITH_BAR]
+  --progressive-function-color FUNCTION_COLOR
+                        Color of function names in tracebacks. An ANSI color
+                        expressed as a number 0-15.
+                        [NOSE_PROGRESSIVE_FUNCTION_COLOR]
+  --progressive-dim-color DIM_COLOR
+                        Color of de-emphasized text (like editor shortcuts) in
+                        tracebacks. An ANSI color expressed as a number 0-15.
+                        [NOSE_PROGRESSIVE_DIM_COLOR]
+  --progressive-bar-filled-color BAR_FILLED_COLOR
+                        Color of the progress bar's filled portion. An ANSI
+                        color expressed as a number 0-15.
+                        [NOSE_PROGRESSIVE_BAR_FILLED_COLOR]
+  --progressive-bar-empty-color BAR_EMPTY_COLOR
+                        Color of the progress bar's empty portion. An ANSI
+                        color expressed as a number 0-15.
+                        [NOSE_PROGRESSIVE_BAR_EMPTY_COLOR]
+  --progressive-editor-shortcut-template EDITOR_SHORTCUT_TEMPLATE
+                        A str.format() template for the non-code lines of the
+                        traceback. [NOSE_PROGRESSIVE_EDITOR_SHORTCUT_TEMPLATE]
   -a ATTR, --attr ATTR  Run only tests that have attributes specified by ATTR
                         [NOSE_ATTR]
   -A EXPR, --eval-attr EXPR
@@ -303,6 +335,24 @@ optional arguments:
   --with-doctest        Enable plugin Doctest: Activate doctest plugin to find
                         and run doctests in non-test modules.
                         [NOSE_WITH_DOCTEST]
+  --doctest-tests       Also look for doctests in test modules. Note that
+                        classes, methods and functions should have either
+                        doctests or non-doctest tests, not both.
+                        [NOSE_DOCTEST_TESTS]
+  --doctest-extension EXT
+                        Also look for doctests in files with this extension
+                        [NOSE_DOCTEST_EXTENSION]
+  --doctest-result-variable VAR
+                        Change the variable name set to the result of the last
+                        interpreter command from the default '_'. Can be used
+                        to avoid conflicts with the _() function used for text
+                        translation. [NOSE_DOCTEST_RESULT_VAR]
+  --doctest-fixtures SUFFIX
+                        Find fixtures for a doctest file in module with this
+                        name appended to the base name of the doctest file
+  --doctest-options OPTIONS
+                        Specify options to pass to doctest. Eg.
+                        '+ELLIPSIS,+NORMALIZE_WHITESPACE'
   --with-isolation      Enable plugin IsolationPlugin: Activate the isolation
                         plugin to isolate changes to external modules to a
                         single test module or package. The isolation plugin
@@ -363,6 +413,5 @@ optional arguments:
   --no-destroy          Don't teardown the test database.
   --retest              Implies --no-clean and --no-destroy.
   --no-test-db          Don't use the test database. Implies --retest.
-  --shufflemonkey       Use shufflemonkey to shuffle all unordered queries.
   --enable-all-loggers  Reenable all of the suppressed logging handlers.
   --no-compile-assets   Do not compile static assets before running the tests.

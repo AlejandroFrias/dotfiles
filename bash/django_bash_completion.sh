@@ -11,9 +11,6 @@ _django_completion()
                     ;;
                 *)
                     case $3 in
-                        --scenario*)
-                            COMPREPLY=($(grep "^$2" $HOME/.django/scenarios_lists/${COMP_WORDS[1]}.txt | awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
-                            ;;
                         -*)
                             local option_desc
                             option_desc=$(grep " $3 " ~/.django/help_output/${COMP_WORDS[1]}.txt | sed -e 's/^.*'$3' \([,{a-zA-Z0-9_-]*}\?\).*/\1/')
@@ -48,9 +45,11 @@ update_helpoutput()
 {
     cdw
     m help > $HOME/.dotfiles/django/help_output/help.txt
+    echo help
     COMMANDS=($(grep '    ' $HOME/.dotfiles/django/help_output/help.txt | sort | sed -e 's/^[[:space:]]*//' | grep "^$2" | awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
-    for COMMAND in ${COMMANDS}
+    for COMMAND in ${COMMANDS[@]}
     do
         m help $COMMAND > $HOME/.dotfiles/django/help_output/$COMMAND.txt
+        echo $COMMAND
     done
 }

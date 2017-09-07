@@ -5,12 +5,13 @@ usage: manage.py sequencing_load_freebayes_call [-h] [--version]
                                                 [--traceback] [--no-color]
                                                 [--view] [--load]
                                                 [--call CALL]
-                                                [args [args ...]]
+                                                batch_name well_coor
 
 View and load freebayes calls.
 
 positional arguments:
-  args
+  batch_name
+  well_coor
 
 optional arguments:
   -h, --help            show this help message and exit

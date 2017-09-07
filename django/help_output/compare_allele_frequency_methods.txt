@@ -3,7 +3,7 @@ usage: manage.py compare_allele_frequency_methods [-h] [--version]
                                                   [--settings SETTINGS]
                                                   [--pythonpath PYTHONPATH]
                                                   [--traceback] [--no-color]
-                                                  [args [args ...]]
+                                                  num_samples VCF_file_name
 
 Compare the "fast" and "slow" frequency calculators to one another. This
 command let's you compare the denominators calculated by the fast and slow
@@ -15,7 +15,8 @@ always match. The command will print a message before completing indicating
 whether this is the case or not.
 
 positional arguments:
-  args
+  num_samples
+  VCF_file_name
 
 optional arguments:
   -h, --help            show this help message and exit

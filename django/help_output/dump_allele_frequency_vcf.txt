@@ -3,12 +3,12 @@ usage: manage.py dump_allele_frequency_vcf [-h] [--version] [-v {0,1,2,3}]
                                            [--pythonpath PYTHONPATH]
                                            [--traceback] [--no-color]
                                            [--chromosomes CHROMOSOMES]
-                                           [args [args ...]]
+                                           VCF_file_name
 
 Calculate allele frequencies.
 
 positional arguments:
-  args
+  VCF_file_name
 
 optional arguments:
   -h, --help            show this help message and exit

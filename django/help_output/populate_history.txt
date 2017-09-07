@@ -17,5 +17,4 @@ Options:
                         "/home/djangoprojects/myproject".
   --traceback           Raise on CommandError exceptions
   --no-color            Don't colorize the command output.
-  --auto                Automatically search for models with the
-                        HistoricalRecords field type
+  --auto                

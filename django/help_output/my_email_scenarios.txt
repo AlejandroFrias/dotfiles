@@ -1,7 +1,8 @@
 usage: manage.py my_email_scenarios [-h] [--version] [-v {0,1,2,3}]
                                     [--settings SETTINGS]
                                     [--pythonpath PYTHONPATH] [--traceback]
-                                    [--no-color] [--scenario SCENARIOS]
+                                    [--no-color]
+                                    [--scenario {housecall_booked,housecall_booked_by_healthcare,housecall_canceled,housecall_rescheduled,housecall_rating,password_reset_ok,password_reset_disabled,password_reset_no_account,password_reset_staff,customer_account_signup,get_counsyl_confirmation,get_counsyl_order_denied,get_counsyl_unable_to_contact_md,get_counsyl_md_cant_verify_patient,get_counsyl_appointment_needed,get_counsyl_approval,get_counsyl_approval_billing_complete,order_confirmation,order_confirmation_2,order_confirmation_insurance,order_confirmation_billing_complete,order_confirmation_non_counsyl_complete,order_confirmation_non_counsyl_complete_billing_complete,order_shipped,return_kit_reminder,sample_received_get_counsyl,sample_received,physician_order_received_family_prep,physician_order_received_inherited_cancer,physician_order_received_counsyl_complete,physician_order_received_non_counsyl_complete,physician_order_received_family_prep_after_sample_receipt,physician_order_received_inherited_cancer_after_sample_receipt,physician_order_received_counsyl_complete_after_sample_receipt,physician_order_received_non_counsyl_complete_after_sample_receipt,physician_order_received_non_counsyl_complete_after_sample_receipt_with_billing_complete,price_estimate_email,payment_confirmation_email,person_reactivation_owner,person_reactivation_partner,stale_person_canceled,results_ready_registered,results_ready_registered_amended,results_ready_unregistered,results_ready_after_required_counseling,results_ready_registered_noncomplete,financial_aid_denied,financial_aid_approved_invoice_ready,financial_aid_approved_invoice_not_ready,counseling_optional_reminder_unregistered,counseling_optional_reminder_registered,counseling_optional_final_notice_reminder_unregistered,counseling_optional_final_notice_reminder_registered,counseling_recommended_reminder_unregistered,counseling_recommended_reminder_registered,counseling_recommended_after_viewing_results_reminder,order_for_partner_reminder,counseling_required_reminder_unregistered,counseling_required_reminder_registered,housecall_reminder}]
                                     [--recipient-email RECIPIENT_EMAIL]
                                     [--print-html] [--smtp-send] [--litmus]
 
@@ -20,55 +21,10 @@ optional arguments:
                         "/home/djangoprojects/myproject".
   --traceback           Raise on CommandError exceptions
   --no-color            Don't colorize the command output.
-  --scenario SCENARIOS  Name of scenario to generate. Default is all
+  --scenario {housecall_booked,housecall_booked_by_healthcare,housecall_canceled,housecall_rescheduled,housecall_rating,password_reset_ok,password_reset_disabled,password_reset_no_account,password_reset_staff,customer_account_signup,get_counsyl_confirmation,get_counsyl_order_denied,get_counsyl_unable_to_contact_md,get_counsyl_md_cant_verify_patient,get_counsyl_appointment_needed,get_counsyl_approval,get_counsyl_approval_billing_complete,order_confirmation,order_confirmation_2,order_confirmation_insurance,order_confirmation_billing_complete,order_confirmation_non_counsyl_complete,order_confirmation_non_counsyl_complete_billing_complete,order_shipped,return_kit_reminder,sample_received_get_counsyl,sample_received,physician_order_received_family_prep,physician_order_received_inherited_cancer,physician_order_received_counsyl_complete,physician_order_received_non_counsyl_complete,physician_order_received_family_prep_after_sample_receipt,physician_order_received_inherited_cancer_after_sample_receipt,physician_order_received_counsyl_complete_after_sample_receipt,physician_order_received_non_counsyl_complete_after_sample_receipt,physician_order_received_non_counsyl_complete_after_sample_receipt_with_billing_complete,price_estimate_email,payment_confirmation_email,person_reactivation_owner,person_reactivation_partner,stale_person_canceled,results_ready_registered,results_ready_registered_amended,results_ready_unregistered,results_ready_after_required_counseling,results_ready_registered_noncomplete,financial_aid_denied,financial_aid_approved_invoice_ready,financial_aid_approved_invoice_not_ready,counseling_optional_reminder_unregistered,counseling_optional_reminder_registered,counseling_optional_final_notice_reminder_unregistered,counseling_optional_final_notice_reminder_registered,counseling_recommended_reminder_unregistered,counseling_recommended_reminder_registered,counseling_recommended_after_viewing_results_reminder,order_for_partner_reminder,counseling_required_reminder_unregistered,counseling_required_reminder_registered,housecall_reminder}
+                        Name of scenario to generate. Default is all
                         scenarios. This option can be applied multiple times
-                        to select multiple scenarios. Available scenario names
-                        are: housecall_booked housecall_booked_by_healthcare
-                        housecall_canceled housecall_rescheduled
-                        housecall_rating password_reset_ok
-                        password_reset_disabled password_reset_no_account
-                        password_reset_staff customer_account_signup
-                        get_counsyl_confirmation get_counsyl_order_denied
-                        get_counsyl_unable_to_contact_md
-                        get_counsyl_md_cant_verify_patient
-                        get_counsyl_appointment_needed get_counsyl_approval
-                        get_counsyl_approval_billing_complete
-                        order_confirmation order_confirmation_2
-                        order_confirmation_insurance
-                        order_confirmation_billing_complete
-                        order_confirmation_non_counsyl_complete order_confirma
-                        tion_non_counsyl_complete_billing_complete
-                        order_shipped sample_received_get_counsyl
-                        sample_received physician_order_received_family_prep
-                        physician_order_received_inherited_cancer
-                        physician_order_received_counsyl_complete
-                        physician_order_received_non_counsyl_complete physicia
-                        n_order_received_family_prep_after_sample_receipt phys
-                        ician_order_received_inherited_cancer_after_sample_rec
-                        eipt physician_order_received_counsyl_complete_after_s
-                        ample_receipt physician_order_received_non_counsyl_com
-                        plete_after_sample_receipt physician_order_received_no
-                        n_counsyl_complete_after_sample_receipt_with_billing_c
-                        omplete price_estimate_email
-                        payment_confirmation_email person_reactivation_owner
-                        person_reactivation_partner stale_person_canceled
-                        results_ready_registered
-                        results_ready_registered_amended
-                        results_ready_unregistered
-                        results_ready_after_required_counseling
-                        results_ready_registered_noncomplete
-                        emr_order_request_estimate
-                        counseling_optional_reminder_unregistered
-                        counseling_optional_reminder_registered
-                        counseling_optional_final_notice_reminder_unregistered
-                        counseling_optional_final_notice_reminder_registered
-                        counseling_recommended_reminder_unregistered
-                        counseling_recommended_reminder_registered
-                        counseling_recommended_after_viewing_results_reminder
-                        order_for_partner_reminder
-                        counseling_required_reminder_unregistered
-                        counseling_required_reminder_registered
-                        housecall_reminder
+                        to select multiple scenarios.
   --recipient-email RECIPIENT_EMAIL
                         Recipient email address for emails. Scenarios are
                         responsible for respecting this option. If no email is

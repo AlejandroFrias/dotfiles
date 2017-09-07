@@ -4,7 +4,7 @@ usage: manage.py genomics_diseasebook [-h] [--version] [-v {0,1,2,3}]
                                       [--no-color] [--wholedocument]
                                       [--validation]
                                       [--disease-panel-id DISEASE_PANEL_ID]
-                                      [--use-dts-v3]
+                                      [--disable-dts-v3]
                                       [args [args ...]]
 
 Generate the Counsyl disease reference book as a PDF or LaTeX. PDF vs LaTeX is
@@ -36,4 +36,4 @@ optional arguments:
   --disease-panel-id DISEASE_PANEL_ID
                         ID of the disease panel to use when generating disease
                         book
-  --use-dts-v3          Enable DTS_v3 when generating disease book
+  --disable-dts-v3      Disable DTS_v3 when generating disease book
