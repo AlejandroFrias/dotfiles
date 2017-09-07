@@ -1,16 +1,13 @@
 snippet ipdb "Insert ipdb trace" bA
-import ipdb
-ipdb.set_trace()
+import ipdb; ipdb.set_trace()
 endsnippet
 
 snippet pdb "Insert pdb trace" bA
-import pdb
-pdb.set_trace()
+import pdb; pdb.set_trace()
 endsnippet
 
 snippet "st " "Insert nose compatible trace" rbA
-from nose.tools import set_trace
-set_trace()
+from nose.tools import set_trace; set_trace()
 endsnippet
 
 snippet "while " "While loop" rbA
