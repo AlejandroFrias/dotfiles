@@ -66,16 +66,25 @@ filetype plugin indent on    " required
 """"""""""""""""""
 " Display altering toggle options
 nnoremap <silent> <F1> :set hlsearch! \| set hlsearch?<CR>
+imap <silent> <F1> <C-O><F1>
 nnoremap <silent> <F2> :set wrap! \| set wrap?<CR>
+imap <silent> <F2> <C-O><F2>
 nnoremap <silent> <F3> :if &list == 0 \| set list \| execute 'IndentLinesEnable' \| else \| set nolist \| execute 'IndentLinesDisable' \| endif<CR>
+imap <silent> <F3> <C-O><F3>
 nnoremap <silent> <F4> :set relativenumber! \| set relativenumber?<CR>
+imap <silent> <F4> <C-O><F4>
 nnoremap <silent> <F5> :set cursorline! \| set cursorline?<CR>:set cursorcolumn! \| set cursorcolumn?<CR>
+imap <silent> <F5> <C-O><F5>
 
 " Behavior-altering option toggles
 nnoremap <silent> <F9> :set scrollbind! \| set scrollbind?<CR>
+imap <silent> <F9> <C-O><F9>
 nnoremap <silent> <F10> :set spell! \| set spell?<CR>
+imap <silent> <F10> <C-O><F10>
 nnoremap <silent> <F11> :set ignorecase! \| set ignorecase?<CR>
+imap <silent> <F11> <C-O><F11>
 nnoremap <silent> <F12> :set paste! \| set paste?<CR>
+imap <silent> <F12> <C-O><F12>
 
 " toggle option defaults and settings
 set spell
