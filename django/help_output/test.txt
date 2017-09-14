@@ -30,9 +30,10 @@ usage: manage.py test [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS]
                       [--progressive-bar-filled-color BAR_FILLED_COLOR]
                       [--progressive-bar-empty-color BAR_EMPTY_COLOR]
                       [--progressive-editor-shortcut-template EDITOR_SHORTCUT_TEMPLATE]
-                      [-a ATTR] [-A EXPR] [-s] [--nologcapture]
-                      [--logging-format FORMAT] [--logging-datefmt FORMAT]
-                      [--logging-filter FILTER] [--logging-clear-handlers]
+                      [--with-doctest-ignore-unicode] [-a ATTR] [-A EXPR] [-s]
+                      [--nologcapture] [--logging-format FORMAT]
+                      [--logging-datefmt FORMAT] [--logging-filter FILTER]
+                      [--logging-clear-handlers]
                       [--logging-level LOGCAPTURE_LEVEL] [--with-coverage]
                       [--cover-package PACKAGE] [--cover-erase]
                       [--cover-tests]
@@ -272,6 +273,11 @@ optional arguments:
   --progressive-editor-shortcut-template EDITOR_SHORTCUT_TEMPLATE
                         A str.format() template for the non-code lines of the
                         traceback. [NOSE_PROGRESSIVE_EDITOR_SHORTCUT_TEMPLATE]
+  --with-doctest-ignore-unicode
+                        Enable plugin DoctestIgnoreUnicode: This plugin adds
+                        support for '#doctest +IGNORE_UNICODE' option that
+                        makes DocTestCase think u'foo' == 'foo'.
+                        [NOSE_WITH_DOCTEST_IGNORE_UNICODE]
   -a ATTR, --attr ATTR  Run only tests that have attributes specified by ATTR
                         [NOSE_ATTR]
   -A EXPR, --eval-attr EXPR
