@@ -142,11 +142,14 @@ endif
 set wildmenu                            " get wild
 set wildmode=longest:full               " prefix matching for wildmenu
 set completeopt+=longest                " insert up to the matched prefix
-set wildignore+=*.class,*.o,*.pyc,*.git,*/venv/*,*.swp " unlikely to want to match these
+" unlikely to want to match these
+set wildignore+=*.class,*.o,*.pyc,*.git,*/venv/*,*.swp,*/vendor/*
 
 set backspace=2 " make backspace work like most other editors
 
-set confirm  " prompt a confirm message when switching from a modified buffer
+set hidden
+set autowriteall
+set switchbuf=usetab
 
 " Close location list or quickfix when selecting file
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>
@@ -231,10 +234,20 @@ colorscheme solarized
 """""""""""""""""""
 " Ctrl-P Settings "
 """""""""""""""""""
+let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_mruf_relative = 1
 let g:ctrlp_working_path_mode = "ar"
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
-      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
 endif
 
 """""""""""""""""""""""
@@ -296,17 +309,12 @@ nnoremap <C-S> :w<CR>
 vnoremap <C-S> <ESC>:w<CR>
 inoremap <C-S> <ESC>:w<CR>
 
-" Save and close file
-nnoremap <C-Q> :wq<CR>
-vnoremap <C-Q> <ESC>:wq<CR>
-inoremap <C-Q> <ESC>:wq<CR>
-
 " Exit insert mode
 inoremap jk <ESC>
 
 "" BUFFER/WINDOW MADNESS
-" List and switch buffers
-nnoremap <leader>bb :ls<CR>:b<space>
+" List and switch buffers CtrlP-style
+nnoremap <leader>bb :CtrlPBuffer<CR>
 " Close current buffer and open next
 function! BufferDelete()
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) > 1
@@ -321,6 +329,8 @@ nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bn :bnext<CR>
 " Switch to last used buffer
 nnoremap <leader>bl :e#<CR>
+" Clear all but current buffer
+nnoremap <leader>bc :%bd<CR><C-O>
 
 " Easy quit
 nnoremap <leader>q :q<CR>
@@ -419,9 +429,3 @@ nnoremap <leader>tf :NERDTreeFind<CR>zz
 """""""""""""""""""
 " ctrl-p ctags integration
 nnoremap <leader>. :CtrlPTag<CR>
-
-""""""""""""""""""""
-" Counsyl specific "
-""""""""""""""""""""
-
-set wildignore+=*/website/vendor/*
