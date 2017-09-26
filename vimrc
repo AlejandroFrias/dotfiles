@@ -164,6 +164,8 @@ let g:SuperTabCrMapping = 1
 " Airline Settings "
 """"""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
+" Update the buffer tabline if a buffer not in the current window is deleted
+autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
 set laststatus=2
 set encoding=utf-8
 let g:airline_powerline_fonts = 1
