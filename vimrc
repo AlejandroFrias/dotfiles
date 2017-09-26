@@ -234,7 +234,6 @@ colorscheme solarized
 """""""""""""""""""
 " Ctrl-P Settings "
 """""""""""""""""""
-let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_working_path_mode = "ar"
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
