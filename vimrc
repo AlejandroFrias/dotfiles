@@ -331,7 +331,7 @@ nnoremap <leader>bn :bnext<CR>
 " Switch to last used buffer
 nnoremap <leader>bl :e#<CR>
 " Clear all but current buffer
-nnoremap <leader>bc :%bd<CR><C-O>
+nnoremap <leader>bc :%bd<CR><C-O>:bd#<CR>
 
 " Easy quit
 nnoremap <leader>q :q<CR>
