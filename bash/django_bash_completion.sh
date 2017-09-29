@@ -11,6 +11,9 @@ _django_completion()
                     ;;
                 *)
                     case $3 in
+                        --scenario*)
+                            COMPREPLY=($(grep "^$2" $HOME/.django/scenarios_lists/${COMP_WORDS[1]}.txt | awk -v ORS=\  '{ print }' | sed -e 's/ $//'))
+                            ;;
                         -*)
                             local option_desc
                             option_desc=$(grep " $3 " ~/.django/help_output/${COMP_WORDS[1]}.txt | sed -e 's/^.*'$3' \([,{a-zA-Z0-9_-]*}\?\).*/\1/')
