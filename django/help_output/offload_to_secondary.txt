@@ -1,17 +1,14 @@
-usage: manage.py genomics_diseasebook [-h] [--version] [-v {0,1,2,3}]
+usage: manage.py offload_to_secondary [-h] [--version] [-v {0,1,2,3}]
                                       [--settings SETTINGS]
                                       [--pythonpath PYTHONPATH] [--traceback]
-                                      [--no-color] [--wholedocument]
-                                      [--disease-panel-id DISEASE_PANEL_ID]
-                                      [--disable-dts-v3]
-                                      [args [args ...]]
+                                      [--no-color]
 
-Generate the Counsyl disease reference book as a PDF or LaTeX. PDF vs LaTeX is
-chosen based on output filename. LaTeX output will be only partial -- no
-\begin{document} etc, unless --wholedocument is used.
-
-positional arguments:
-  args
+Move all elements from the primary queue onto secondary queue. This command
+offloads the primary queue onto a secondary queue so that the primary can be
+freed up for user interactions, which depend more on small lag time between
+syncing their states from website to Salesforce. We should run this anytime
+the queue is backed up and causing a delay that is beyond what should be
+expected.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -28,9 +25,3 @@ optional arguments:
                         "/home/djangoprojects/myproject".
   --traceback           Raise on CommandError exceptions
   --no-color            Don't colorize the command output.
-  --wholedocument       Create the whole LaTeX document with \begin and \end
-                        directives, etc. Ignored for PDF output.
-  --disease-panel-id DISEASE_PANEL_ID
-                        ID of the disease panel to use when generating disease
-                        book
-  --disable-dts-v3      Disable DTS_v3 when generating disease book

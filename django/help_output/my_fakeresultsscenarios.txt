@@ -227,19 +227,19 @@ optional arguments:
                         foresight single-fragile-x-hybrid single-
                         fragile-x-intermediate single-fragile-x-male-hybrid
                         single-fragile-x-premutation-and-non-fragile-x single-
-                        increased-risk-and-mild single-indeterminate single-
-                        ivs8-5t-indeterminate-force-ivs8 single-ivs8-5t-
-                        positive-force-ivs8 single-negative single-negative-
-                        alpha-thal-cah-panel single-negative-foresight single-
-                        negative-jscreen-expanded-4 single-negative-male-
-                        foresight single-negative-male-jscreen-expanded-4
-                        single-negative-no-indications single-negative-synlab
-                        single-positive-cf-synlab single-reclassified-
-                        whitelist-mpi-variant single-results-not-ready single-
-                        sma-neu-copynumber-2-snp-het-negative single-sma-only-
-                        carrier single-sma-only-copynumber-2-snp-hom-ref
-                        single-sma-only-silent-carrier single-sma-silent-
-                        carrier
+                        fragile-x-sendout-preliminary single-increased-risk-
+                        and-mild single-indeterminate single-ivs8-5t-
+                        indeterminate-force-ivs8 single-ivs8-5t-positive-
+                        force-ivs8 single-negative single-negative-alpha-thal-
+                        cah-panel single-negative-foresight single-negative-
+                        jscreen-expanded-4 single-negative-male-foresight
+                        single-negative-male-jscreen-expanded-4 single-
+                        negative-no-indications single-negative-synlab single-
+                        positive-cf-synlab single-reclassified-whitelist-mpi-
+                        variant single-results-not-ready single-sma-neu-
+                        copynumber-2-snp-het-negative single-sma-only-carrier
+                        single-sma-only-copynumber-2-snp-hom-ref single-sma-
+                        only-silent-carrier single-sma-silent-carrier
   --scenario-like SCENARIO_LIKE
                         Like --scenario, but support partial matches.
   --all-scenarios       Create all scenarios. Warning: takes a lot of memory.

@@ -4,6 +4,7 @@ usage: manage.py vendor_fake_add_barcode [-h] [--version] [-v {0,1,2,3}]
                                          [--traceback] [--no-color]
                                          [--kit-type KIT_TYPE]
                                          [--number NUMBER]
+                                         [--healthcare-profile-external-id EXTERNAL_ID]
                                          [args [args ...]]
 
 Creates a CollectionKit with the specified hp and barcode (optional). The
@@ -29,3 +30,5 @@ optional arguments:
   --no-color            Don't colorize the command output.
   --kit-type KIT_TYPE   Type of kit to create
   --number NUMBER       Number of barcodes to create
+  --healthcare-profile-external-id EXTERNAL_ID, --hpid EXTERNAL_ID
+                        External ID for a specific healthcare profile.

@@ -8,6 +8,7 @@ Available subcommands:
 
 [api]
     api_sf_sync
+    offload_to_secondary
     sync_salesforce
 
 [auth]
@@ -146,6 +147,9 @@ Available subcommands:
     update_permissions
     validate_templates
 
+[django_fsm]
+    graph_transitions
+
 [djcelery]
     celery
     celerybeat
@@ -163,7 +167,6 @@ Available subcommands:
 
 [emr]
     emr_correct_collection_date
-    emr_generate_fake_order_from_previous
     emr_rename_duplicate_panels
     emr_update_result_test_data
     setup_emr_testv

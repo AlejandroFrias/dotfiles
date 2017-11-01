@@ -156,11 +156,12 @@ optional arguments:
                         mutation single-fragile-x-hybrid single-
                         fragile-x-intermediate single-fragile-x-male-hybrid
                         single-fragile-x-premutation-and-non-fragile-x single-
-                        increased-risk-and-mild single-indeterminate single-
-                        ivs8-5t-indeterminate-force-ivs8 single-ivs8-5t-
-                        positive-force-ivs8 single-negative single-negative-
-                        no-indications single-negative-synlab single-positive-
-                        cf-synlab single-reclassified-whitelist-mpi-variant
+                        fragile-x-sendout-preliminary single-increased-risk-
+                        and-mild single-indeterminate single-ivs8-5t-
+                        indeterminate-force-ivs8 single-ivs8-5t-positive-
+                        force-ivs8 single-negative single-negative-no-
+                        indications single-negative-synlab single-positive-cf-
+                        synlab single-reclassified-whitelist-mpi-variant
                         single-results-not-ready single-sma-neu-copynumber-2
                         -snp-het-negative single-sma-only-carrier single-sma-
                         only-copynumber-2-snp-hom-ref single-sma-only-silent-

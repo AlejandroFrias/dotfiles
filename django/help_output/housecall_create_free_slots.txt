@@ -3,6 +3,7 @@ usage: manage.py housecall_create_free_slots [-h] [--version] [-v {0,1,2,3}]
                                              [--pythonpath PYTHONPATH]
                                              [--traceback] [--no-color]
                                              [--days DAYS] [--starting-now]
+                                             [--location LOCATION]
                                              [args [args ...]]
 
 Create free appointment slots for the given GC. Example: ./manage.py
@@ -36,3 +37,5 @@ optional arguments:
   --starting-now, --now
                         Generate slots for the immediate next 8 hours instead
                         of from 9am-5pm starting tomorrow (the default).
+  --location LOCATION   Provide the external ID of the clinic location
+                        required.
