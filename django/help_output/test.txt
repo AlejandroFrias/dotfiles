@@ -21,7 +21,7 @@ usage: manage.py test [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS]
                       [--with-seleniumnosefilter] [--with-memory-usage]
                       [--memory-usage-file MEMORY_USAGE_FILE]
                       [--memory-usage-no-truncate] [--memory-usage-no-sort]
-                      [--with-fixture-bundling]
+                      [--with-fixture-bundling] [--ipdb] [--ipdb-failures]
                       [--with-doctest-ignore-unicode] [-a ATTR] [-A EXPR] [-s]
                       [--nologcapture] [--logging-format FORMAT]
                       [--logging-datefmt FORMAT] [--logging-filter FILTER]
@@ -221,6 +221,8 @@ optional arguments:
   --with-fixture-bundling
                         Load a unique set of fixtures only once, even across
                         test classes. [NOSE_WITH_FIXTURE_BUNDLING]
+  --ipdb                Drop into ipdb on errors
+  --ipdb-failures       Drop into ipdb on failures
   --with-doctest-ignore-unicode
                         Enable plugin DoctestIgnoreUnicode: This plugin adds
                         support for '#doctest +IGNORE_UNICODE' option that
