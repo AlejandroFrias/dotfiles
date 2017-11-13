@@ -2,6 +2,7 @@ usage: manage.py genomics_diseasebook [-h] [--version] [-v {0,1,2,3}]
                                       [--settings SETTINGS]
                                       [--pythonpath PYTHONPATH] [--traceback]
                                       [--no-color] [--wholedocument]
+                                      [--validation]
                                       [--disease-panel-id DISEASE_PANEL_ID]
                                       [--disable-dts-v3]
                                       [args [args ...]]
@@ -30,6 +31,8 @@ optional arguments:
   --no-color            Don't colorize the command output.
   --wholedocument       Create the whole LaTeX document with \begin and \end
                         directives, etc. Ignored for PDF output.
+  --validation          Create a validation LaTeX document. Ignored for PDF
+                        output.
   --disease-panel-id DISEASE_PANEL_ID
                         ID of the disease panel to use when generating disease
                         book

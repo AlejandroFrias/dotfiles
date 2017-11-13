@@ -9,6 +9,7 @@ Available subcommands:
 [api]
     api_sf_sync
     offload_to_secondary
+    remap_location_sfids
     sync_salesforce
 
 [auth]
