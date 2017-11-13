@@ -372,6 +372,17 @@ endfunction
 nnoremap <silent> <leader>ig :call GitHubURL(v:register)<CR>
 vnoremap <silent> <leader>ig :call GitHubURL(v:register)<CR>
 
+" Change bar's default behavior to go to text width column
+function! BarWithDefault(count)
+    if a:count > 1
+        execute "normal! ".a:count."|"
+    elseif &tw
+        execute "normal! ".&tw."|"
+    else
+        execute "|"
+    endif
+endfunction
+nnoremap <silent> <bar> :<C-U>call BarWithDefault(v:count1)<CR>
 """""""""""""""""""""""""
 " Vim-Surround Mappings "
 """""""""""""""""""""""""
