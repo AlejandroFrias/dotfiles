@@ -4,6 +4,7 @@ usage: manage.py billing_pricingestimate_scenarios [-h] [--version]
                                                    [--pythonpath PYTHONPATH]
                                                    [--traceback] [--no-color]
                                                    [--scenario SCENARIOS]
+                                                   [--resume-scenario RESUME_SCENARIOS]
                                                    [--json]
                                                    [--ignore-assertion-failures]
 
@@ -37,8 +38,8 @@ optional arguments:
                         fps_seq_not_confident_in_allowed
                         fps_seq_not_confident_in_benefits default_benefits
                         fps_pr_lt_cash_price_before_claim_filed
-                        fps_zero_allowed fps_seq_zero_dollar_pr
-                        fps_seq_full_pr
+                        opr_oon_discount_to_cash_price opr_oon_no_discount
+                        fps_seq_zero_dollar_pr fps_seq_full_pr
                         fps_seq_requires_prior_auth_oon_high_estimate
                         fps_seq_requires_prior_auth_switched_to_insurance
                         coins_cap ics_not_meet_criteria
@@ -48,13 +49,16 @@ optional arguments:
                         ics_meet_criteria_family_brca_prior_auth_denied
                         ips_does_meet_criteria
                         ips_does_meet_criteria_microdeletions
-                        ips_not_meet_criteria_twins no_order_emr_fps
-                        no_order_fps_geno medicaid_with_hidden_self_pay_price
-                        error_bpi error_not_ready
+                        ips_not_meet_criteria_twins maximal_estimate
+                        no_order_emr_fps no_order_fps_geno
+                        medicaid_with_hidden_self_pay_price error_bpi
+                        error_bpi_medicaid error_not_ready
                         error_eligibility_expiring_soon error_consignment
                         error_no_order_coverage_has_expired
                         send_to_cash_by_counsyl_choice mgr_not_medicaid
                         non_counsyl_complete send_to_cash_no_prior_auth
+  --resume-scenario RESUME_SCENARIOS
+                        Name of scenario to restart generation at.
   --json                Output scenarios as JSON instead of plain text
   --ignore-assertion-failures
                         Don't stop on assertion failures

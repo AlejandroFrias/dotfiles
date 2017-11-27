@@ -21,15 +21,7 @@ usage: manage.py test [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS]
                       [--with-seleniumnosefilter] [--with-memory-usage]
                       [--memory-usage-file MEMORY_USAGE_FILE]
                       [--memory-usage-no-truncate] [--memory-usage-no-sort]
-                      [--with-fixture-bundling] [--with-progressive]
-                      [--progressive-editor EDITOR] [--progressive-abs]
-                      [--progressive-advisories] [--progressive-with-styling]
-                      [--progressive-with-bar]
-                      [--progressive-function-color FUNCTION_COLOR]
-                      [--progressive-dim-color DIM_COLOR]
-                      [--progressive-bar-filled-color BAR_FILLED_COLOR]
-                      [--progressive-bar-empty-color BAR_EMPTY_COLOR]
-                      [--progressive-editor-shortcut-template EDITOR_SHORTCUT_TEMPLATE]
+                      [--with-fixture-bundling] [--ipdb] [--ipdb-failures]
                       [--with-doctest-ignore-unicode] [-a ATTR] [-A EXPR] [-s]
                       [--nologcapture] [--logging-format FORMAT]
                       [--logging-datefmt FORMAT] [--logging-filter FILTER]
@@ -229,50 +221,8 @@ optional arguments:
   --with-fixture-bundling
                         Load a unique set of fixtures only once, even across
                         test classes. [NOSE_WITH_FIXTURE_BUNDLING]
-  --with-progressive    Enable plugin ProgressivePlugin: A nose plugin which
-                        has a progress bar and formats tracebacks for humans
-                        [NOSE_WITH_PROGRESSIVE]
-  --progressive-editor EDITOR
-                        The editor to use for the shortcuts in tracebacks.
-                        Defaults to the value of $EDITOR and then "vi".
-                        [NOSE_PROGRESSIVE_EDITOR]
-  --progressive-abs     Display paths in traceback as absolute, rather than
-                        relative to the current working directory.
-                        [NOSE_PROGRESSIVE_ABSOLUTE_PATHS]
-  --progressive-advisories
-                        Show skips and deprecation exceptions in addition to
-                        failures and errors. [NOSE_PROGRESSIVE_ADVISORIES]
-  --progressive-with-styling
-                        nose-progressive automatically omits bold and color
-                        formatting when its output is directed to a non-
-                        terminal. Specifying --progressive-with-styling forces
-                        such styling to be output regardless.
-                        [NOSE_PROGRESSIVE_WITH_STYLING]
-  --progressive-with-bar
-                        nose-progressive automatically omits the progress bar
-                        when its output is directed to a non-terminal.
-                        Specifying --progressive-with-bar forces the bar to be
-                        output regardless. This option implies --progressive-
-                        with-styling. [NOSE_PROGRESSIVE_WITH_BAR]
-  --progressive-function-color FUNCTION_COLOR
-                        Color of function names in tracebacks. An ANSI color
-                        expressed as a number 0-15.
-                        [NOSE_PROGRESSIVE_FUNCTION_COLOR]
-  --progressive-dim-color DIM_COLOR
-                        Color of de-emphasized text (like editor shortcuts) in
-                        tracebacks. An ANSI color expressed as a number 0-15.
-                        [NOSE_PROGRESSIVE_DIM_COLOR]
-  --progressive-bar-filled-color BAR_FILLED_COLOR
-                        Color of the progress bar's filled portion. An ANSI
-                        color expressed as a number 0-15.
-                        [NOSE_PROGRESSIVE_BAR_FILLED_COLOR]
-  --progressive-bar-empty-color BAR_EMPTY_COLOR
-                        Color of the progress bar's empty portion. An ANSI
-                        color expressed as a number 0-15.
-                        [NOSE_PROGRESSIVE_BAR_EMPTY_COLOR]
-  --progressive-editor-shortcut-template EDITOR_SHORTCUT_TEMPLATE
-                        A str.format() template for the non-code lines of the
-                        traceback. [NOSE_PROGRESSIVE_EDITOR_SHORTCUT_TEMPLATE]
+  --ipdb                Drop into ipdb on errors
+  --ipdb-failures       Drop into ipdb on failures
   --with-doctest-ignore-unicode
                         Enable plugin DoctestIgnoreUnicode: This plugin adds
                         support for '#doctest +IGNORE_UNICODE' option that

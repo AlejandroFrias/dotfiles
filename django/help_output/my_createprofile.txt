@@ -36,6 +36,7 @@ usage: manage.py my_createprofile [-h] [--version] [-v {0,1,2,3}]
                                   [--reason-for-test-owner REASON_FOR_TEST_OWNER]
                                   [--reason-for-test-partner REASON_FOR_TEST_PARTNER]
                                   [--healthcare-profile HEALTHCARE_PROFILE]
+                                  [--healthcare-profile-external-id HEALTHCARE_PROFILE_EXTERNAL_ID]
                                   [--have-kit] [--dts-partner] [--dts-owner]
                                   [--curate-alleles]
                                   [--merge-barcode MERGE_BARCODE]
@@ -171,6 +172,9 @@ optional arguments:
   --healthcare-profile HEALTHCARE_PROFILE, --hp HEALTHCARE_PROFILE, --md HEALTHCARE_PROFILE
                         Attach to a healthcare profile. Must specify email
                         address of the medical professional.
+  --healthcare-profile-external-id HEALTHCARE_PROFILE_EXTERNAL_ID, --hpid HEALTHCARE_PROFILE_EXTERNAL_ID, --mdid HEALTHCARE_PROFILE_EXTERNAL_ID
+                        Attach to a healthcare profile. Must specify the
+                        external_id of the medical professional.
   --have-kit            Select this option if you want to have a barcode
                         automatically assigned. Automatically True if created
                         by a physician.

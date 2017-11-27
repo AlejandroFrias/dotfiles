@@ -3,7 +3,10 @@ alias lsa="ls -Flah"
 
 # run ctags in background
 alias ct="ctags . >/dev/null 2>&1 &"
-
+git_pr_for_sha () {
+    git log --merges --ancestry-path --oneline $1..master | \
+        grep 'pull request' | tail -n1 | awk '{print $5}' | cut -c2-
+}
 # return directory containing file, searching parent directories and then subdirectories
 function updownsearch() {
     mdir="$(upsearch "$1")"
