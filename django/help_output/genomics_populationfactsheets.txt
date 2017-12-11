@@ -3,6 +3,7 @@ usage: manage.py genomics_populationfactsheets [-h] [--version] [-v {0,1,2,3}]
                                                [--pythonpath PYTHONPATH]
                                                [--traceback] [--no-color]
                                                [--show-all-diseases]
+                                               [--master-foresight]
                                                [--disease-panel-id DISEASE_PANEL_ID]
                                                [--population POPULATIONS]
                                                [args [args ...]]
@@ -29,6 +30,7 @@ optional arguments:
   --no-color            Don't colorize the command output.
   --show-all-diseases   Show all diseases in fact sheet, including diseases
                         with low MDFs.
+  --master-foresight    Create Master Foresight Factsheet with all diseases
   --disease-panel-id DISEASE_PANEL_ID
                         ID of the disease panel to use when generating fact
                         sheet

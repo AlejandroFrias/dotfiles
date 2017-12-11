@@ -2,9 +2,8 @@ usage: manage.py genomics_diseasebook [-h] [--version] [-v {0,1,2,3}]
                                       [--settings SETTINGS]
                                       [--pythonpath PYTHONPATH] [--traceback]
                                       [--no-color] [--wholedocument]
-                                      [--validation]
                                       [--disease-panel-id DISEASE_PANEL_ID]
-                                      [--disable-dts-v3]
+                                      [--master-foresight]
                                       [args [args ...]]
 
 Generate the Counsyl disease reference book as a PDF or LaTeX. PDF vs LaTeX is
@@ -31,9 +30,9 @@ optional arguments:
   --no-color            Don't colorize the command output.
   --wholedocument       Create the whole LaTeX document with \begin and \end
                         directives, etc. Ignored for PDF output.
-  --validation          Create a validation LaTeX document. Ignored for PDF
-                        output.
   --disease-panel-id DISEASE_PANEL_ID
                         ID of the disease panel to use when generating disease
                         book
-  --disable-dts-v3      Disable DTS_v3 when generating disease book
+  --master-foresight    Generate master Foresight disease book with all
+                        diseases. --disease-panel-id option is ignored if
+                        using this option

@@ -57,6 +57,7 @@ optional arguments:
                         error_no_order_coverage_has_expired
                         send_to_cash_by_counsyl_choice mgr_not_medicaid
                         non_counsyl_complete send_to_cash_no_prior_auth
+                        opr_cash_price
   --resume-scenario RESUME_SCENARIOS
                         Name of scenario to restart generation at.
   --json                Output scenarios as JSON instead of plain text

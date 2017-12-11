@@ -9,7 +9,7 @@ Available subcommands:
 [api]
     api_sf_sync
     offload_to_secondary
-    remap_location_sfids
+    remap_sfids
     sync_salesforce
 
 [auth]
@@ -254,8 +254,6 @@ Available subcommands:
     science_genomics_dvp_stats
 
 [sequencing]
-    compare_allele_frequency_methods
-    dump_allele_frequency_vcf
     dump_rerelease_info
     fix_flowcell_barcode
     load_external_frequency_VCF
