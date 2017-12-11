@@ -226,8 +226,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """"""""""""""""""
 " Theme Settings "
 """"""""""""""""""
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
 syntax enable     " Use syntax highlighting
 set background=dark
 let g:solarized_termcolors = 256

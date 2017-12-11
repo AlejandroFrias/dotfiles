@@ -32,6 +32,8 @@ alias gst='git stash'
 alias gstsave='git stash save'
 alias gstunstaged='git stash save --keep-index'
 alias gstuntracked='git stash save --include-untracked'
+alias gstsnapshot='git stash save "[snapshot] $(date)" && git stash apply'
+
 function gbd () {
     SUCCESS=false
     if [[ $1 == -D ]]; then
