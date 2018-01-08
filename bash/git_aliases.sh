@@ -180,7 +180,7 @@ function gcam() {
         esac;
     done
 
-    message="$@"
+    message="$1"
     if [[ -z "$message" ]]; then
         echo "${RED}Missing required MESSAGE argument${RESET}"
         return
@@ -210,8 +210,8 @@ function gcam() {
         fi
     fi
 
-    echo git commit -am \""$message"\"
-    git commit -am \""$message"\"
+    echo git commit -am "$message"
+    git commit -am "$message"
 }
 function gpush() {
     force=false
