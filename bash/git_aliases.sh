@@ -159,15 +159,45 @@ function gstpop() {
 }
 function gcam() {
     SUCCESS=true
+    FORCE=false
+    GITLINT=false
+    NOLINT=false
     message=
-    if [[ $1 = "-n" ]] || [[ $1 = "-nl" ]] || [[ $1 = "--no-lint" ]]; then
+
+    # Process options
+    TEMP=`getopt -o fgn --long force,gitlint,nolint: -n 'git_aliases.sh' -- "$@"`
+    eval set -- "$TEMP"
+    while true ; do
+        case "$1" in
+            -f|--force)
+                FORCE=true ; shift ;;
+            -g|--gitlint)
+                GITLINT=true ; shift ;;
+            -n|--nolint)
+                NOLINT=true ; shift ;;
+            --) shift ; break ;;
+            *)  echo "${RED}Internal error!${RESET}" ; return ;;
+        esac;
+    done
+
+    message="$@"
+    if [[ -z "$message" ]]; then
+        echo "${RED}Missing required MESSAGE argument${RESET}"
+        return
+    fi
+
+    # Prevent unintentional commits to master branch
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+    if [[ $current_branch = master ]] && [[ $FORCE = false ]]; then
+        echo "${RED}ERROR${RESET}: Can't commit to master. Use -f (--force)."
+        return
+    fi
+
+    if [[ $NOLINT = true ]]; then
         echo "${YELLOW}Skipping lint...${RESET}"
-        message="$2"
     else
         echo "Linting..."
-        message="$1"
-        if [[ $1 = "-g" ]] || [[ $1 = "-gl" ]] || [[ $1 = "--git-lint" ]]; then
-            message="$2"
+        if [[ $GITLINT = true ]]; then
             mk gitlint || SUCCESS=false
         else
             mk lint || SUCCESS=false
@@ -180,8 +210,8 @@ function gcam() {
         fi
     fi
 
-    echo git commit -am "$message"
-    git commit -am "$message"
+    echo git commit -am \""$message"\"
+    git commit -am \""$message"\"
 }
 function gpush() {
     force=false
@@ -190,7 +220,7 @@ function gpush() {
     if [[ $1 = "-f" ]] || [[ $1 = "--force" ]]; then
         force=true
     fi
-    if [[ $current_branch == 'master' ]] && [[ $force = "false" ]]; then
+    if [[ $current_branch = "master" ]] && [[ $force = "false" ]]; then
         echo "${RED}ERROR${RESET}: Can't push to master. Use -f (--force)."
         return
     fi
