@@ -111,6 +111,10 @@ reliant-mutyh-affected
 reliant-mutyh-carrier
 reliant-negative
 reliant-negative-exclude-vus
+reliant-vus-for-all-brca-positive-no_vus
+reliant-vus-for-all-brca-positive-vus
+reliant-vus-for-all-brca-vus
+reliant-vus-for-all-negative
 sendout-prelude-15q11del-detected
 sendout-prelude-15q11del-detected-fetal-fraction-present
 sendout-prelude-1p36del-detected

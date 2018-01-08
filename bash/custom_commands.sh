@@ -11,7 +11,7 @@ git_pr_for_sha () {
 function updownsearch() {
     mdir="$(upsearch "$1")"
     if [[ -z $mdir ]]; then
-        mdir="$(find . -name "$1" -exec dirname {} \;)"
+        mdir="$(find . -name "$1" -exec dirname {} \; -quit)"
     fi
     echo "$mdir"
 }
