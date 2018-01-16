@@ -38,7 +38,7 @@ Here's how to cherry pick my ./manage.py bash completion.
 git clone https://github.com/AlejandroFrias/dotfiles.git
 mv dotfiles/django ~/.django
 mv dotfiles/bash/django_bash_completion.sh ~/.django_bash_completion.sh
-echo "source ~/.django_bash_completeion.sh" >> ~/.bashrc
+echo "source ~/.django_bash_completion.sh" >> ~/.bashrc
 ```
 
 To update the autocompletion options for a subcommand:
