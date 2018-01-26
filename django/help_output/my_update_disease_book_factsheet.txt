@@ -5,6 +5,7 @@ usage: manage.py my_update_disease_book_factsheet [-h] [--version]
                                                   [--traceback] [--no-color]
                                                   [--no-diseasebook]
                                                   [--no-factsheet]
+                                                  [--no-disease-factsheets]
 
 This management command regenerates the disease book and the factsheet. There
 is a pipeline you can run that will generate these along with all other golden
@@ -28,3 +29,5 @@ optional arguments:
   --no-color            Don't colorize the command output.
   --no-diseasebook      Do not generate disease book files.
   --no-factsheet        Do not generate factsheet files.
+  --no-disease-factsheets
+                        Do not generate disease-specific factsheet files.

@@ -84,4 +84,5 @@ optional arguments:
                         recollect_lab_processing recollect_lab_complete
                         recollect_pending_report recollect_report_received
                         recollect_science_review recollect_cls_review
-                        recollect_director_review recollect_complete
+                        recollect_director_review recollect_final_hold
+                        recollect_complete

@@ -158,12 +158,13 @@ optional arguments:
                         reliant-comprehensive-known-deleterious reliant-
                         comprehensive-null-gene reliant-endocrine-known-
                         deleterious reliant-epcam-known-deleterious reliant-
-                        expanded-known-deleterious reliant-gi-include-vus
-                        reliant-gi-known-deleterious reliant-grem1-known-
-                        deleterious reliant-gyn-known-deleterious reliant-
-                        lynch-cmmrd reliant-lynch-known-deleterious reliant-
-                        mlh1-known-deleterious reliant-msh2-known-deleterious
-                        reliant-msh6-known-deleterious reliant-multiple-known-
+                        expanded-known-deleterious reliant-expanded-negative
+                        reliant-gi-include-vus reliant-gi-known-deleterious
+                        reliant-grem1-known-deleterious reliant-gyn-known-
+                        deleterious reliant-lynch-cmmrd reliant-lynch-known-
+                        deleterious reliant-mlh1-known-deleterious reliant-
+                        msh2-inversion reliant-msh2-known-deleterious reliant-
+                        msh6-known-deleterious reliant-multiple-known-
                         deleterious reliant-mutyh-affected reliant-mutyh-
                         carrier reliant-negative reliant-negative-exclude-vus
                         reliant-palb2-and-pms2-known-deleterious reliant-palb2
@@ -173,40 +174,44 @@ optional arguments:
                         deleterious reliant-sdha-known-deleterious reliant-
                         sdhb-known-deleterious reliant-sdhc-known-deleterious
                         reliant-smad4-known-deleterious reliant-stk11-known-
-                        deleterious reliant-vhl-known-deleterious sendout-
-                        prelude-15q11del-detected sendout-prelude-15q11del-
-                        detected-fetal-fraction-present sendout-prelude-
-                        1p36del-detected sendout-prelude-22q11del-detected
-                        sendout-prelude-5pdel-detected sendout-prelude-female-
-                        4pdel-detected sendout-prelude-female-negative-ff-
-                        normal sendout-prelude-female-negative-no-md-detected-
-                        ff-normal sendout-prelude-female-no-microdeletions-
-                        detected sendout-prelude-female-t21-detected-no-md-
-                        detected-ff-normal sendout-prelude-ff-less-than-one-
-                        percent sendout-prelude-male-t21-detected-ff-normal
-                        sendout-prelude-male-trisomy-21-detected sendout-
-                        prelude-monosomy-x-detected sendout-prelude-negative
-                        sendout-prelude-negative-female sendout-prelude-
-                        negative-high-risk sendout-prelude-negative-male
-                        sendout-prelude-negative-no-indications sendout-
-                        prelude-negative-twin-y-detected sendout-prelude-
-                        negative-twin-y-not-detected sendout-prelude-results-
-                        not-ready sendout-prelude-trisomy-13-suspected
-                        sendout-prelude-trisomy-21-detected sendout-prelude-
-                        trisomy-21-detected-multiple-indications sendout-
-                        prelude-twin-y-detected-trisomy-18-and-15q11del-
-                        detected single-affected-hgmd-promoter-allele single-
-                        affected-mild single-alpha-thal-alphaplus-deletion-1-0
-                        single-alpha-thal-alphaplus-deletion-alphaplus-nondel-
-                        dup-2-0 single-alpha-thal-alphaplus-nondeletion-2-0
-                        single-alpha-thal-alphaplus-nondeletion-2-0-foresight
-                        single-alpha-thal-cah-alphaplus-deletion-1-0 single-
-                        autosomal-recessive-affected single-btd-d444h-and-
-                        a171t single-btd-d444h-and-f403v single-btd-d444h-and-
-                        pathogenic-whitelist single-btd-d444h-and-two-
-                        pathogenic-whitelist single-btd-d444h-homozygote
-                        single-cah-carrier single-cah-nocall single-carrier-
-                        aj-med17-foresight single-carrier-autosomal-recessive
+                        deleterious reliant-vhl-known-deleterious reliant-vus-
+                        for-all-brca-positive-no-vus reliant-vus-for-all-brca-
+                        positive-vus reliant-vus-for-all-brca-vus reliant-vus-
+                        for-all-negative sendout-prelude-15q11del-detected
+                        sendout-prelude-15q11del-detected-fetal-fraction-
+                        present sendout-prelude-1p36del-detected sendout-
+                        prelude-22q11del-detected sendout-prelude-5pdel-
+                        detected sendout-prelude-female-4pdel-detected
+                        sendout-prelude-female-negative-ff-normal sendout-
+                        prelude-female-negative-no-md-detected-ff-normal
+                        sendout-prelude-female-no-microdeletions-detected
+                        sendout-prelude-female-t21-detected-no-md-detected-ff-
+                        normal sendout-prelude-ff-less-than-one-percent
+                        sendout-prelude-male-t21-detected-ff-normal sendout-
+                        prelude-male-trisomy-21-detected sendout-prelude-
+                        monosomy-x-detected sendout-prelude-negative sendout-
+                        prelude-negative-female sendout-prelude-negative-high-
+                        risk sendout-prelude-negative-male sendout-prelude-
+                        negative-no-indications sendout-prelude-negative-
+                        twin-y-detected sendout-prelude-negative-twin-y-not-
+                        detected sendout-prelude-results-not-ready sendout-
+                        prelude-trisomy-13-suspected sendout-prelude-
+                        trisomy-21-detected sendout-prelude-trisomy-21
+                        -detected-multiple-indications sendout-prelude-twin-y
+                        -detected-trisomy-18-and-15q11del-detected sendout-
+                        reliant-pms2-results-not-ready single-affected-hgmd-
+                        promoter-allele single-affected-mild single-alpha-
+                        thal-alphaplus-deletion-1-0 single-alpha-thal-
+                        alphaplus-deletion-alphaplus-nondel-dup-2-0 single-
+                        alpha-thal-alphaplus-nondeletion-2-0 single-alpha-
+                        thal-alphaplus-nondeletion-2-0-foresight single-alpha-
+                        thal-cah-alphaplus-deletion-1-0 single-autosomal-
+                        recessive-affected single-btd-d444h-and-a171t single-
+                        btd-d444h-and-f403v single-btd-d444h-and-pathogenic-
+                        whitelist single-btd-d444h-and-two-pathogenic-
+                        whitelist single-btd-d444h-homozygote single-cah-
+                        carrier single-cah-nocall single-carrier-aj-
+                        med17-foresight single-carrier-autosomal-recessive
                         single-carrier-autosomal-recessive-foresight single-
                         carrier-cftr-deletion-foresight single-carrier-cftr-
                         jscreen-expanded-4 single-carrier-cftr-male-foresight
@@ -232,14 +237,16 @@ optional arguments:
                         indeterminate-force-ivs8 single-ivs8-5t-positive-
                         force-ivs8 single-negative single-negative-alpha-thal-
                         cah-panel single-negative-foresight single-negative-
-                        jscreen-expanded-4 single-negative-male-foresight
-                        single-negative-male-jscreen-expanded-4 single-
-                        negative-no-indications single-negative-synlab single-
-                        positive-cf-synlab single-reclassified-whitelist-mpi-
-                        variant single-results-not-ready single-sma-neu-
-                        copynumber-2-snp-het-negative single-sma-only-carrier
-                        single-sma-only-copynumber-2-snp-hom-ref single-sma-
-                        only-silent-carrier single-sma-silent-carrier
+                        fps3-universal-optins single-negative-fps3-universal-
+                        optins-no-fx single-negative-jscreen-expanded-4
+                        single-negative-male-foresight single-negative-male-
+                        jscreen-expanded-4 single-negative-no-indications
+                        single-negative-synlab single-positive-cf-synlab
+                        single-reclassified-whitelist-mpi-variant single-
+                        results-not-ready single-sma-neu-copynumber-2-snp-het-
+                        negative single-sma-only-carrier single-sma-only-
+                        copynumber-2-snp-hom-ref single-sma-only-silent-
+                        carrier single-sma-silent-carrier
   --scenario-like SCENARIO_LIKE
                         Like --scenario, but support partial matches.
   --all-scenarios       Create all scenarios. Warning: takes a lot of memory.

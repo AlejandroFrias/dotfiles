@@ -241,8 +241,6 @@ Available subcommands:
     build_fake_report
     generate_test_pdf_reports
     process_reports_task
-    update_sma_allele_frequency_estimates
-    update_sma_copynumber_counts
 
 [sales]
     sales_updatereporttables

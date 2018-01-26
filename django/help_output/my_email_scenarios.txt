@@ -50,10 +50,9 @@ optional arguments:
                         ample_receipt physician_order_received_non_counsyl_com
                         plete_after_sample_receipt physician_order_received_no
                         n_counsyl_complete_after_sample_receipt_with_billing_c
-                        omplete price_estimate_email
-                        payment_confirmation_email person_reactivation_owner
-                        person_reactivation_partner stale_person_canceled
-                        results_ready_registered
+                        omplete payment_confirmation_email
+                        person_reactivation_owner person_reactivation_partner
+                        stale_person_canceled results_ready_registered
                         results_ready_registered_amended
                         results_ready_unregistered
                         results_ready_after_required_counseling
