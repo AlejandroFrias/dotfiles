@@ -1,29 +1,38 @@
-snippet "if " "Django If Block" rbA
+snippet if "Django If Block" b
 {% if ${1:condition} %}
-${0}
+	${0}
 {% endif %}
 endsnippet
 
-snippet "elif " "Django Elif Block" rbA
+snippet elif "Django Elif Block" b
 {% elif ${1:condition} %}
-${0}
+	${0}
 endsnippet
 
-snippet "else " "Django Else Block" rbA
+snippet else "Django Else Block" b
 {% else %}
-${0}
+	${0}
 endsnippet
 
-snippet "with " "Django With block" rbA
-{% with ${1:expression} as ${2:variable} %}
-${0}
+snippet with "Django With block" b
+{% with ${1:variable=expression} %}
+	${0}
 {% endwith %}
 endsnippet
 
-snippet "trans " "Django Trans block" rbA
+snippet trans "Django Trans tag" b
 {% trans "$0" %}
 endsnippet
 
-snippet "trans" "Django Trans block" r
-{% trans "$0" %}
+snippet "inc(lude)?" "Django include tag" rb
+{% include "$0" %}
+endsnippet
+
+snippet load "Django include tag" b
+{% load $0 %}
+endsnippet
+
+snippet for "Django include tag" b
+{% for ${1:item} in ${2:items} %}
+{% endfor %}
 endsnippet

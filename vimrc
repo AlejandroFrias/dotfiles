@@ -21,9 +21,9 @@ let g:syntastic_mode_map = {
     \ "passive_filetypes": [] }
 
 """""""""""""""""""""""""""y"
-" Plugins (Vundle Managed) "
+" Packages/Plugins 
 """"""""""""""""""""""""""""
-
+" (Vundle Managed) "
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -52,8 +52,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'terryma/vim-expand-region'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/gitignore'
 Plugin 'vimwiki/vimwiki'
 Plugin 'Yggdroot/indentLine'
@@ -61,52 +59,10 @@ Plugin 'Yggdroot/indentLine'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-""""""""""""""""""
-" TOGGLE OPTIONS "
-""""""""""""""""""
-" Display altering toggle options
-nnoremap <silent> <F1> :set hlsearch! \| set hlsearch?<CR>
-imap <silent> <F1> <C-O><F1>
-nnoremap <silent> <F2> :set wrap! \| set wrap?<CR>
-imap <silent> <F2> <C-O><F2>
-nnoremap <silent> <F3> :if &list == 0 \| set list \| execute 'IndentLinesEnable' \| else \| set nolist \| execute 'IndentLinesDisable' \| endif<CR>
-imap <silent> <F3> <C-O><F3>
-nnoremap <silent> <F4> :set relativenumber! \| set relativenumber?<CR>
-imap <silent> <F4> <C-O><F4>
-nnoremap <silent> <F5> :set cursorline! \| set cursorline?<CR>:set cursorcolumn! \| set cursorcolumn?<CR>
-imap <silent> <F5> <C-O><F5>
-
-" Behavior-altering option toggles
-nnoremap <silent> <F9> :set scrollbind! \| set scrollbind?<CR>
-imap <silent> <F9> <C-O><F9>
-nnoremap <silent> <F10> :set spell! \| set spell?<CR>
-imap <silent> <F10> <C-O><F10>
-nnoremap <silent> <F11> :set ignorecase! \| set ignorecase?<CR>
-imap <silent> <F11> <C-O><F11>
-nnoremap <silent> <F12> :set paste! \| set paste?<CR>
-imap <silent> <F12> <C-O><F12>
-
-" toggle option defaults and settings
-set spell
-set pastetoggle=<F12>
-set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,space:\ ,conceal:*
-set cursorline
-set cursorcolumn
-set relativenumber
-set number
-set nowrap
-
-" don't need relative numbers when not in focus
-autocmd FocusLost * set norelativenumber
-autocmd FocusGained * set relativenumber
-
-" don't need relative lines during insert mode
-autocmd InsertEnter * set norelativenumber
-autocmd InsertLeave * set relativenumber
-
 """"""""""""""""""""
 " General Settings "
 """"""""""""""""""""
+
 let mapleader=" "
 syntax on
 set timeoutlen=3000 ttimeoutlen=100
@@ -155,41 +111,50 @@ set switchbuf=usetab
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>
 
 
+packadd! matchit
+""""""""""""""""""
+" TOGGLE OPTIONS "
+""""""""""""""""""
+" Display altering toggle options
+nnoremap <silent> <F1> :set hlsearch! \| set hlsearch?<CR>
+imap <silent> <F1> <C-O><F1>
+nnoremap <silent> <F2> :set wrap! \| set wrap?<CR>
+imap <silent> <F2> <C-O><F2>
+nnoremap <silent> <F3> :if &list == 0 \| set list \| execute 'IndentLinesEnable' \| else \| set nolist \| execute 'IndentLinesDisable' \| endif<CR>
+imap <silent> <F3> <C-O><F3>
+nnoremap <silent> <F4> :set relativenumber! \| set relativenumber?<CR>
+imap <silent> <F4> <C-O><F4>
+nnoremap <silent> <F5> :set cursorline! \| set cursorline?<CR>:set cursorcolumn! \| set cursorcolumn?<CR>
+imap <silent> <F5> <C-O><F5>
+
+" Behavior-altering option toggles
+nnoremap <silent> <F9> :set scrollbind! \| set scrollbind?<CR>
+imap <silent> <F9> <C-O><F9>
+nnoremap <silent> <F10> :set spell! \| set spell?<CR>
+imap <silent> <F10> <C-O><F10>
+nnoremap <silent> <F11> :set ignorecase! \| set ignorecase?<CR>
+imap <silent> <F11> <C-O><F11>
+nnoremap <silent> <F12> :set paste! \| set paste?<CR>
+imap <silent> <F12> <C-O><F12>
+
+" toggle option defaults and settings
+set spell
+set pastetoggle=<F12>
+set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,space:\ ,conceal:*
+set number
+set nowrap
+
+set laststatus=2
+set statusline=
+set statusline+=%-t
+set statusline+=%-m
+set statusline+=%=
+set statusline+=%l/%L\ \(%P\)
+set statusline+=%6y
 """"""""""""""""""""
 " SuperTab Settings "
 """""""""""""""""""""
 let g:SuperTabCrMapping = 1
-
-""""""""""""""""""""
-" Airline Settings "
-""""""""""""""""""""
-let g:airline#extensions#tabline#enabled = 1
-" Update the buffer tabline if a buffer not in the current window is deleted
-autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
-set laststatus=2
-set encoding=utf-8
-let g:airline_powerline_fonts = 1
-let g:airline_exclude_preview = 0
-let g:airline_skip_empty_sections = 1
-let g:airline_theme='zenburn'
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
 
 """""""""""""""""""""""
 " indentLine Settings "

@@ -2,20 +2,20 @@ snippet ipdb "Insert ipdb trace" bA
 import ipdb; ipdb.set_trace()
 endsnippet
 
-snippet pdb "Insert pdb trace" bA
+snippet pdb "Insert pdb trace" A
 import pdb; pdb.set_trace()
 endsnippet
 
-snippet "st " "Insert nose compatible trace" rbA
+snippet st "Insert nose compatible trace" b
 from nose.tools import set_trace; set_trace()
 endsnippet
 
-snippet "while " "While loop" rbA
+snippet while "While loop" b
 while ${1:condition}:
 	${2:${VISUAL:pass}}
 endsnippet
 
-snippet "class " "Class with docstring" rbA
+snippet class "Class with docstring" b
 class ${1:ClassName}(${2:object}):
 	${3:${VISUAL:pass}}
 endsnippet
@@ -27,22 +27,22 @@ else:
 	${0:pass}
 endsnippet
 
-snippet "if " "If/Else Clause" rbA
+snippet if "If/Else Clause" b
 if ${1:condition}:
 	${0:pass}
 endsnippet
 
-snippet else "Else clause" bA
+snippet else "Else clause" b
 else:
 	${0:pass}
 endsnippet
 
-snippet "elif " "Elif Clause" rbA
+snippet elif "Elif Clause" b
 elif ${1:condition}:
 	${0:pass}
 endsnippet
 
-snippet "for " "For loop" rbA
+snippet for "For loop" b
 for ${1:item} in ${2:items}:
 	${0:pass}
 endsnippet
@@ -569,19 +569,19 @@ def __coerce__(self, other):
 endsnippet
 
 
-snippet "def " "Function without doctstring" rbA
+snippet def "Function without doctstring" b
 def ${1:fname}(${2}):
 	${3:${VISUAL:pass}}
 endsnippet
 
 
-snippet "defm " "Method without docstring" rbA
+snippet defm "Method without docstring" b
 def ${1:mname}(self, ${2:arg}):
 	${3:${VISUAL:pass}}
 endsnippet
 
 
-snippet def "function with docstrings" b
+snippet defc "function with docstrings" b
 def ${1:function}(`!p
 if snip.indent:
 	snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
@@ -598,7 +598,7 @@ def __init__(self, ${1:param}):
 endsnippet
 
 
-snippet defc "class method with docstrings" b
+snippet defcm "class method with docstrings" b
 @classmethod
 def ${1:function}(`!p
 if snip.indent:
@@ -609,7 +609,7 @@ write_function_docstring(t, snip) `
 endsnippet
 
 
-snippet defs "static method with docstrings" b
+snippet defsm "static method with docstrings" b
 @staticmethod
 def ${1:function}(${2:arg1}):
 	`!p snip.rv = triple_quotes(snip)`${4:TODO: Docstring for $1.}`!p
