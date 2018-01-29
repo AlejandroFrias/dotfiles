@@ -2,7 +2,7 @@
 test -f ~/.git-completion.bash && . $_
 test -f ~/.git-prompt.sh && . $_
 test -f ~/.bash/completion/bash_completion.sh && . $_
-test -f ~/.bash/django_bash_completion.sh && . $_
+test -f ~/website/counsyl/product/.bash_completion/manage_bash_completion.sh && . $_
 
 export YELLOW="$(tput setaf 3)"
 export GREEN="$(tput setaf 2)"
