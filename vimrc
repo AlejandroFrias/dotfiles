@@ -110,6 +110,7 @@ set switchbuf=usetab
 " Close location list or quickfix when selecting file
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>
 
+set shm=at
 
 packadd! matchit
 """"""""""""""""""
