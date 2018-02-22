@@ -12,7 +12,7 @@ PS1="\w\$(__git_ps1 \" $YELLOW(%s)$RESET\")\$ "
 GIT_PS1_SHOWDIRTYSTATE=1
 
 # Default editor
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/local/bin/vim
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs

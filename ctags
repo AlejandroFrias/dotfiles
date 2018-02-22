@@ -3,6 +3,8 @@
 -f ./.git/tags
 --exclude=.git
 --exclude=vendor/*
+--exclude=venv/*
+--exclude=env/*
 --exclude=node_modules/*
 --exclude=db/*
 --exclude=log/*

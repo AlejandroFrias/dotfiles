@@ -1,10 +1,10 @@
 setlocal autoindent
 setlocal tabstop=4
+setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
-setlocal textwidth=79
-setlocal softtabstop=4
-setlocal colorcolumn=80
+setlocal textwidth=100
+setlocal colorcolumn=101
 
 " Add nopep8 to end of line with @p
 let @o = '  # nopep8'

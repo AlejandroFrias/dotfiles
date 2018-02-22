@@ -162,31 +162,37 @@ function gcam() {
     FORCE=false
     GITLINT=false
     NOLINT=false
-    message=
 
     # Process options
-    TEMP=`getopt -o fgn --long force,gitlint,nolint: -n 'git_aliases.sh' -- "$@"`
-    eval set -- "$TEMP"
-    while true ; do
-        case "$1" in
-            -f|--force)
+    args=`getopt :fgn $*`
+    if [ $? != 0 ]
+    then
+        echo 'Usage: gcam [-fgn] COMMIT_MESSAGE'
+        return
+    fi
+
+    set -- $args
+
+    for i
+    do
+        case "$i" in
+            -f)
                 FORCE=true ; shift ;;
-            -g|--gitlint)
+            -g)
                 GITLINT=true ; shift ;;
-            -n|--nolint)
+            -n)
                 NOLINT=true ; shift ;;
             --) shift ; break ;;
-            *)  echo "${RED}Internal error!${RESET}" ; return ;;
         esac;
     done
 
-    message="$1"
+    message="$@"
     if [[ -z "$message" ]]; then
         echo "${RED}Missing required MESSAGE argument${RESET}"
         return
     fi
 
-    # Prevent unintentional commits to master branch
+    Prevent unintentional commits to master branch
     current_branch=$(git rev-parse --abbrev-ref HEAD)
     if [[ $current_branch = master ]] && [[ $FORCE = false ]]; then
         echo "${RED}ERROR${RESET}: Can't commit to master. Use -f (--force)."
@@ -210,7 +216,7 @@ function gcam() {
         fi
     fi
 
-    echo git commit -am "$message"
+    echo git commit -am \""$message"\"
     git commit -am "$message"
 }
 function gpush() {
