@@ -44,3 +44,10 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # turn of CTRL-S for suspend so it can be used for forward search
 stty -ixon
+
+# pyenv
+eval "$(pyenv init -)"
+
+# coreutils
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
