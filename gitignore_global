@@ -8,6 +8,7 @@ wheelhouse.tar
 
 # Python
 *.pyc
+.python-version
 
 # Python Packaging
 build/
@@ -18,7 +19,11 @@ MANIFEST
 # Vim
 *.swp
 *.swo
+.swn
 
 # Virtual Env
 env/
 venv/
+
+# log files
+*.log

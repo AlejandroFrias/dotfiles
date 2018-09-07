@@ -2,6 +2,10 @@
 --tag-relative=yes
 -f ./.git/tags
 --exclude=.git
+--exclude=.compiled-static
+--exclude=site_media
+--exclude=Makefile
+--exclude=*.js
 --exclude=vendor/*
 --exclude=node_modules/*
 --exclude=db/*
