@@ -13,7 +13,7 @@ GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWCOLORHINTS=1
 
 # Default editor
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/local/bin/vim
 
 # custom commands and aliases
 test -f ~/.bash/custom_commands.sh && . $_
