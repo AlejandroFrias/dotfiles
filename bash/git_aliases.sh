@@ -9,9 +9,7 @@ git config --global alias.s status
 git config --global alias.st stash
 git config --global alias.stsave stash save
 git config --global alias.d diff
-git config --global alias.c commit
-git config --global alias.cm commit -m
-git config --global alias.cam commit -am
+git config --global alias.co commit
 
 
 ########################
