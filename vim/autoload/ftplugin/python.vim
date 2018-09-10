@@ -32,3 +32,9 @@ function! ftplugin#python#TestPath(regname)
     call setreg(a:regname, test_path."\n")
     echom test_path
 endfunction
+function! ftplugin#python#LinePath(regname) range
+    " TODO: be smart and recognize being in a TestCase class
+    let line_path = ftplugin#python#PythonPath().":".a:firstline."-".a:lastline
+    call setreg(a:regname, line_path)
+    echom line_path
+endfunction
