@@ -9,7 +9,7 @@ git_pr_for_sha () {
 }
 # return directory containing file, searching parent directories and then subdirectories
 function updownsearch() {
-    mdir="$(upsearch "$1")"
+    local mdir="$(upsearch "$1")"
     if [[ -z $mdir ]]; then
         mdir="$(find . -name "$1" -exec dirname {} \; -quit)"
     fi
@@ -18,7 +18,7 @@ function updownsearch() {
 
 function upsearch() {
     pushd . >/dev/null 2>&1
-    mdir="$(test / == "$PWD" && return || test -e "$1" && echo $(pwd) && return || cd .. && upsearch "$1")"
+    local mdir="$(test / == "$PWD" && return || test -e "$1" && echo $(pwd) && return || cd .. && upsearch "$1")"
     popd >/dev/null 2>&1
     echo "$mdir"
 }
@@ -43,17 +43,17 @@ function cdriver() {
 }
 
 function maze() {
-    LAST_DIR=$(pwd)
+    local LAST_DIR=$(pwd)
     cd ~/.projects/MazeMaker
     python -c "from maze import *; m = Maze(40, 30); m.redraw()"
     cd $LAST_DIR
 }
 
 function repl() {
-    command="${*}"
+    local command="${*}"
     echo "Initialized REPL for ${command}"
-    prompt="${command}> "
-    IFS= read -er -p "$prompt" input
+    local prompt="${command}> "
+    local IFS = read -er -p "$prompt" input
     while [ "$input" != "" ];
     do
         eval "$command $input"
@@ -145,7 +145,7 @@ function runtestseleniumlegacy() {
 }
 
 function tunnel() {
-    COMMAND="ssh -NL 3333:127.0.0.1:5432 $1.counsyl.com";
+    local COMMAND="ssh -NL 3333:127.0.0.1:5432 $1.counsyl.com";
     echo $COMMAND;
     eval $COMMAND;
 }
