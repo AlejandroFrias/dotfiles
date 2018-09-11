@@ -3,19 +3,21 @@
 ########################
 alias g='git'
 git config --global alias.ch checkout
-git config --global alias.chb checkout -b
 git config --global alias.b branch
 git config --global alias.s status
 git config --global alias.st stash
-git config --global alias.stsave stash save
+git config --global alias.st stash
 git config --global alias.d diff
+git config --global alias.a add
 git config --global alias.co commit
+git config --global alias.f fetch
+git config --global alias.p pull
 
 
 ########################
 # Custom git shortcuts #
 ########################
-alias gupdate='git pull origin $(git rev-parse --abbrev-ref HEAD)'
+alias gup='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias ga='git add'
 alias gc='git commit'
 alias gcm='git commit -m'

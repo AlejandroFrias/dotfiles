@@ -16,6 +16,9 @@ dist/
 MANIFEST
 *.egg-info
 
+# Smother
+.smother
+
 # Vim
 *.swp
 *.swo
