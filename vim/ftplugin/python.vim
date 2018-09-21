@@ -3,8 +3,8 @@ setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
-setlocal textwidth=120
-setlocal colorcolumn=121
+setlocal textwidth=99
+setlocal colorcolumn=100
 
 " Add nopep8 to end of line with @p
 let @o = '  # nopep8'
@@ -15,6 +15,8 @@ let @p = 'mpA  # nopep8`p'
 nnoremap <silent> <leader>ii :call ftplugin#python#ImportPath(v:register)<CR>
 " Copy test path to register for word under cursor
 nnoremap <silent> <leader>it :call ftplugin#python#TestPath(v:register)<CR>
+" Copy line path to register for word under cursor
+nnoremap <silent> <leader>il :call ftplugin#python#LinePath(v:register)<CR>
 
 """"""""""""""""""""""""""""""""
 " Better code block navigation "

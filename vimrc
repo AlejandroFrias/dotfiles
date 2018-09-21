@@ -326,7 +326,7 @@ function! GitHubURL(regname) range
     let branch = ChompedSystem("git rev-parse --abbrev-ref HEAD")
     let remote_url = ChompedSystem("git config --get remote.origin.url")
     " extract domain and repo from both ssh and https style remote urls
-    let domain = substitute(remote_url, '\(git@\|https://\)\([a-z.]*\)\(:\|/\).*', '\2', '')
+    let domain = substitute(remote_url, '\(ssh://git@\|git@\|https://\)\([a-z.]*\)\(:\|/\).*', '\2', '')
     let repo = substitute(remote_url, '.*'.domain.'\(:\|/\)\([a-zA-Z0-9/]*\)\(\.git\)\?', '\2', '')
     let github_url = "https://".domain."/".repo."/blob/".branch."/".path."#L".a:firstline."-L".a:lastline
     call setreg(a:regname, github_url."\n")

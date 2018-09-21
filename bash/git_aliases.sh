@@ -3,21 +3,21 @@
 ########################
 alias g='git'
 git config --global alias.ch checkout
-git config --global alias.chb checkout -b
 git config --global alias.b branch
 git config --global alias.s status
 git config --global alias.st stash
-git config --global alias.stsave stash save
+git config --global alias.st stash
 git config --global alias.d diff
-git config --global alias.c commit
-git config --global alias.cm commit -m
-git config --global alias.cam commit -am
+git config --global alias.a add
+git config --global alias.co commit
+git config --global alias.f fetch
+git config --global alias.p pull
 
 
 ########################
 # Custom git shortcuts #
 ########################
-alias gupdate='git pull origin $(git rev-parse --abbrev-ref HEAD)'
+alias gup='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias ga='git add'
 alias gc='git commit'
 alias gcm='git commit -m'
@@ -35,7 +35,7 @@ alias gstuntracked='git stash save --include-untracked'
 alias gstsnapshot='git stash save "[snapshot] $(date)" && git stash apply'
 
 function gbd () {
-    SUCCESS=false
+    local BRANCH SUCCESS=false
     if [[ $1 == -D ]]; then
         BRANCH="$2"
         git branch -D "$BRANCH" && SUCCESS=true
@@ -46,8 +46,8 @@ function gbd () {
     if [[ $SUCCESS = true ]]; then
         _hunt_finish "$BRANCH"
         if $(hash psql 2>/dev/null) && $(hash dropdb 2>/dev/null); then
-            DATABASE="counsyl_product_""$(echo $BRANCH | tr '[:upper:]-' '[:lower:]_')"
-            TEST_DATABASE="test_"$DATABASE
+            local DATABASE="counsyl_product_""$(echo $BRANCH | tr '[:upper:]-' '[:lower:]_')"
+            local TEST_DATABASE="test_"$DATABASE
             psql -lqt 2>/dev/null | cut -d \| -f 1 | grep -qw "$DATABASE" && echo dropdb "$DATABASE" && dropdb "$DATABASE"
             psql -lqt 2>/dev/null | cut -d \| -f 1 | grep -qw "$TEST_DATABASE" && echo dropdb "$TEST_DATABASE" && dropdb "$TEST_DATABASE"
         fi
@@ -102,12 +102,6 @@ function _hunt_workon_or_create() {
 function gstlist() {
     git stash list "$@" | awk '{++cnt; $1 = ""; print cnt-1 ":"  $0}'
 }
-function _get_stash_name() {
-    if [[ ! -z $1 ]]; then
-        stash_name="stash@{"$1"}"
-        echo $stash_name
-    fi
-}
 function _convert_stash_number() {
     local re='^[0-9]+$'
     local args=()
@@ -139,6 +133,7 @@ function _gst_action() {
     if [[ $? == 1 ]]; then
         gstlist
         echo "Select stash number to "$1":"
+        local stash_number
         read stash_number
         args+=($stash_number)
     fi
@@ -158,13 +153,10 @@ function gstpop() {
     _gst_action pop "$@"
 }
 function gcam() {
-    SUCCESS=true
-    FORCE=false
-    GITLINT=false
-    NOLINT=false
+    local SUCCESS=true FORCE=false GITLINT=false NOLINT=false
 
     # Process options
-    args=`getopt :fgn $*`
+    local args=`getopt :fgn $*`
     if [ $? != 0 ]
     then
         echo 'Usage: gcam [-fgn] COMMIT_MESSAGE'
@@ -173,9 +165,10 @@ function gcam() {
 
     set -- $args
 
-    for i
+    local opt
+    for opt
     do
-        case "$i" in
+        case "$opt" in
             -f)
                 FORCE=true ; shift ;;
             -g)
@@ -186,14 +179,14 @@ function gcam() {
         esac;
     done
 
-    message="$@"
+    local message="$@"
     if [[ -z "$message" ]]; then
         echo "${RED}Missing required MESSAGE argument${RESET}"
         return
     fi
 
-    Prevent unintentional commits to master branch
-    current_branch=$(git rev-parse --abbrev-ref HEAD)
+    # Prevent unintentional commits to master branch
+    local current_branch=$(git rev-parse --abbrev-ref HEAD)
     if [[ $current_branch = master ]] && [[ $FORCE = false ]]; then
         echo "${RED}ERROR${RESET}: Can't commit to master. Use -f (--force)."
         return
@@ -220,9 +213,9 @@ function gcam() {
     git commit -am "$message"
 }
 function gpush() {
-    force=false
-    current_branch=$(git rev-parse --abbrev-ref HEAD)
-    push_command="git push origin $current_branch"
+    local force=false
+    local current_branch=$(git rev-parse --abbrev-ref HEAD)
+    local push_command="git push origin $current_branch"
     if [[ $1 = "-f" ]] || [[ $1 = "--force" ]]; then
         force=true
     fi

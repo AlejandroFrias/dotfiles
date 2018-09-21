@@ -8,6 +8,7 @@ wheelhouse.tar
 
 # Python
 *.pyc
+.python-version
 
 # Python Packaging
 build/
@@ -15,11 +16,18 @@ dist/
 MANIFEST
 *.egg-info
 
+# Smother
+.smother
+
 # Vim
 .swn
 *.swp
 *.swo
+.swn
 
 # Virtual Env
 env/
 venv/
+
+# log files
+*.log

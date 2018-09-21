@@ -8,16 +8,12 @@ export YELLOW="$(tput setaf 3)"
 export GREEN="$(tput setaf 2)"
 export RED="$(tput setaf 1)"
 export RESET="$(tput sgr0)"
-PS1="\w\$(__git_ps1 \" $YELLOW(%s)$RESET\")\$ "
+PROMPT_COMMAND='__git_ps1 "\w" "\\\$ "'
 GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWCOLORHINTS=1
 
 # Default editor
 export EDITOR=/usr/local/bin/vim
-
-# virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/PythonProjects
-test -f /usr/local/bin/virtualenvwrapper.sh && . $_
 
 # custom commands and aliases
 test -f ~/.bash/custom_commands.sh && . $_
@@ -48,3 +44,10 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # turn of CTRL-S for suspend so it can be used for forward search
 stty -ixon
+
+# pyenv
+eval "$(pyenv init -)"
+
+# coreutils
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
