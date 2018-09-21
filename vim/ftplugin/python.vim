@@ -3,12 +3,12 @@ setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
-setlocal textwidth=100
-setlocal colorcolumn=101
+setlocal textwidth=120
+setlocal colorcolumn=121
 
 " Add nopep8 to end of line with @p
 let @o = '  # nopep8'
-let @p = 'mp$"op`p'
+let @p = 'mpA  # nopep8`p'
 
 
 " Copy import statement to register for word under cursor

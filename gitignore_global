@@ -16,6 +16,7 @@ MANIFEST
 *.egg-info
 
 # Vim
+.swn
 *.swp
 *.swo
 
