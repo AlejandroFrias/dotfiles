@@ -196,6 +196,7 @@ syntax enable     " Use syntax highlighting
 set background=dark
 let g:solarized_termcolors = 256
 colorscheme solarized
+highlight Normal ctermfg=LightGray
 
 """""""""""""""""""
 " Ctrl-P Settings "
@@ -310,8 +311,9 @@ noremap <Right> 10zl
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
-" Stop that stupid window from popping up
+" Common mistakes
 map q: :q
+cmap E<CR> e<CR>
 
 " macro for the ubiquitous 'n.'
 let @n = "n."
