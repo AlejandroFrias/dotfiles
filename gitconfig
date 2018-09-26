@@ -1,0 +1,38 @@
+# This is Git's per-user configuration file.
+[user]
+    name = Alejandro Frias
+    email = alejandro@counsyl.com
+[core]
+    excludesfile = /Users/alejandro/.gitignore_global
+    editor = /usr/local/bin/vim
+
+[color]
+    ui = true
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[alias]
+    b = branch
+    s = status
+    st = stash
+    d = diff
+    a = add
+    co = commit
+    f = fetch
+    p = pull
+    commend = commit --amend --reset-author --no-edit
+    init = ! git init && git commit -m “root” --allow-empty
+    glog = log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"
+    pom = pull origin master
+    snapshot = ! git stash save "[snapshot] $(date)" && git stash apply
+    up = ! git pull origin $(git rev-parse --abbrev-ref HEAD)
+    bhist = ! git reflog | egrep -io 'moving from ([^[:space:]]+)' | awk '{ print  }' | head
+    ch = ! git checkout $1 && hash hunt 2>/dev/null && hunt --silent workon --create
+    chb = ! git checkout -b $1 && hash hunt 2>/dev/null && read -er -p 'Estimate '$1' (hrs): ' estimate && hunt --silent workon --create --estimate ${estimate:-0}
+    chm = ! git checkout master && hash hunt 2>/dev/null && hunt --silent stop
+    bd = ! git branch -d $1 && hash hunt 2>/dev/null && hunt --silent finish
+    bdd = ! git branch -D $1 && hash hunt 2>/dev/null && hunt --silent finish

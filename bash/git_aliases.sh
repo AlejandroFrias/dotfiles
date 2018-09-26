@@ -1,22 +1,7 @@
 ########################
-#     Git aliases      #
-########################
-alias g='git'
-git config --global alias.ch checkout
-git config --global alias.b branch
-git config --global alias.s status
-git config --global alias.st stash
-git config --global alias.st stash
-git config --global alias.d diff
-git config --global alias.a add
-git config --global alias.co commit
-git config --global alias.f fetch
-git config --global alias.p pull
-
-
-########################
 # Custom git shortcuts #
 ########################
+alias g='git'
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
@@ -45,58 +30,6 @@ function gbd () {
     fi
     if [[ $SUCCESS = true ]]; then
         _hunt_finish "$BRANCH"
-        if $(hash psql 2>/dev/null) && $(hash dropdb 2>/dev/null); then
-            local DATABASE="counsyl_product_""$(echo $BRANCH | tr '[:upper:]-' '[:lower:]_')"
-            local TEST_DATABASE="test_"$DATABASE
-            psql -lqt 2>/dev/null | cut -d \| -f 1 | grep -qw "$DATABASE" && echo dropdb "$DATABASE" && dropdb "$DATABASE"
-            psql -lqt 2>/dev/null | cut -d \| -f 1 | grep -qw "$TEST_DATABASE" && echo dropdb "$TEST_DATABASE" && dropdb "$TEST_DATABASE"
-        fi
-    fi
-}
-# remove merged branches
-function gbdm () {
-    git branch --merged | grep -v "*" | xargs --no-run-if-empty -n 1 | gbd
-}
-function gchb () {
-    git checkout -b "$1" && _hunt_workon_or_create "$1"
-}
-function gch () {
-    git checkout "$1" && _hunt_workon_or_create "$1"
-}
-function gchm () {
-    git checkout master && _hunt_stop
-}
-function _hunt_finish () {
-    if hash hunt 2>/dev/null; then
-        hunt finish "$1" 2>/dev/null
-    fi
-}
-function _hunt_stop () {
-    if hash hunt 2>/dev/null; then
-        hunt stop &>/dev/null
-    fi
-}
-function _hunt_estimate () {
-    if hash hunt 2>/dev/null; then
-        read -er -p "Estimate '${1}' (hrs): " estimate
-        if [[ ! -z $estimate ]]; then
-            hunt estimate $estimate -t "$1" 1>/dev/null
-        fi
-    fi
-}
-function _hunt_create() {
-    if hash hunt 2>/dev/null; then
-        hunt create "$1" 1>/dev/null
-        _hunt_estimate "$1"
-    fi
-}
-function _hunt_workon_or_create() {
-    if hash hunt 2>/dev/null; then
-        hunt workon "$1" &>/dev/null
-        if [ "$?" == 2 ]; then
-            _hunt_create "$1"
-            hunt workon "$1" 1>/dev/null
-        fi
     fi
 }
 function gstlist() {

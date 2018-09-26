@@ -53,7 +53,7 @@ function repl() {
     local command="${*}"
     echo "Initialized REPL for ${command}"
     local prompt="${command}> "
-    local IFS = read -er -p "$prompt" input
+    IFS= read -er -p "$prompt" input
     while [ "$input" != "" ];
     do
         eval "$command $input"
