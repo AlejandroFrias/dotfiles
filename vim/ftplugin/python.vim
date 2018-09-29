@@ -6,10 +6,12 @@ setlocal expandtab
 setlocal textwidth=99
 setlocal colorcolumn=100
 
+" Line wraping
+let @r = 'JXxx|Bi""'
+
 " Add nopep8 to end of line with @p
 let @o = '  # nopep8'
 let @p = 'mpA  # nopep8`p'
-
 
 " Copy import statement to register for word under cursor
 nnoremap <silent> <leader>ii :call ftplugin#python#ImportPath(v:register)<CR>
