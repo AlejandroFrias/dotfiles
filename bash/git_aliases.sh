@@ -2,22 +2,11 @@
 # Custom git shortcuts #
 ########################
 alias g='git'
-alias ga='git add'
-alias gb='git branch'
-alias gc='git commit'
-alias gcm='git commit -m'
-alias gcommend='git commit --amend --reset-author --no-edit'
-alias gd='git diff'
-alias ginit='git init && git commit -m “root” --allow-empty'
-alias glog='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"'
-alias gpom='git pull origin master'
 alias gs='git status'
+alias gb='git branch'
+alias gd='git diff'
+alias glog='git glog'
 alias gst='git stash'
-alias gstsave='git stash save'
-alias gstsnapshot='git stash save "[snapshot] $(date)" && git stash apply'
-alias gstunstaged='git stash save --keep-index'
-alias gstuntracked='git stash save --include-untracked'
-alias gup='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 
 function gbd () {
     local BRANCH SUCCESS=false
