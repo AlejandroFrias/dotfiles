@@ -41,9 +41,9 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'craigemery/vim-autotag'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'dhruvasagar/vim-prosession'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
 Plugin 'haya14busa/incsearch-fuzzy.vim'
 Plugin 'haya14busa/incsearch.vim'
@@ -99,12 +99,12 @@ set wildmenu                            " get wild
 set wildmode=longest:full               " prefix matching for wildmenu
 set completeopt+=longest                " insert up to the matched prefix
 " unlikely to want to match these
-set wildignore+=*.class,*.o,*.pyc,*.git,*/venv/*,*.swp,*/vendor/*
+set wildignore+=*.class,*.o,*.pyc,*.git,*/venv/*,*.swp,*/vendor/*,*.gif,*.png
 
 set backspace=2 " make backspace work like most other editors
 
 set hidden
-set autowriteall
+" set autowriteall
 set switchbuf=usetab
 
 " Close location list or quickfix when selecting file
@@ -210,7 +210,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore={*.png,*.gif,*.js,*.jpg,*.pdf} -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
@@ -313,7 +313,6 @@ nnoremap Y y$
 
 " Common mistakes
 map q: :q
-cmap E<CR> e<CR>
 
 " macro for the ubiquitous 'n.'
 let @n = "n."

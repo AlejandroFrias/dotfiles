@@ -9,11 +9,28 @@
 [color]
     ui = true
 
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 52
+
+[color "diff"]
+    meta = yellow
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+
+[pager]
+    diff = hash diff-so-fancy 2>/dev/null && diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): ' || less
 
 [alias]
     b = branch
