@@ -1,3 +1,8 @@
+# EMR team bash environment
+test -f ${HOME}/.bashrc.emr && source $_  # source shared team bashrc
+export VAGRANT_ROOT=${HOME}/vagrant
+export WEBSITE_ROOT=${HOME}/website
+
 # brew bash complete
 test -f ~/.git-completion.bash && . $_
 test -f ~/.git-prompt.sh && . $_
@@ -42,7 +47,7 @@ shopt -s histappend
 # immediately updates history so you get history of one bash session
 # immediately available in all others
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-# turn of CTRL-S for suspend so it can be used for forward search
+# turn off CTRL-S for stopping output to screen so it can be used for forward search
 stty -ixon
 
 # pyenv
@@ -51,3 +56,5 @@ eval "$(pyenv init -)"
 # coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+export PIP_INDEX_URL=https://pypi.counsyl.com/counsyl/prod

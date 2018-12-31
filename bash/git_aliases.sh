@@ -119,7 +119,7 @@ function gcam() {
     else
         echo "Linting..."
         if [[ $GITLINT = true ]]; then
-            mk gitlint || SUCCESS=false
+            mk gitlint-python || SUCCESS=false
         else
             mk lint || SUCCESS=false
         fi
