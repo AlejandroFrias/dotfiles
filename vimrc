@@ -128,8 +128,8 @@ set number
 set nowrap
 
 set laststatus=2
-set statusline=%F\ %m%r%y%= " filepath, modified, readonly, fileformat, line number, colnum
-set statusline+=%l/%L\ \(%P\)
+" filepath [modified] [readonly] [fileformat]       line_number/number_of_lines (%)
+set statusline=%F\ %m%r%y%=\ %l/%L
 
 """""""""""""""""""""""
 " indentLine Settings "
