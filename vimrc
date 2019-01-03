@@ -1,5 +1,8 @@
-if filereadable(expand("~/.vimrc.emr"))
-    source ~/.vimrc.emr
+"""""""""""""""""""""""""""""""""""""""""""
+" Source machine specific vimrc overrides "
+"""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
 endif
 
 set nocompatible              " be iMproved, required
@@ -150,7 +153,7 @@ let g:ultisnips_python_style="google"
 """""""""""""""""""""
 " NERDTree Settings "
 """""""""""""""""""""
-let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', 'website/vendor[[dir]]', 'venv[[dir]]', '__pycache__[[dir]]', '\.egg-info[[dir]]']
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', 'venv[[dir]]', '__pycache__[[dir]]', '\.egg-info[[dir]]']
 let NERDTreeQuitOnOpen=1    " Closes NERDTree window after file open
 " auto close vim if NERDTree is last window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -288,5 +291,5 @@ nnoremap <leader>f :NERDTreeFind<CR>zz
 """""""""""""""""""
 " Ctrl-P Mappings "
 """""""""""""""""""
-" ctrl-p ctags integration
+" ctrl-p style search through tags (ctag integration)
 nnoremap <leader>. :CtrlPTag<CR>

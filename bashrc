@@ -1,13 +1,10 @@
-# EMR team bash environment
-test -f ${HOME}/.bashrc.emr && source $_  # source shared team bashrc
-export VAGRANT_ROOT=${HOME}/vagrant
-export WEBSITE_ROOT=${HOME}/website
+# Machine specific bashrc
+test -f ${HOME}/.bashrc.local && source $_
 
 # brew bash complete
 test -f ~/.git-completion.bash && . $_
 test -f ~/.git-prompt.sh && . $_
 test -f ~/.bash/completion/bash_completion.sh && . $_
-test -f ~/website/counsyl/product/.bash_completion/manage_bash_completion.sh && . $_
 
 export YELLOW="$(tput setaf 3)"
 export GREEN="$(tput setaf 2)"
@@ -17,20 +14,12 @@ PROMPT_COMMAND='__git_ps1 "\w" "\\\$ "'
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWCOLORHINTS=1
 
-# Default editor
-export EDITOR=/usr/local/bin/vim
-
 # custom commands and aliases
 test -f ~/.bash/custom_commands.sh && . $_
 test -f ~/.bash/git_aliases.sh && . $_
 
-export HOMEBREW_GITHUB_API_TOKEN="3669a732a6640800e8e48c5aefefe7dc7c955b6d"
-
 # helps with line wrapping issues in tmux
 shopt -s checkwinsize
-
-# Vault for counsyl
-export VAULT_ADDR=https://vault.counsyl.com
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
@@ -49,12 +38,3 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # turn off CTRL-S for stopping output to screen so it can be used for forward search
 stty -ixon
-
-# pyenv
-eval "$(pyenv init -)"
-
-# coreutils
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-
-export PIP_INDEX_URL=https://pypi.counsyl.com/counsyl/prod
