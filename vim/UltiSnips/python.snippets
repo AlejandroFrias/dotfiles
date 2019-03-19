@@ -2,85 +2,8 @@ snippet ipdb "Insert ipdb trace" bA
 import ipdb; ipdb.set_trace()
 endsnippet
 
-snippet pdb "Insert pdb trace" A
+snippet pdb "Insert pdb trace" bA
 import pdb; pdb.set_trace()
-endsnippet
-
-snippet st "Insert nose compatible trace" b
-from nose.tools import set_trace; set_trace()
-endsnippet
-
-snippet while "While loop" b
-while ${1:condition}:
-	${2:${VISUAL:pass}}
-endsnippet
-
-snippet class "Class with docstring" b
-class ${1:ClassName}(${2:object}):
-	${3:${VISUAL:pass}}
-endsnippet
-
-snippet ifel "If clause" b
-if ${1:condition}:
-	${2:pass}
-else:
-	${0:pass}
-endsnippet
-
-snippet if "If/Else Clause" b
-if ${1:condition}:
-	${0:pass}
-endsnippet
-
-snippet "el(se)?" "Else clause" rb
-else:
-	${0:pass}
-endsnippet
-
-snippet elif "Elif Clause" b
-elif ${1:condition}:
-	${0:pass}
-endsnippet
-
-snippet for "For loop" b
-for ${1:item} in ${2:items}:
-	${0:pass}
-endsnippet
-
-snippet try "Try/Except" b
-try:
-	${1:pass}
-except ${2:Exception} as ${3:exception}:
-	${0:raise $3}
-endsnippet
-
-snippet try "Try/Except/Else" b
-try:
-	${1:pass}
-except ${2:Exception} as ${3:exception}:
-	${4:raise $3}
-else:
-	${0:pass}
-endsnippet
-
-snippet try "Try/Except/Finally" b
-try:
-	${1}
-except ${2:Exception} as ${3:exception}:
-	${4:raise $3}
-finally:
-	${0:pass}
-endsnippet
-
-snippet try "Try/Except/Else/Finally" b
-try:
-	${1:pass}
-except ${2:Exception} as ${3:exception}:
-	${4:raise $3}
-else:
-	${5:pass}
-finally:
-	${0}
 endsnippet
 
 ###########################################################################
@@ -99,7 +22,7 @@ if __name__ == `!p snip.rv = get_quoting_style(snip)`__main__`!p snip.rv = get_q
 	${1:${VISUAL:main()}}
 endsnippet
 
-snippet "with " "with" rbA
+snippet with "with" b
 with ${1:expr}`!p snip.rv = " as " if t[2] else ""`${2:var}:
 	${3:${VISUAL:pass}}
 $0
@@ -675,7 +598,6 @@ elif ${3:condition}:
 else:
 	${5:pass}
 endsnippet
-
 
 ##########################
 # Try / Except / Finally #

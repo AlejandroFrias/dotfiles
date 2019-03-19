@@ -6,6 +6,10 @@ setlocal expandtab
 setlocal textwidth=99
 setlocal colorcolumn=100
 
+setlocal foldmethod=indent
+setlocal foldnestmax=1
+setlocal foldlevel=1
+
 " Line wraping
 let @r = 'JXxx|Bi""'
 
@@ -17,8 +21,6 @@ let @p = 'mpA  # nopep8`p'
 nnoremap <silent> <leader>ii :call ftplugin#python#ImportPath(v:register)<CR>
 " Copy test path to register for word under cursor
 nnoremap <silent> <leader>it :call ftplugin#python#TestPath(v:register)<CR>
-" Copy line path to register for word under cursor
-nnoremap <silent> <leader>il :call ftplugin#python#LinePath(v:register)<CR>
 
 """"""""""""""""""""""""""""""""
 " Better code block navigation "

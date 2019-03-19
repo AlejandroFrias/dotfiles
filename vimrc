@@ -1,24 +1,12 @@
+"""""""""""""""""""""""""""""""""""""""""""
+" Source machine specific vimrc overrides "
+"""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
-""""""""""""""""""""""
-" Syntastic Settings "
-""""""""""""""""""""""
-let g:syntastic_python_checkers = ['pep8', 'pylint', 'flake8']
-let g:syntastic_css_checkers = ['csslint']
-let g:syntastic_coffeescript_checkers = ['coffeelint']
-let g:syntastic_json_checkers = ['jsonlint']
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-let g:syntastic_python_pep8_args="--ignore=E731,F821,W503"
-let g:syntastic_python_flake8_args="--ignore=E731,F821,W503"
-let g:syntastic_python_pylint_args="--disable=too-many-lines,ungrouped-imports,too-few-public-methods,import-error,attribute-defined-outside-init,invalid-name,missing-docstring,wrong-import-order,too-many-locals,line-too-long,--enable=undefined-variable,unused-variable,unused-import"
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_balloons = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes": [],
-    \ "passive_filetypes": [] }
 
 """""""""""""""""""""""""""y"
 " Packages/Plugins 
@@ -41,15 +29,11 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'craigemery/vim-autotag'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'dhruvasagar/vim-prosession'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'ervandew/supertab'
-Plugin 'haya14busa/incsearch-fuzzy.vim'
+Plugin 'elzr/vim-json'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'terryma/vim-expand-region'
 Plugin 'vim-scripts/gitignore'
@@ -74,6 +58,7 @@ autocmd FileType html,xml,xsl source ~/.vim/scripts/closetag.vim
 " folder
 set tags=.git/tags
 
+" 4-space tabs
 set softtabstop=4
 set tabstop=4
 set shiftwidth=4
@@ -99,12 +84,12 @@ set wildmenu                            " get wild
 set wildmode=longest:full               " prefix matching for wildmenu
 set completeopt+=longest                " insert up to the matched prefix
 " unlikely to want to match these
-set wildignore+=*.class,*.o,*.pyc,*.git,*/venv/*,*.swp,*/vendor/*
+set wildignore+=*.class,*.o,*.pyc,*.git,*/venv/*,*.swp,*/vendor/*,*.gif,*.png
 
 set backspace=2 " make backspace work like most other editors
 
 set hidden
-set autowriteall
+" set autowriteall
 set switchbuf=usetab
 
 " Close location list or quickfix when selecting file
@@ -146,16 +131,8 @@ set number
 set nowrap
 
 set laststatus=2
-set statusline=
-set statusline+=%-t
-set statusline+=%-m
-set statusline+=%=
-set statusline+=%l/%L\ \(%P\)
-set statusline+=%6y
-""""""""""""""""""""
-" SuperTab Settings "
-"""""""""""""""""""""
-let g:SuperTabCrMapping = 1
+" filepath [modified] [readonly] [fileformat]       line_number/number_of_lines (%)
+set statusline=%F\ %m%r%y%=\ %l/%L
 
 """""""""""""""""""""""
 " indentLine Settings "
@@ -164,14 +141,6 @@ let g:indentLine_color_term = 239
 let g:indentLine_bgcolor_term = 235
 let g:indentLine_char = '┆'
 let g:indentLine_enabled = 0   "don't use indentLine by default
-
-"""""""""""""""""""""""
-" EasyMotion Settings "
-"""""""""""""""""""""""
-" Disable default mappings
-let g:EasyMotion_do_mapping = 0
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
 
 """"""""""""""""""""""
 " UltiSnips Settings "
@@ -184,7 +153,7 @@ let g:ultisnips_python_style="google"
 """""""""""""""""""""
 " NERDTree Settings "
 """""""""""""""""""""
-let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', 'website/vendor[[dir]]', 'venv[[dir]]', '__pycache__[[dir]]', '\.egg-info[[dir]]']
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', 'venv[[dir]]', '__pycache__[[dir]]', '\.egg-info[[dir]]']
 let NERDTreeQuitOnOpen=1    " Closes NERDTree window after file open
 " auto close vim if NERDTree is last window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -210,7 +179,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore={*.png,*.gif,*.jpg,*.pdf} -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
@@ -223,8 +192,8 @@ endif
 nnoremap <C-W>+ <C-W>\|<C-W>_
 
 " Duplicates line
-nnoremap <leader>p Yp
-vnoremap <leader>p y`]p
+nnoremap <leader>d Yp
+vnoremap <leader>d y`]p
 
 " Quickfix Shortcuts
 nnoremap <silent> <leader>co :copen<CR>
@@ -234,30 +203,6 @@ nnoremap <silent> <leader>cl :clast<CR>
 nnoremap <silent> <leader>cn :cnext<CR>
 nnoremap <silent> <leader>cp :cprevious<CR>
 
-" Location List shortcuts
-nnoremap <silent> <leader>vo :lopen<CR>
-nnoremap <silent> <leader>vq :lclose<CR>
-nnoremap <silent> <leader>vf :lfirst<CR>
-nnoremap <silent> <leader>vl :llast<CR>
-nnoremap <silent> <leader>vn :lnext<CR>
-nnoremap <silent> <leader>vp :lprevious<CR>
-
-" Marks
-nnoremap <leader>m :marks 'qwertyuiopasdfghjklzxcvbnm0123456789\"[]^.<CR>:normal `
-nnoremap <leader>M :marks QWERTYUIOPASDFGHJKLZXCVBNM<CR>:normal `
-
-" Easier movement to beginning/end of line
-noremap - $
-vnoremap - $h
-noremap 0 ^
-noremap _ 0
-
-" Insert a single character
-function! RepeatChar(char, count)
-    return repeat(a:char, a:count)
-endfunction
-nnoremap s :<C-U>exec "normal! i".RepeatChar(nr2char(getchar()), v:count1)<CR>
-
 " Move lines easily
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
@@ -266,37 +211,12 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-" Insert lines above and below cursor
-nnoremap <leader>o mqo<ESC>`qj
-nnoremap <leader>O mqO<ESC>`q
-
-" Save easily
-nnoremap <C-S> :w<CR>
-vnoremap <C-S> <ESC>:w<CR>
-inoremap <C-S> <ESC>:w<CR>
-
 " Exit insert mode
 inoremap jk <ESC>
 
 "" BUFFER/WINDOW MADNESS
 " List and switch buffers CtrlP-style
-nnoremap <leader>bb :CtrlPBuffer<CR>
-" Close current buffer and open next
-function! BufferDelete()
-    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) > 1
-        execute "bp|bd#"
-    else
-        execute "enew|bd#"
-    endif
-endfunction
-nnoremap <leader>bq :call BufferDelete()<CR>
-" Go to next/previous buffer
-nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bn :bnext<CR>
-" Switch to last used buffer
-nnoremap <leader>bl :e#<CR>
-" Clear all but current buffer
-nnoremap <leader>bc :%bd<CR><C-O>:bd#<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 
 " Easy quit
 nnoremap <leader>q :q<CR>
@@ -313,10 +233,6 @@ nnoremap Y y$
 
 " Common mistakes
 map q: :q
-cmap E<CR> e<CR>
-
-" macro for the ubiquitous 'n.'
-let @n = "n."
 
 " System call, but chomp off newline
 function! ChompedSystem( ... )
@@ -354,56 +270,26 @@ nnoremap <silent> <bar> :<C-U>call BarWithDefault(v:count1)<CR>
 """""""""""""""""""""""""
 nmap S ysiw
 
-""""""""""""""""""""""
-" Syntastic Mappings "
-""""""""""""""""""""""
-
-nnoremap <leader>sc :SyntasticCheck<CR>:Errors<CR>:lopen<CR>
-
 """""""""""""""""""
 " Tagbar Mappings "
 """""""""""""""""""
 
-nnoremap <leader>tb :TagbarOpenAutoClose<CR>
-
-"""""""""""""""""""""""
-" EasyMotion Mappings "
-"""""""""""""""""""""""
-
-" EasyMotion regex searching
-map  // <Plug>(easymotion-sn)
-omap // <Plug>(easymotion-tn)
-
-" Easy Line motions
-map gj <Plug>(easymotion-j)
-map gk <Plug>(easymotion-k)
-map gl <Plug>(easymotion-sol-bd-jk)
-
-" <leader>f {char} to move to {char}
-map <leader>f <Plug>(easymotion-bd-f)
+nnoremap <leader>t :TagbarOpenAutoClose<CR>
 
 """"""""""""""""""""""""""""""
 " IncrementalSearch Mappings "
 """"""""""""""""""""""""""""""
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
-map z/ <Plug>(incsearch-fuzzy-/)
-map z? <Plug>(incsearch-fuzzy-?)
-
-""""""""""""""""""""""""""
-" Expand Region Mapptings "
-""""""""""""""""""""""""""
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 
 """""""""""""""""""""
 " NERDTree Mappings "
 """""""""""""""""""""
-nnoremap <leader>tt :NERDTree<CR>
-nnoremap <leader>tf :NERDTreeFind<CR>zz
+nnoremap <leader>n :NERDTree<CR>
+nnoremap <leader>f :NERDTreeFind<CR>zz
 
 """""""""""""""""""
 " Ctrl-P Mappings "
 """""""""""""""""""
-" ctrl-p ctags integration
+" ctrl-p style search through tags (ctag integration)
 nnoremap <leader>. :CtrlPTag<CR>

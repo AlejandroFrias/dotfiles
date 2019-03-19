@@ -1,10 +1,3 @@
-function! ftplugin#python#GoToDefinition()
-    " Grab symbol under cursor
-    let symbol = expand("<cword>")
-    let search_regex = "^\\s*\\(def \\|class \\)".symbol."(\\|^\\s*".symbol." = "
-    exec "Ggrep '".search_regex."'"
-endfunction
-
 function! ftplugin#python#PythonPath()
     " Get current file path
     let path = expand('%:p')
@@ -29,12 +22,6 @@ endfunction
 function! ftplugin#python#TestPath(regname)
     " TODO: be smart and recognize being in a TestCase class
     let test_path = ftplugin#python#PythonPath().":".expand("<cword>")
-    call setreg(a:regname, test_path."\n")
+    call setreg(a:regname, test_path)
     echom test_path
-endfunction
-function! ftplugin#python#LinePath(regname) range
-    " TODO: be smart and recognize being in a TestCase class
-    let line_path = ftplugin#python#PythonPath().":".a:firstline."-".a:lastline
-    call setreg(a:regname, line_path)
-    echom line_path
 endfunction
