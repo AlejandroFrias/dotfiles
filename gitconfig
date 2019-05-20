@@ -48,8 +48,8 @@
     snapshot = ! git stash save "[snapshot] $(date)" && git stash apply
     up = ! git pull origin $(git rev-parse --abbrev-ref HEAD)
     bhist = ! git reflog | egrep -io 'moving from ([^[:space:]]+)' | awk '{ print  }' | head
-    ch = ! git checkout $1 && hash hunt 2>/dev/null && hunt --silent workon $(git rev-parse --abbrev-ref HEAD) --create && echo Working on:
-    chb = ! git checkout -b $1 && hash hunt 2>/dev/null && read -er -p 'Estimate '$1' (hrs): ' estimate && hunt --silent workon --create --estimate ${estimate:-0}
-    chm = ! git checkout master && hash hunt 2>/dev/null && hunt --silent stop
-    bd = ! git branch -d $1 && hash hunt 2>/dev/null && hunt --silent finish
-    bdd = ! git branch -D $1 && hash hunt 2>/dev/null && hunt --silent finish
+    ch = checkout
+    chb = checkout -b
+    chm = checkout master
+    bd = branch -d
+    bdd = branch -D

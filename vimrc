@@ -206,8 +206,6 @@ nnoremap <silent> <leader>cp :cprevious<CR>
 " Move lines easily
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
@@ -251,8 +249,8 @@ function! GitHubURL(regname) range
     echom github_url
 endfunction
 " Copy GitHubURL to register and echo at bottom of screen
-nnoremap <silent> <leader>ig :call GitHubURL(v:register)<CR>
-vnoremap <silent> <leader>ig :call GitHubURL(v:register)<CR>
+nnoremap <silent> <leader>g :call GitHubURL(v:register)<CR>
+vnoremap <silent> <leader>g :call GitHubURL(v:register)<CR>
 
 " Change bar's default behavior to go to text width column
 function! BarWithDefault(count)
