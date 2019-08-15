@@ -39,6 +39,8 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'vim-scripts/gitignore'
 Plugin 'vimwiki/vimwiki'
 Plugin 'Yggdroot/indentLine'
+Plugin 'python/black'
+Plugin 'nvie/vim-flake8'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -46,6 +48,7 @@ filetype plugin indent on    " required
 """"""""""""""""""""
 " General Settings "
 """"""""""""""""""""
+let g:black_linelength=99
 
 let mapleader=" "
 syntax on
@@ -243,7 +246,7 @@ function! GitHubURL(regname) range
     let remote_url = ChompedSystem("git config --get remote.origin.url")
     " extract domain and repo from both ssh and https style remote urls
     let domain = substitute(remote_url, '\(ssh://git@\|git@\|https://\)\([a-z.]*\)\(:\|/\).*', '\2', '')
-    let repo = substitute(remote_url, '.*'.domain.'\(:\|/\)\([a-zA-Z0-9/]*\)\(\.git\)\?', '\2', '')
+    let repo = substitute(remote_url, '.*'.domain.'\(:\|/\)\([a-zA-Z0-9/_-]*\)\(\.git\)\?', '\2', '')
     let github_url = "https://".domain."/".repo."/blob/".branch."/".path."#L".a:firstline."-L".a:lastline
     call setreg(a:regname, github_url."\n")
     echom github_url
