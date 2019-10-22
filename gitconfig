@@ -1,36 +1,37 @@
 # This is Git's per-user configuration file.
 [user]
     name = Alejandro Frias
-    email = alejandro@counsyl.com
+    email = alejandro@myriad.com
 [core]
     excludesfile = /Users/alejandro/.gitignore_global
     editor = /usr/local/bin/vim
+	pager = delta --dark
 
-[color]
-    ui = true
+; [color]
+;     ui = true
 
-[color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 52
+; [color "diff-highlight"]
+;     oldNormal = red bold
+;     oldHighlight = red bold 52
+;     newNormal = green bold
+;     newHighlight = green bold 52
 
-[color "diff"]
-    meta = yellow
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
+; [color "diff"]
+;     meta = yellow
+;     frag = magenta bold
+;     commit = yellow bold
+;     old = red bold
+;     new = green bold
+;     whitespace = red reverse
 
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+; [filter "lfs"]
+;     clean = git-lfs clean -- %f
+;     smudge = git-lfs smudge -- %f
+;     process = git-lfs filter-process
+;     required = true
 
-[pager]
-    diff = hash diff-so-fancy 2>/dev/null && diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): ' || less
+; [pager]
+;     diff = hash diff-so-fancy 2>/dev/null && diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): ' || less
 
 [alias]
     b = branch
@@ -42,9 +43,8 @@
     f = fetch
     p = pull
     commend = commit --amend --reset-author --no-edit
-    init = ! git init && git commit -m “root” --allow-empty
+    init = ! git init && git commit -m "root" --allow-empty
     glog = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'
-    pom = pull origin master
     snapshot = ! git stash save "[snapshot] $(date)" && git stash apply
     up = ! git pull origin $(git rev-parse --abbrev-ref HEAD)
     bhist = ! git reflog | egrep -io 'moving from ([^[:space:]]+)' | awk '{ print  }' | head

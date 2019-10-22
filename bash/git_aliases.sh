@@ -74,75 +74,24 @@ function gstapply() {
 function gstpop() {
     _gst_action pop "$@"
 }
-function gcam() {
-    local SUCCESS=true FORCE=false GITLINT=false NOLINT=false
-
-    # Process options
-    local args=`getopt :fgn $*`
-    if [ $? != 0 ]
-    then
-        echo 'Usage: gcam [-fgn] COMMIT_MESSAGE'
-        return
+function gstreverse() {
+    local args=("$@")
+    _contains_stash_number "${args[@]}"
+    if [[ $? == 1 ]]; then
+        gstlist
+        echo "Select stash number to "$1":"
+        local stash_number
+        read stash_number
+        args+=($stash_number)
     fi
-
-    set -- $args
-
-    local opt
-    for opt
-    do
-        case "$opt" in
-            -f)
-                FORCE=true ; shift ;;
-            -g)
-                GITLINT=true ; shift ;;
-            -n)
-                NOLINT=true ; shift ;;
-            --) shift ; break ;;
-        esac;
-    done
-
-    local message="$@"
-    if [[ -z "$message" ]]; then
-        echo "${RED}Missing required MESSAGE argument${RESET}"
-        return
-    fi
-
-    # Prevent unintentional commits to master branch
-    local current_branch=$(git rev-parse --abbrev-ref HEAD)
-    if [[ $current_branch = master ]] && [[ $FORCE = false ]]; then
-        echo "${RED}ERROR${RESET}: Can't commit to master. Use -f (--force)."
-        return
-    fi
-
-    if [[ $NOLINT = true ]]; then
-        echo "${YELLOW}Skipping lint...${RESET}"
-    else
-        echo "Linting..."
-        if [[ $GITLINT = true ]]; then
-            mk gitlint-python || SUCCESS=false
-        else
-            mk lint || SUCCESS=false
-        fi
-        if [[ $SUCCESS = true ]]; then
-            echo "${GREEN}Lint successful${RESET}"
-        else
-            echo "${RED}ERROR${RESET}: Fix lint errors first."
-            return
-        fi
-    fi
-
-    echo git commit -am \""$message"\"
-    git commit -am "$message"
+    echo "git stash show -p $(_convert_stash_number "${args[@]}") | patch --reverse"
+    git stash show -p $(_convert_stash_number "${args[@]}") | patch --reverse
 }
 function gpush() {
-    local force=false
     local current_branch=$(git rev-parse --abbrev-ref HEAD)
-    local push_command="git push origin $current_branch"
-    if [[ $1 = "-f" ]] || [[ $1 = "--force" ]]; then
-        force=true
-    fi
-    if [[ $current_branch = "master" ]] && [[ $force = "false" ]]; then
-        echo "${RED}ERROR${RESET}: Can't push to master. Use -f (--force)."
+    local push_command="git push --set-upstream origin $current_branch"
+    if [[ $current_branch = "master" ]]; then
+        echo "${RED}ERROR${RESET}: Can't push to master."
         return
     fi
     echo $push_command

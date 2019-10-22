@@ -1,10 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""
-" Source machine specific vimrc overrides "
-"""""""""""""""""""""""""""""""""""""""""""
-if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local
-endif
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -117,17 +110,18 @@ nnoremap <silent> <F5> :set cursorline! \| set cursorline?<CR>:set cursorcolumn!
 imap <silent> <F5> <C-O><F5>
 
 " Behavior-altering option toggles
+nnoremap <silent> <F8> :set ignorecase! \| set ignorecase?<CR>
+imap <silent> <F8> <C-O><F8>
 nnoremap <silent> <F9> :set scrollbind! \| set scrollbind?<CR>
 imap <silent> <F9> <C-O><F9>
 nnoremap <silent> <F10> :set spell! \| set spell?<CR>
 imap <silent> <F10> <C-O><F10>
-nnoremap <silent> <F11> :set ignorecase! \| set ignorecase?<CR>
-imap <silent> <F11> <C-O><F11>
 nnoremap <silent> <F12> :set paste! \| set paste?<CR>
 imap <silent> <F12> <C-O><F12>
 
 " toggle option defaults and settings
 set spell
+set linebreak
 set pastetoggle=<F12>
 set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,space:\ ,conceal:*
 set number
@@ -194,10 +188,6 @@ endif
 " Full screen vim window
 nnoremap <C-W>+ <C-W>\|<C-W>_
 
-" Duplicates line
-nnoremap <leader>d Yp
-vnoremap <leader>d y`]p
-
 " Quickfix Shortcuts
 nnoremap <silent> <leader>co :copen<CR>
 nnoremap <silent> <leader>cq :cclose<CR>
@@ -222,6 +212,11 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 " Easy quit
 nnoremap <leader>q :q<CR>
 vnoremap <leader>q <ESC>:q<CR>
+
+" Highlight all
+nnoremap ga ggVG
+" Select all
+nnoremap ya ggVGy
 
 " arrow keys for scrolling
 noremap <Down> 5<C-E>
@@ -294,3 +289,11 @@ nnoremap <leader>f :NERDTreeFind<CR>zz
 """""""""""""""""""
 " ctrl-p style search through tags (ctag integration)
 nnoremap <leader>. :CtrlPTag<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""
+" Source machine specific vimrc overrides "
+"""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+

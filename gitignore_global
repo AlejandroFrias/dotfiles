@@ -1,5 +1,6 @@
 # Mac
 .DS_Store
+.localized
 
 # Sublime
 *.sublime-workspace
@@ -8,6 +9,7 @@ wheelhouse.tar
 
 # Python
 *.pyc
+__pycache__
 .python-version
 
 # Python Packaging
@@ -28,6 +30,10 @@ MANIFEST
 # Virtual Env
 env/
 venv/
+.venv/
 
 # log files
 *.log
+
+# website cli
+.website-cli-tests
