@@ -1,5 +1,5 @@
 #!/bin/bash
-alias lsa="ls -Flah --color=auto"
+alias lsa="ls -Flah"
 hash exa 2>/dev/null && alias ls="exa"
 hash bat 2>/dev/null && alias cat="bat"
 

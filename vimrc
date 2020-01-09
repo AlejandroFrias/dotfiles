@@ -1,10 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""
-" Source machine specific vimrc overrides "
-"""""""""""""""""""""""""""""""""""""""""""
-if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local
-endif
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -294,3 +287,11 @@ nnoremap <leader>f :NERDTreeFind<CR>zz
 """""""""""""""""""
 " ctrl-p style search through tags (ctag integration)
 nnoremap <leader>. :CtrlPTag<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""
+" Source machine specific vimrc overrides "
+"""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+
