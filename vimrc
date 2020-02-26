@@ -110,17 +110,18 @@ nnoremap <silent> <F5> :set cursorline! \| set cursorline?<CR>:set cursorcolumn!
 imap <silent> <F5> <C-O><F5>
 
 " Behavior-altering option toggles
+nnoremap <silent> <F8> :set ignorecase! \| set ignorecase?<CR>
+imap <silent> <F8> <C-O><F8>
 nnoremap <silent> <F9> :set scrollbind! \| set scrollbind?<CR>
 imap <silent> <F9> <C-O><F9>
 nnoremap <silent> <F10> :set spell! \| set spell?<CR>
 imap <silent> <F10> <C-O><F10>
-nnoremap <silent> <F11> :set ignorecase! \| set ignorecase?<CR>
-imap <silent> <F11> <C-O><F11>
 nnoremap <silent> <F12> :set paste! \| set paste?<CR>
 imap <silent> <F12> <C-O><F12>
 
 " toggle option defaults and settings
 set spell
+set linebreak
 set pastetoggle=<F12>
 set listchars=eol:¬,tab:▶\ ,trail:·,extends:>,precedes:<,nbsp:%,space:\ ,conceal:*
 set number
@@ -186,10 +187,6 @@ endif
 """""""""""""""""""""""
 " Full screen vim window
 nnoremap <C-W>+ <C-W>\|<C-W>_
-
-" Duplicates line
-nnoremap <leader>d Yp
-vnoremap <leader>d y`]p
 
 " Quickfix Shortcuts
 nnoremap <silent> <leader>co :copen<CR>

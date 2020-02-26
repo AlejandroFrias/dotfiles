@@ -74,6 +74,19 @@ function gstapply() {
 function gstpop() {
     _gst_action pop "$@"
 }
+function gstreverse() {
+    local args=("$@")
+    _contains_stash_number "${args[@]}"
+    if [[ $? == 1 ]]; then
+        gstlist
+        echo "Select stash number to "$1":"
+        local stash_number
+        read stash_number
+        args+=($stash_number)
+    fi
+    echo "git stash show -p $(_convert_stash_number "${args[@]}") | patch --reverse"
+    git stash show -p $(_convert_stash_number "${args[@]}") | patch --reverse
+}
 function gcam() {
     local SUCCESS=true FORCE=false GITLINT=false NOLINT=false
 
@@ -137,7 +150,7 @@ function gcam() {
 function gpush() {
     local force=false
     local current_branch=$(git rev-parse --abbrev-ref HEAD)
-    local push_command="git push origin $current_branch"
+    local push_command="git push --set-upstream origin $current_branch"
     if [[ $1 = "-f" ]] || [[ $1 = "--force" ]]; then
         force=true
     fi
