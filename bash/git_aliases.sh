@@ -89,11 +89,11 @@ function gstreverse() {
 }
 function gpush() {
     local current_branch=$(git rev-parse --abbrev-ref HEAD)
-    local push_command="git push --set-upstream origin $current_branch"
     if [[ $current_branch = "master" ]]; then
         echo "${RED}ERROR${RESET}: Can't push to master."
         return
     fi
+    local push_command="git push --set-upstream origin $current_branch"
     echo $push_command
     $push_command
 }
