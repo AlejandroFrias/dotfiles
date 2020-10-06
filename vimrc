@@ -20,7 +20,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'craigemery/vim-autotag'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dhruvasagar/vim-prosession'
 Plugin 'elzr/vim-json'
@@ -42,6 +41,7 @@ filetype plugin indent on    " required
 " General Settings "
 """"""""""""""""""""
 let g:black_linelength=99
+let g:black_virtualenv="~/.vim_black"
 
 let mapleader=" "
 syntax on

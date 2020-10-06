@@ -3,6 +3,8 @@ alias lsa="ls -Flah"
 hash exa 2>/dev/null && alias ls="exa"
 hash bat 2>/dev/null && alias cat="bat"
 
+alias diff='git --no-pager diff --color=auto --no-ext-diff --no-index'
+
 function ssht() {
     ssh $* -t 'tmux a || tmux || /bin/bash';
 }
