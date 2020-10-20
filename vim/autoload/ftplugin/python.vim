@@ -17,7 +17,7 @@ function! ftplugin#python#ImportPath(regname)
     call setreg(a:regname, import_string."\n")
     echom import_string
 endfunction
-function! ftplugin#python#TestPath(regname)
+function! ftplugin#python#pyTestPath(regname)
     " TODO: be smart and recognize being in a TestCase class
     let test_path = ftplugin#python#PythonPath().".py::".expand("<cword>")
     call setreg(a:regname, test_path)
