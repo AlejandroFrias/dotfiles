@@ -91,7 +91,12 @@ set switchbuf=usetab
 " Close location list or quickfix when selecting file
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>
 
-set shm=at
+set shortmess=at
+
+" temporary files get they're own directories
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
 
 packadd! matchit
 """"""""""""""""""
@@ -215,8 +220,6 @@ vnoremap <leader>q <ESC>:q<CR>
 
 " Highlight all
 nnoremap ga ggVG
-" Select all
-nnoremap ya ggVGy
 
 " arrow keys for scrolling
 noremap <Down> 5<C-E>
