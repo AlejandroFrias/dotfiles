@@ -53,5 +53,6 @@
     chm = checkout master
     bd = branch -d
     bdd = branch -D
+
 [diff]
 	compactionHeuristic = true

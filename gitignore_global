@@ -24,10 +24,9 @@ MANIFEST
 .smother
 
 # Vim
-.swn
 *.swp
 *.swo
-.swn
+*.swn
 
 # Virtual Env
 env/
