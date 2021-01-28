@@ -10,7 +10,7 @@ export YELLOW="$(tput setaf 3)"
 export GREEN="$(tput setaf 2)"
 export RED="$(tput setaf 1)"
 export RESET="$(tput sgr0)"
-PS1='__git_ps1 "\w" "\\\$ "'
+PROMPT_COMMAND='__git_ps1 "\w" "\\\$ "'
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWCOLORHINTS=1
 
