@@ -38,3 +38,5 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # turn off CTRL-S for stopping output to screen so it can be used for forward search
 stty -ixon
+
+complete -W "\`grep -oE '^[a-zA-Z0-9_-]+:([^=]|$)' ?akefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
