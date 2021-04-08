@@ -33,6 +33,7 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'Yggdroot/indentLine'
 Plugin 'python/black'
 Plugin 'nvie/vim-flake8'
+Plugin 'jvirtanen/vim-octave'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
