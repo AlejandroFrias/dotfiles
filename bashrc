@@ -6,6 +6,10 @@ test -f ~/.git-completion.bash && . $_
 test -f ~/.git-prompt.sh && . $_
 test -f ~/.bash/completion/bash_completion.sh && . $_
 
+
+export EDITOR='vim'
+export VISUAL='vim'
+
 export YELLOW="$(tput setaf 3)"
 export GREEN="$(tput setaf 2)"
 export RED="$(tput setaf 1)"
