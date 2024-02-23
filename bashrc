@@ -44,3 +44,4 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 stty -ixon
 
 complete -W "\`grep -oE '^[a-zA-Z0-9_-]+:([^=]|$)' ?akefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
+. "$HOME/.cargo/env"
