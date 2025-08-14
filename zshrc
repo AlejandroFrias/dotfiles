@@ -88,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='code -w'
+  export EDITOR="code -w"
 fi
 
 # Compilation flags
@@ -102,6 +102,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias th=thunter
 function open_changed_files () {
   code `git diff --name-only ${1:-HEAD~1} | paste -s -d\  -`
 }
@@ -119,7 +120,31 @@ function open_changed_files () {
 # GIT_PS1_SHOWDIRTYSTATE=1
 # GIT_PS1_SHOWCOLORHINTS=1
 # GIT_PS1_SHOWUNTRACKEDFILES=1
-# alias g=git
+alias g=git
+alias gs="g s"
+alias gd="g d"
+
+autoload -Uz compinit
+compinit
+#compdef gt
+###-begin-gt-completions-###
+#
+# yargs command completion script
+#
+# Installation: gt completion >> ~/.zshrc
+#    or gt completion >> ~/.zprofile on OSX.
+#
+_gt_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _gt_yargs_completions gt
+###-end-gt-completions-###
 
 # # yarn completion
 # test -f ${HOME}/.zsh-yarn-completions/zsh-yarn-completions.plugin.zsh && source $_
@@ -160,3 +185,8 @@ eval "$(pyenv init -)"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/vault vault
+
+# Added by Windsurf
+export PATH="/Users/afrias/.codeium/windsurf/bin:$PATH"
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
