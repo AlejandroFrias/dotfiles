@@ -7,8 +7,8 @@
     editor = /usr/local/bin/code -w
 
 [alias]
+    s = "!git status && hash thunter 2>/dev/null && if [ \"$(git rev-parse --abbrev-ref HEAD)\" = \"main\" ]; then THUNTER_SILENT=1 thunter stop; else THUNTER_SILENT=1 thunter workon $(git rev-parse --abbrev-ref HEAD); fi"
     b = branch
-    s = status
     st = stash
     d = diff
     a = add
@@ -21,13 +21,14 @@
     snapshot = ! git stash save "[snapshot] $(date)" && git stash apply
     up = ! git pull origin $(git rev-parse --abbrev-ref HEAD)
     bhist = ! git reflog | egrep -io 'moving from ([^[:space:]]+)' | awk '{ print  }' | head
-    ch = checkout
-    chb = checkout -b
-    chm = checkout main
-    bd = branch -d
-    bdd = branch -D
+    ch = "!git checkout $1 && hash thunter 2>/dev/null && if [ \"$(git rev-parse --abbrev-ref HEAD)\" = \"master\" ]; then THUNTER_SILENT=1 thunter stop; else THUNTER_SILENT=1 thunter workon --create $(git rev-parse --abbrev-ref HEAD); fi && echo 1>/dev/null"
+    chb = ! git checkout -b $1 && hash thunter 2>/dev/null && read -er -p 'Estimate '$1' (hrs): ' estimate && THUNTER_SILENT=1 thunter workon --create --estimate ${estimate:-0}
+    chm = ! git checkout main && hash thunter 2>/dev/null && THUNTER_SILENT=1 thunter stop
+    bd = ! git branch -d $1 && hash thunter 2>/dev/null && THUNTER_SILENT=1 thunter finish
+    bdd = ! git branch -D $1 && hash thunter 2>/dev/null && THUNTER_SILENT=1 thunter finish
 
 [diff]
 	compactionHeuristic = true
 [init]
 	defaultBranch = main
+	templatedir = ~/.git-templates

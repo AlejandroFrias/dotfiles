@@ -1,0 +1,7 @@
+#!/bin/bash
+
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+is_branch_switch=$3
+if [[ "$is_branch_switch" == "1" && "$branch_name" != "main" ]]; then
+    echo "You have switched to branch: $branch_name"
+fi
