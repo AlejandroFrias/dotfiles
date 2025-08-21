@@ -186,7 +186,12 @@ eval "$(pyenv init -)"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/vault vault
 
-# Added by Windsurf
-export PATH="/Users/afrias/.codeium/windsurf/bin:$PATH"
 
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+. "$HOME/.local/bin/env"
+
+# Auto complete for uv
+eval "$(uv generate-shell-completion zsh)"
+
+export PATH="$HOME/go/bin:$PATH"

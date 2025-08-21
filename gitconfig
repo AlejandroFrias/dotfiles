@@ -24,8 +24,8 @@
     ch = checkout
     chb = checkout -b
     chm = checkout main
-    bd = ! git branch -d $1 && hash thunter 2>/dev/null && THUNTER_SILENT=1 thunter finish
-    bdd = ! git branch -D $1 && hash thunter 2>/dev/null && THUNTER_SILENT=1 thunter finish
+    bd = ! git branch -d $1 && hash thunter 2>/dev/null && thunter finish
+    bdd = ! git branch -D $1 && hash thunter 2>/dev/null && thunter finish
 
 [diff]
 	compactionHeuristic = true
