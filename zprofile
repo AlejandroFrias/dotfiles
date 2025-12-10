@@ -3,3 +3,4 @@
 # eval "$(pyenv init --path)"
 
 # source ~/.zshrc
+# exec zsh

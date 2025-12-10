@@ -1,6 +1,12 @@
 # Machine specific zshrc
 test -f ${HOME}/.zshrc.local && source $_
 
+alias dcpm="docker compose -f local.yml run -u dev-user --rm django python manage.py"
+alias dcb="docker compose -f local.yml run -u dev-user --rm django bash"
+alias dc="docker compose -f local.yml run -u dev-user --rm django"
+
+export PATH="/Applications/PyCharm.app/Contents/MacOS:$PATH"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -73,7 +79,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew aws kubectl docker fzf-zsh-plugin fzf-tab)
+plugins=(git brew docker fzf-zsh-plugin fzf-tab)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,8 +93,12 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
+  export VISUAL='vim'
 else
-  export EDITOR="code -w"
+  export EDITOR='pycharm'
+  export VISUAL='pycharm'
+#   export EDITOR='code -w'
+#   export VISUAL='code -h'
 fi
 
 # Compilation flags
@@ -104,7 +114,7 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias th=thunter
 function open_changed_files () {
-  code `git diff --name-only ${1:-HEAD~1} | paste -s -d\  -`
+  $EDITOR `git diff --name-only ${1:-HEAD~1} | paste -s -d\  -`
 }
 
 
@@ -124,59 +134,16 @@ alias g=git
 alias gs="g s"
 alias gd="g d"
 
-autoload -Uz compinit
-compinit
-#compdef gt
-###-begin-gt-completions-###
-#
-# yargs command completion script
-#
-# Installation: gt completion >> ~/.zshrc
-#    or gt completion >> ~/.zprofile on OSX.
-#
-_gt_yargs_completions()
-{
-  local reply
-  local si=$IFS
-  IFS=$'
-' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "${words[@]}"))
-  IFS=$si
-  _describe 'values' reply
-}
-compdef _gt_yargs_completions gt
-###-end-gt-completions-###
-
-# # yarn completion
-# test -f ${HOME}/.zsh-yarn-completions/zsh-yarn-completions.plugin.zsh && source $_
-
-# # editor settings
-# export EDITOR='code -h'
-# export VISUAL='code -h'
-
-# # History Settings
-# export HISTFILE=~/.zsh_history
-# export HISTFILESIZE=1000000000
-# export HISTSIZE=1000000000
-# setopt INC_APPEND_HISTORY
-# export HISTTIMEFORMAT="[%F %T] "
-# setopt EXTENDED_HISTORY
-# setopt HIST_FIND_NO_DUPS
-# setopt HIST_IGNORE_ALL_DUPS
-# stty -ixon # allows C-S for search forward
-
 git_pr_for_sha() {
     git log --merges --ancestry-path --oneline $1..main | \
         grep 'pull request' | tail -n1 | awk '{print $5}' | cut -c2-
 }
 
+autoload -Uz compinit
+compinit
 
 # brew loading
 eval $(/opt/homebrew/bin/brew shellenv)
-
-# NVM - node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
-[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -194,4 +161,34 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 # Auto complete for uv
 eval "$(uv generate-shell-completion zsh)"
 
+
+# NVM - node version manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
+[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
 export PATH="$HOME/go/bin:$PATH"
+export PATH=$HOME/.proto/bin:$HOME/.proto/include:$PATH
+eval "$(~/.local/bin/mise activate)"
+
+
+# >>> conda initialize >>>
+# If you'd prefer that conda's base environment not be activated on startup,
+#    run the following command when conda is activated:
+
+# conda config --set auto_activate_base false
+
+# Note: You can undo this later by running `conda init --reverse $SHELL`
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/afrias/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/afrias/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/afrias/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/afrias/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

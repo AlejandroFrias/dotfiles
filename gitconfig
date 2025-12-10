@@ -26,6 +26,8 @@
     chm = checkout main
     bd = ! git branch -d $1 && hash thunter 2>/dev/null && thunter finish
     bdd = ! git branch -D $1 && hash thunter 2>/dev/null && thunter finish
+    # delete all merged branches
+    bdm = ! git branch --merged | grep -v 'main' | xargs -n 1 git bd
 
 [diff]
 	compactionHeuristic = true
