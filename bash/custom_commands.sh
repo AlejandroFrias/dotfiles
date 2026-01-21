@@ -51,14 +51,6 @@ function repl() {
     done
 }
 
-function h() {
-    if [[ -z $1 ]]; then
-        repl hunt
-    else
-        hunt "$@"
-    fi
-}
-
 function mk() {
     cd "$(updownsearch Makefile)"
     make "$@"

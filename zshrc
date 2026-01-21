@@ -5,6 +5,18 @@ alias dcpm="docker compose -f local.yml run -u dev-user --rm django python manag
 alias dcb="docker compose -f local.yml run -u dev-user --rm django bash"
 alias dc="docker compose -f local.yml run -u dev-user --rm django"
 
+function repl() {
+    local command="${*}"
+    echo "Initialized REPL for ${command}"
+    local prompt="${command}> "
+    IFS= read "input?$prompt"
+    while [ "$input" != "" ];
+    do
+        eval "$command $input"
+        IFS= read "input?$prompt"
+    done
+}
+
 export PATH="/Applications/PyCharm.app/Contents/MacOS:$PATH"
 
 # If you come from bash you might have to change your $PATH.
@@ -112,7 +124,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias th=thunter
+alias th="EDITOR='code -w' thunter"
 function open_changed_files () {
   $EDITOR `git diff --name-only ${1:-HEAD~1} | paste -s -d\  -`
 }

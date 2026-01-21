@@ -2,7 +2,7 @@
 branch_name=$(git rev-parse --abbrev-ref HEAD)
 is_branch_switch=$3
 if [[ "$is_branch_switch" == "1" ]]; then
-    if [[ "$branch_name" == "main" || "$branch_name" == "master" ]]; then
+    if [[ "$branch_name" == "main" || "$branch_name" == "master" || "$branch_name" == "dev" || "$branch_name" == "HEAD" ]]; then
         hash thunter 2>/dev/null && thunter stop
     else
         hash thunter 2>/dev/null && thunter workon --create "$branch_name" < /dev/tty

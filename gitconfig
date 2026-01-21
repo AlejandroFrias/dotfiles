@@ -7,7 +7,7 @@
     editor = /usr/local/bin/code -w
 
 [alias]
-    s = "!git status && hash thunter 2>/dev/null && if [ \"$(git rev-parse --abbrev-ref HEAD)\" = \"main\" ]; then thunter stop; else thunter workon $(git rev-parse --abbrev-ref HEAD); fi"
+    s = "!git status && hash thunter 2>/dev/null && if [ \"$(git rev-parse --abbrev-ref HEAD)\" = \"main\" -o \"$(git rev-parse --abbrev-ref HEAD)\" = \"dev\"  ]; then thunter stop; else thunter workon $(git rev-parse --abbrev-ref HEAD); fi"
     b = branch
     st = stash
     d = diff
@@ -27,7 +27,7 @@
     bd = ! git branch -d $1 && hash thunter 2>/dev/null && thunter finish
     bdd = ! git branch -D $1 && hash thunter 2>/dev/null && thunter finish
     # delete all merged branches
-    bdm = ! git branch --merged | grep -v 'main' | xargs -n 1 git bd
+    bdm = "! git branch --merged | grep -v 'main\\|dev' | xargs -n 1 git bd"
 
 [diff]
 	compactionHeuristic = true
