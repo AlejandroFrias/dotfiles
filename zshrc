@@ -179,10 +179,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
 [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
-export PATH="$HOME/go/bin:$PATH"
-export PATH=$HOME/.proto/bin:$HOME/.proto/include:$PATH
-eval "$(~/.local/bin/mise activate)"
-
 
 # >>> conda initialize >>>
 # If you'd prefer that conda's base environment not be activated on startup,
@@ -204,3 +200,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
